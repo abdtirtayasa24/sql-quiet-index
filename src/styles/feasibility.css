@@ -1,0 +1,44 @@
+tqi-feasibility {
+  display: block;
+  min-width: 0;
+}
+tqi-feasibility section {
+  margin-block: var(--space-8, 2rem);
+}
+tqi-feasibility pre {
+  max-height: 24rem;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: 0.875rem/1.6 var(--font-mono);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+tqi-feasibility pre:empty {
+  display: none;
+}
+tqi-feasibility button {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  background: var(--color-surface);
+  color: var(--color-accent);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font: inherit;
+  cursor: pointer;
+}
+tqi-feasibility button:hover {
+  background: var(--color-bg);
+}
+tqi-feasibility button:disabled {
+  cursor: wait;
+  color: var(--color-muted);
+}
+tqi-feasibility button:focus-visible,
+tqi-feasibility pre:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}

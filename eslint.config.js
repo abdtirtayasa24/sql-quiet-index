@@ -43,7 +43,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['src/app/**/*.ts', 'src/components/**/*.ts', 'src/main.ts'],
+    files: ['src/app/**/*.ts', 'src/components/**/*.ts', 'src/*.ts'],
     rules: {
       'no-restricted-imports': [
         'error',

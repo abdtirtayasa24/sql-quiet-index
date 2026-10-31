@@ -1,4 +1,4 @@
-# Third-party inventory — CP0a
+# Third-party inventory — CP0b
 
 ## Reproducible toolchain
 
@@ -9,8 +9,8 @@ Versions below are exact direct pins resolved from registry metadata, not guesse
 | Package                | Version | Declared license | Reason / runtime scope                                                                           |
 | ---------------------- | ------- | ---------------- | ------------------------------------------------------------------------------------------------ |
 | `lit`                  | 3.3.3   | BSD-3-Clause     | Sole UI library; current shell runtime                                                           |
-| `@electric-sql/pglite` | 0.5.13  | Apache-2.0       | Normative PostgreSQL pin; installed, not loaded at CP0a                                          |
-| `libpg-query`          | 18.2.2  | MIT              | Normative parser pin; installed, not loaded at CP0a                                              |
+| `@electric-sql/pglite` | 0.5.13  | Apache-2.0       | Normative PostgreSQL pin; dedicated-worker PG18 probes verified locally at CP0b                  |
+| `libpg-query`          | 18.2.2  | MIT              | Normative parser pin; grammar 180004 / built worker verified locally at CP0b                     |
 | `typescript`           | 6.0.3   | Apache-2.0       | Strict compilation; 7.x deliberately not selected because typescript-eslint 8.72.1 requires <6.1 |
 | `vite`                 | 8.3.5   | MIT              | Static build/development server                                                                  |
 | `vitest`               | 5.0.5   | MIT              | Pure TypeScript unit tests; compatible with selected Vite/Node                                   |
@@ -24,7 +24,23 @@ Versions below are exact direct pins resolved from registry metadata, not guesse
 | `prettier`             | 3.9.10  | MIT              | Deterministic formatting                                                                         |
 | `@types/node`          | 24.19.2 | MIT              | Node/tool/test declarations only                                                                 |
 
-Package metadata licenses were read from installed package manifests. Preserve upstream LICENSE/NOTICE obligations when distributing; these declarations are an inventory, not legal advice or a completed vendor audit. PGlite/PostgreSQL/WASM notices, parser artifacts and emitted asset hashes must be independently captured in T05/T06 before release. CodeMirror, PWA/Workbox and Ajv are approved future dependencies introduced by T07/T09/T20 respectively, not extra CP0a runtime weight.
+### CP0b editor/type additions
+
+These are approved CodeMirror modules, not a second UI framework. Exact versions were read from registry metadata before installation; `@lezer/highlight` was already the resolved language dependency and is now direct because the accessible syntax palette imports its tag API.
+
+| Package                    | Version | License | Scope                                                                           |
+| -------------------------- | ------- | ------- | ------------------------------------------------------------------------------- |
+| `codemirror`               | 6.0.2   | MIT     | Required editor/basic setup; isolated engineering page only.                    |
+| `@codemirror/lang-sql`     | 6.10.0  | MIT     | Explicit PostgreSQL dialect and visible-schema completion.                      |
+| `@codemirror/state`        | 6.7.6   | MIT     | Shared draft/selection/history model and compartments.                          |
+| `@codemirror/view`         | 6.43.15 | MIT     | Editor lifecycle, accessible content DOM and theme.                             |
+| `@codemirror/commands`     | 6.11.1  | MIT     | Undo/redo shared with the native adapter.                                       |
+| `@codemirror/autocomplete` | 6.20.4  | MIT     | Required editor completion module.                                              |
+| `@codemirror/language`     | 6.13.1  | MIT     | Token-based accessible syntax highlighting.                                     |
+| `@lezer/highlight`         | 1.2.5   | MIT     | SQL keyword/literal/comment highlighting tags.                                  |
+| `@types/emscripten`        | 1.41.6  | MIT     | Dev-only ambient prerequisite missing from pinned PGlite's public declarations. |
+
+Package metadata licenses were read from installed package manifests. Preserve upstream LICENSE/NOTICE obligations when distributing; these declarations are an inventory, not legal advice or a completed vendor audit. PG/parser artifact checks and notice inventory are now captured below. PWA/Workbox and Ajv remain future T09/T20 dependencies. This is an inventory, not legal advice or a full audit of every upstream source component.
 
 ## Explicit transitive security resolution
 
@@ -34,6 +50,34 @@ The initial toolchain instead pins transitive **`minimatch@11.0.3` (ISC)** via a
 
 References: [advisory](https://github.com/advisories/GHSA-g3hv-75wg-m249), [first patched release](https://github.com/isaacs/minimatch/releases/tag/v11.0.1). After the override, the clean install and full audit report **zero known vulnerabilities** at this checkpoint; that is point-in-time registry evidence, not a promise of no supply-chain risk.
 
-## Outstanding vendor gates
+## Independent pinned-artifact verification
 
-`verify:vendor` deliberately exits nonzero with T05 ownership until independent package/license/asset checks exist. Pinning and installation alone do not prove PostgreSQL 18 execution, browser parser entrypoints, acceptable CSP, native mobile behavior or same-origin WASM/data packaging. Never mark those gates complete from this inventory.
+`tools/vendor-manifest.json` is the reviewable SHA-256 baseline: **26 runtime packages / 75 selected files**. It includes every runtime package's exact version, declared license, lockfile tarball integrity and package metadata; packaged LICENSE/NOTICE/COPYING text; PG entry/root JS/FS wrappers plus WASM/data; and parser wrapper/loader/WASM. It is **not regenerated by verification**. Optional extension archives, source maps and every upstream development file are not claimed as independently file-hashed.
+
+The PG/parser baseline was established by downloading the exact registry tarballs with scripts disabled, hashing the archives, checking the hashes against registry metadata and the lockfile, then comparing each selected installed file byte-for-byte with its archive member. Parser WASM also matches upstream package metadata `x-publish.wasmSha256`: `355c489d8b0bf2bac28b48408f656e818852d7000e1e66a67503ad2bc7cc6062`.
+
+| Artifact                      | Independently checked registry/lock SHA-512                                                       |
+| ----------------------------- | ------------------------------------------------------------------------------------------------- |
+| `@electric-sql/pglite@0.5.13` | `sha512-4rZuxK1k07w6sSpJzjMri0B9+HuXuC7V9pxVB51pR0T9KPqXg6TD0mdaEwBA9rkcL4jdht4tGDf/wYzAiGhT7g==` |
+| `libpg-query@18.2.2`          | `sha512-BOKY0X05vnxkFe+FD8JH71sSO560UKoSRv9Fsy67zapmryhqcew+4Hq0Phu8a6mcENklK7LiHJi0d0j8DbIb4A==` |
+
+The audit found existing lock entries without `resolved`/`integrity` metadata. A fresh isolated **npm-generated** lock resolution restored registry integrity metadata; existing package/version sets were checked unchanged, with only hoisting/path normalization, then a clean `npm ci` verified the repaired lock. The lock was not hand-edited and no engine/parser pin or existing direct tool version was floated. Added runtime/type modules are the explicit pins above.
+
+`npm run verify:vendor` checks installed selected bytes, exact research pins, all runtime inventory membership, versions, licenses and lock integrity. `build` runs it before bundling, emits `THIRD_PARTY_NOTICES.txt`, then checks every emitted WASM/data asset's bytes and notice coverage again. Fixture tests prove nonzero failures for changed checksums, license/version/lock drift, missing files, changed emitted binaries and omitted notices. No altered real installation was left behind.
+
+Installed/ship notices are copied from upstream packages, never invented. `@lit-labs/ssr-dom-shim@1.6.0` declares BSD-3-Clause but its npm archive has no standalone license text; the baseline records its package metadata and the generated notice explicitly flags that absence. Complete upstream source-component notice/legal review remains a release follow-up, not an asserted legal certification. The verifier cannot authenticate a malicious replacement of both source and its reviewed baseline.
+
+## Actual emitted binaries
+
+See [QA](QA.md) for actual built URLs/status/MIME observed in Chromium/Firefox/WebKit, and `vendor-manifest.json` for complete source hashes. Current source/emitted binary SHA-256 values are:
+
+| Binary             | SHA-256                                                            |
+| ------------------ | ------------------------------------------------------------------ |
+| `pglite.wasm`      | `90d7b3859ee8e9e9e222c63f1d4c2907606b27a29453c508ee9bae7b48a544c2` |
+| `initdb.wasm`      | `0730c91ee9d6bf1c060c618c7c1ca1adcbb14191828ef794a4d77a85f66d965f` |
+| `pglite.data`      | `2e46ee079b4a922f7514f2d6d17099bbcb2ac26b7db4938374d663caa07b435e` |
+| `libpg-query.wasm` | `355c489d8b0bf2bac28b48408f656e818852d7000e1e66a67503ad2bc7cc6062` |
+
+The pinned parser's runtime filename was invisible to Vite. The exact-expression worker-build adapter now emits a hashed same-origin WASM URL and fails if that upstream loader expression changes. Installed files and these binary hashes are unchanged. PGlite's browser-irrelevant Node fallback/eval build warnings remain visible; tested browser code paths pass restrictive local worker CSP without allowing broad eval.
+
+Desktop automated proof does not establish real Safari/iOS/Android/AT usability, deployed HTTPS/CSP, boot performance, offline readiness or SQL grading. Those gates remain explicit in [QA](QA.md) and the task checklist.

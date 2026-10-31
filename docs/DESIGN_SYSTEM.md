@@ -32,4 +32,14 @@ Motion defaults to **0 seconds**. Only `prefers-reduced-motion: no-preference` e
 
 The same built-app test also checks zero-duration reduced motion, native keyboard disclosure, visible focus, one main/heading and no page overflow at 320, 360, 768 and 1280px. Axe tests cover expanded disclosure and compatibility notices in both themes on Chromium, Firefox and WebKit. These checks do not replace manual screen-reader/real-device audits.
 
-Four Windows/Chromium screenshot baselines live under `tests/e2e/__screenshots__/win32/chromium/`: dark/light ×360/1280px. Review baselines before updates; `npm run test:visual` compares them without accepting new images automatically. Different platforms/fonts require their own deliberate baseline review, never blanket tolerance increases. CI intentionally uses Windows to match this initial platform; hosted CI results are not claimed before the owner authorizes commit/push.
+Four Windows/Chromium screenshot baselines live under `tests/e2e/__screenshots__/win32/chromium/`: dark/light ×360/1280px. Review baselines before updates; `npm run test:visual` compares them without accepting new images automatically. Different platforms/fonts require their own deliberate baseline review, never blanket tolerance increases. CI intentionally uses Windows to match this initial platform. CP0a's hosted run passed on `7882873`; hosted results for the uncommitted CP0b changes are not claimed.
+
+## CP0b engineering input surface
+
+`/feasibility.html` is a separate, plainly labeled proof desk, not the game workspace. It reuses the same tokens/system fonts and keeps the original foundation and its four baselines unchanged. No fake evidence, save or gameplay controls. The only actions are real syntax inspection, fixed PG probes and input-adapter switching.
+
+The Lit editor uses Shadow DOM for local styles and label/help ownership, a ≥160px-high ≥16px editing surface, visible focus and ≥44px action buttons. CodeMirror compartments reconfigure SQL schema and dark/light appearance without replacing the view. A matching native textarea preserves in-page draft/history/selection, announces the switch and keeps Tab/keyboard inspection usable. Both explicitly state that reloading does not save a draft yet.
+
+Default CodeMirror keyword purple failed dark contrast at 1.71:1. The custom syntax highlighter now uses the previously checked accent/warning/muted tokens for keywords, literals and comments, with bold/italic differentiation. Axe AA checks pass for both input modes/themes on all three automated browser engines; they are not human AT certification. Controls introduce no authored animation.
+
+Four additional Windows/Chromium baselines (`feasibility-dark-360.png`, `feasibility-dark-1280.png`, `feasibility-light-360.png`, `feasibility-light-1280.png`) were visually inspected before a normal comparison pass. They show the initial editor/probe states, not an approved production gameplay screen or every error/result state. Behavioral failure paths and current manual gaps are documented in [QA](QA.md).

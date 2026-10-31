@@ -19,6 +19,10 @@ jobs:
           cache: npm
       - run: npm install --global npm@11.5.2
       - run: npm ci
+      - name: Independent vendor integrity and licenses
+        run: npm run verify:vendor
+      - name: Known high-severity dependency advisories
+        run: npm audit --audit-level=high
       - name: Strict application and tools types
         run: npm run typecheck
       - name: ESLint and component safety
@@ -45,12 +49,20 @@ jobs:
         run: npm run build
       - name: Built-app smoke
         run: npm run smoke:dist
+        env:
+          PLAYWRIGHT_HTML_REPORT: playwright-report/smoke
       - name: Built-app E2E
         run: npm run test:e2e
+        env:
+          PLAYWRIGHT_HTML_REPORT: playwright-report/e2e
       - name: Desktop and 360px regression screenshots
         run: npm run test:visual
+        env:
+          PLAYWRIGHT_HTML_REPORT: playwright-report/visual
       - name: Automated accessibility (not a human AT audit)
         run: npm run test:a11y
+        env:
+          PLAYWRIGHT_HTML_REPORT: playwright-report/a11y
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:

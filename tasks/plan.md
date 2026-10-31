@@ -1,9 +1,9 @@
 # Implementation Plan: The Quiet Index
 
-**Status:** Full plan approved; planning baseline committed/pushed as `d2aab41`. T01–T04 through CP0a are implemented and locally verified, awaiting owner review and hosted CI after the first authorized implementation commit/push. No implementation commit, push or live VPS change has been performed. See [checkpoint evidence](cp0a-review.md).  
+**Status:** Full plan approved; planning baseline committed/pushed as `d2aab41`. CP0a was owner-reviewed and committed/pushed through `7882873`; [hosted CI](https://github.com/abdtirtayasa24/sql-quiet-index/actions/runs/41208362500) passed quality and built-browser jobs. T05/T06 and automated T07 through CP0b are implemented using TDD and locally verified. The owner reports successful Android Chrome and Windows functional checks on the Cloudflare proof URL and authorizes the CP0b local commit. Named AT/Safari and full deployed response-CSP criteria remain open; no push or T08 work is authorized. No live VPS changes are authorized. See [CP0b review](cp0b-review.md).  
 **Baseline:** `docs/spec/SPEC-001-The-Quiet-Index-v1.1.md` (normative), with `docs/spec/SQL-Game-Research-Reports.md` as supporting research.  
 **Execution checklist:** [`todo.md`](todo.md). Task IDs below refer to that file.  
-**Planning baseline:** two specification documents and MIT `LICENSE`; application implementation began only after the approved planning commit/push. Current authorized scope is T01–T04 through CP0a, using TDD, with no commit until separately requested; see [checkpoint review](cp0a-review.md).
+**Planning baseline:** two specification documents and MIT `LICENSE`; application implementation began only after the approved planning commit/push. Current authorized scope is T05–T07 through CP0b, using TDD, with no commit until separately requested; see [checkpoint review](cp0b-review.md).
 
 ## 1. Overview and release boundaries
 

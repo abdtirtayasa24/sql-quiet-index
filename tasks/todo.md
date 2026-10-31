@@ -39,7 +39,7 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Create reproducible Node/npm project and strict TS/Vite static configuration, resolving compatible approved packages only.
 
 **Acceptance criteria:**
-- [x] Exact PG/parser pins preserved; lockfile committed when authorized; Node/npm engine choices recorded. (Lockfile prepared and clean `npm ci` verified; commit intentionally awaits owner request.)
+- [x] Exact PG/parser pins preserved; lockfile committed when authorized; Node/npm engine choices recorded. (CP0a lock committed through `7882873`; CP0b editor/type additions and integrity-metadata repair are clean-install verified and owner-approved for the CP0b commit.)
 - [x] Strict/noUncheckedIndexedAccess configs and worker ES format; production emits static dist only.
 - [x] Build/content-staging exclusions prevent committing generated dependencies/assets or credentials.
 
@@ -67,7 +67,7 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Wire required script names to working lint, unit and browser infrastructure; stage scripts as their tools land rather than fake success placeholders.
 
 **Acceptance criteria:**
-- [ ] Separate typecheck, lint/format, Vitest and built-app Playwright checks run in CI. (Implementation wired with separate quality/browser jobs; identical checks and negative proofs pass locally. Actual hosted execution remains open until the first authorized commit/push.)
+- [x] Separate typecheck, lint/format, Vitest and built-app Playwright checks run in CI. Hosted quality and built-browser jobs passed on `7882873`: [run 41208362500](https://github.com/abdtirtayasa24/sql-quiet-index/actions/runs/41208362500).
 - [x] Every spec-required script has an assigned implementation task; unavailable checks fail clearly until introduced, never exit successfully as TODO.
 - [x] Focused selector conventions and zero-match failures documented.
 
@@ -80,16 +80,16 @@ Applies to **every task below**, in addition to its specific criteria:
 - [x] T01–T04 reviewed; static shell works and installed dependencies are reproducible.
 - [x] Type/build/lint/test commands genuinely execute; no application behavior claimed yet.
 
-**CP0a review handoff:** The owner approved T01–T04 and authorized committing/pushing this checkpoint, then inspecting hosted CI. Local acceptance checks pass; hosted CI execution remains open until the pushed commit is verified. See [cp0a-review.md](cp0a-review.md) for evidence and file/slice map, and [owner-actions.md](owner-actions.md) for assigned follow-ups. Later PG/AST/editor/offline/device gates are not claimed; T05 is not authorized by this commit/CI request.
+**CP0a review handoff:** The owner approved T01–T04; implementation and LF-checkout fix were committed/pushed through `7882873`. Hosted CI passed both jobs ([run](https://github.com/abdtirtayasa24/sql-quiet-index/actions/runs/41208362500)). Historical local evidence is in [cp0a-review.md](cp0a-review.md); assigned follow-ups remain in [owner-actions.md](owner-actions.md). The owner subsequently authorized T05–T07 through CP0b using TDD, with no commit/push until separately requested; see [cp0b-review.md](cp0b-review.md).
 
 ### T05 — Prove the real PostgreSQL worker
 
 **Description:** Spike PGlite in a dedicated Vite-built module worker with structured request/response types and emitted same-origin binaries.
 
 **Acceptance criteria:**
-- [ ] `version()` confirms PostgreSQL 18; DATE_TRUNC, DISTINCT ON, CTE/window and EXPLAIN JSON smoke statements pass.
-- [ ] UI never imports/constructs PGlite; actual worker/WASM/data URLs and MIME captured.
-- [ ] Dependency integrity/license inventory verifies the pinned artifacts and fails on deliberate checksum mismatch.
+- [x] `version()` confirms PostgreSQL 18; DATE_TRUNC, DISTINCT ON, CTE/window and EXPLAIN JSON smoke statements pass. Built Chromium/Firefox/WebKit proof in [QA](../docs/QA.md).
+- [x] UI never imports/constructs PGlite; actual worker/WASM/data URLs and MIME captured. Dedicated ES worker and same-origin binary MIME / worker CSP checked in production-preview browser tests.
+- [x] Dependency integrity/license inventory verifies the pinned artifacts and fails on deliberate checksum mismatch. Independent registry/lock baseline, installed-file and emitted-binary negative tests; [inventory](../docs/THIRD_PARTY.md).
 
 **Verification:** `rtk proxy npm run build`; `rtk proxy npm run smoke:dist`; `rtk proxy npm run verify:vendor`.  
 **Dependencies:** T04.  
@@ -101,9 +101,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Load the research-pinned parser in the built worker and document actual AST structures before safety code relies on them.
 
 **Acceptance criteria:**
-- [ ] Parse adapter returns typed success/errors with cursor positions where available, no guessed AST paths or general regex parser.
-- [ ] Fixtures cover SELECT, joins, aggregate/group columns, subquery, recursive/nested CTE, modifying CTE and multiple statements.
-- [ ] Browser packaging/CSP works or an explicit blocker/ADR is raised without substituting silently.
+- [x] Parse adapter returns typed success/errors with cursor positions where available, no guessed AST paths or general regex parser. Actual grammar 180004 and paths recorded in [architecture](../docs/ARCHITECTURE.md).
+- [x] Fixtures cover SELECT, joins, aggregate/group columns, subquery, recursive/nested CTE, modifying CTE and multiple statements.
+- [x] Browser packaging/CSP works or an explicit blocker/ADR is raised without substituting silently. All three built browser engines pass the pinned parser with restrictive local response CSP; exact loader transform documented. Deployed-host proof remains distinct and open.
 
 **Verification:** Focused AST Vitest tests plus production browser parser smoke on Chromium/Firefox/WebKit.  
 **Dependencies:** T05.  
@@ -115,9 +115,14 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Prove the required editor can mount once inside Lit and remain usable on target mobile/assistive technology.
 
 **Acceptance criteria:**
-- [ ] PostgreSQL dialect, visible-only completion, undo/selection, Ctrl/Cmd+Enter and accessible content-DOM labels work.
-- [ ] Typed adapter reconfiguration preserves editor instance; fallback retains draft/history/shortcut and announces itself.
-- [ ] Record real keyboard/VoiceOver/TalkBack findings and relevant deployed-CSP style behavior.
+- [x] PostgreSQL dialect, visible-only completion, undo/selection, Ctrl/Cmd+Enter and accessible content-DOM labels work. Built automated checks pass on Chromium/Firefox/WebKit.
+- [x] Typed adapter reconfiguration preserves editor instance; fallback retains draft/history/shortcut and announces itself. In-page editing state only, not durable-save implementation.
+- [ ] Record real keyboard/VoiceOver/TalkBack findings and relevant deployed-CSP style behavior. Owner-reported Android Chrome and Windows functional passes are recorded below. Named AT/Safari audits remain unreported, and the inspected Cloudflare host lacks CSP/nosniff response headers; [QA evidence](../docs/QA.md) distinguishes these from general functional success.
+  - [x] Owner-reported Android Chrome functional acceptance at the deployed feasibility URL.
+  - [x] Owner-reported Windows functional acceptance at the same URL (browser unspecified).
+  - [x] Owner code-review approval and authorization to commit CP0b.
+  - [ ] Specifically reported VoiceOver/TalkBack/NVDA and Safari/iOS audit results.
+  - [ ] Complete deployed response-CSP proof, including the worker; meta CSP alone is insufficient.
 
 **Verification:** Editor smoke tests; manual mobile keyboard/AT audit against textarea baseline.  
 **Dependencies:** T03,T04.  
@@ -126,7 +131,9 @@ Applies to **every task below**, in addition to its specific criteria:
 
 ### Checkpoint CP0b — engine/input feasibility
 - [ ] T05–T07 prove exact artifacts, actual AST paths and usable SQL input.
-- [ ] Record failed browsers/features; no weakening PostgreSQL or grading to bypass failures.
+- [x] Record failed browsers/features; no weakening PostgreSQL or grading to bypass failures. Local parser asset/MIME, shortcut and syntax-contrast defects fixed; WebKit synthetic-fill limitation and remaining real-device/deployment gaps recorded in [QA](../docs/QA.md).
+
+**CP0b review handoff:** Owner code review and Android Chrome/Windows functional acceptance are recorded; the owner authorizes committing CP0b. Remaining named AT/Safari and deployed response-CSP criteria remain open. [Evidence/file map](cp0b-review.md). Commit only; no push or T08 implementation authorized by this request.
 
 ### T08 — Select a measured boot strategy
 

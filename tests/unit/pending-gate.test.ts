@@ -3,7 +3,6 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 const ownership = [
-  ['verify:vendor', 'T05'],
   ['validate:content', 'T20'],
   ['test:fixtures', 'T25'],
 ] as const;
@@ -20,7 +19,7 @@ describe('unimplemented release gates', () => {
       expect(result.status).toBe(1);
       expect(result.stderr).toContain(`${gate} is not implemented`);
       expect(result.stderr).toContain(task);
-      expect(result.stderr).toContain('CP0a');
+      expect(result.stderr).toContain('this checkpoint');
     },
   );
 
