@@ -3,7 +3,7 @@
 ## Source of truth
 
 - Read `docs/spec/SPEC-001-The-Quiet-Index-v1.1.md` before implementation. It is normative; the research report supplies rationale, not overriding implementation decisions.
-- Read `tasks/plan.md`, `tasks/todo.md` and `tasks/vps-deployment.md`. The owner approved the full plan, D01–D13 dispositions and Ubuntu VPS/Nginx deployment design; do not request the same approvals again. Commit and push the planning baseline before beginning implementation. Technical verification gates remain open; obtain operational access and authorization before live VPS/DNS/firewall/TLS changes.
+- Read `tasks/plan.md`, `tasks/todo.md` and `tasks/vps-deployment.md`. The owner approved the full plan, D01–D13 dispositions and Ubuntu VPS/Nginx deployment design; do not request the same approvals again. The approved planning baseline was committed and pushed as `d2aab41`. Current authorized implementation scope is T01–T04 through CP0a, using TDD. Stop for owner review at this checkpoint; do not commit or push any implementation until explicitly requested. Apply the same review-before-commit workflow at subsequent checkpoints. Technical verification gates remain open; obtain operational access and authorization before live VPS/DNS/firewall/TLS changes.
 - Preserve stable mission IDs and save compatibility. Follow the specification's required Lit/strict TypeScript/Vite/vanilla CSS/CodeMirror/PostgreSQL stack and separation boundaries.
 - Production is static HTTPS on the owner's Ubuntu VPS via Nginx, not a Node/backend/PostgreSQL server. Follow `docs/adr/0002-ubuntu-vps-nginx.md`; retain old immutable assets during atomic releases and never clear browser storage as a deploy/rollback shortcut.
 

@@ -1,0 +1,31 @@
+# ADR-0001: Approved implementation contract clarifications
+
+## Status and context
+
+Accepted by the project owner: all D01–D13, then the entire implementation/deployment plan. CP0a implementation is authorized with a stop for review and **no commit until requested**. The owner also explicitly accepted coordination of hosting access, device/AT coverage and playtest recruitment; see [owner checklist](../../tasks/owner-actions.md).
+
+These are implementation dispositions, not edits to [the normative specification](../spec/SPEC-001-The-Quiet-Index-v1.1.md). The research report supplies context but does not override spec v1.1. Detailed original reasoning is retained in [plan §2](../../tasks/plan.md#2-source-precedence-and-approved-clarification-decisions).
+
+## Decisions and verification ownership
+
+| Decision | Accepted contract                                                                                                                                                                                                                                  | Spec / implementation gate                            |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| D01      | Pin PGlite 0.5.13 and libpg-query 18.2.2 exactly. Metadata does not prove PG/browser/AST compatibility; stop and record failure rather than substitute dialect/parser.                                                                             | §7; T02 pins, T05/T06 artifact/API proof              |
+| D02      | Preserve specified mission PRNG. Add separate case identity mapping from campaign seed + content version + case ID, shared by mission generators.                                                                                                  | §§1,9; T19 deterministic shared-fact tests            |
+| D03      | Count distinct authored item IDs, not seed/text variants. Provide ≥3 genuinely distinct practice items where act-critical familiarity would otherwise deadlock. Pure mastery supports all states; mixed UI may follow MVP.                         | §6; T28/T29 novice-route/mastery tests                |
+| D04      | Every worker message requires sessionId and monotonic requestId, with runtime guards; reject stale results after termination/navigation. Examples' omissions are not optionality.                                                                  | §8; T05/T18 correlation/restart tests                 |
+| D05      | Stable evidence ID registry; use `a3.guard_absent_gate_scan` consistently. Mission 021 means two staff sharing a supervisor; do not change it into employee/supervisor comparison.                                                                 | §§3,10; T19–T21 registry/fixture validation           |
+| D06      | Review all role metadata; any synthesis/rest exception requires explicit rationale and playtest. Never silently bypass sawtooth lint.                                                                                                              | §§2,3,10; T20/T32/T38                                 |
+| D07      | Per-case resolution policy declares three-path or two-high-confidence-plus-reconciliation rules and mandatory/optional clues. Prove initial routes, optional removal robustness AND attainable selected resolution policy separately.              | §§1,10; T21 graph/novice-path tests                   |
+| D08      | Run/check verification is ephemeral. Explicit row filing atomically records solve, evidence, concept event and campaign timestamp before “secured”; practice uses distinct transaction without story evidence.                                     | §§8,11,12; T26 abort/idempotency tests                |
+| D09      | Freeze required case/seed/version/comparison metadata and reviewed exceptions before schemas. Separate full 80-ID outline from published playable registry; named variants blocks expand into reference assets, wrong SQL individually referenced. | §10; T20 schema/authoring tests                       |
+| D10      | Verify actual row-array mode and custom type parsers before relying on OIDs/precision. Full graded row ceiling is separate from preview; stress large results/cells and document residual memory risk.                                             | §11; T05/T22/T25                                      |
+| D11      | Owner-managed static Ubuntu/Nginx HTTPS; local preview is not deployment proof. Actual devices, AT and playtests remain mandatory. Hosting and recruitment coordinator is the project owner.                                                       | §§7,12,15; V01–V07/T07/T08/T36/T38                    |
+| D12      | Define truthful aggregate finale feedback for zero through three failed claims, without identifying individual claims or falsely saying ≤2 when all three fail.                                                                                    | §4; A10 design/branch tests before advanced authoring |
+| D13      | Freeze numeric record/count/string bounds within 5 MiB and deterministic concurrent-draft timestamp/tie-break policy; timestamp is not a security guarantee. Backup/migration scope must be explicit.                                              | §12; T12–T14 migration/import tests                   |
+
+## Alternatives and consequences
+
+Reject silent literal interpretation of incomplete examples when it contradicts surrounding normative prose. Reject re-requesting approved dispositions, exact SQL/name matching, inferred mastery from repeated seeds, automatic filing, destructive rollback and unapproved substitute packages/frameworks.
+
+These decisions establish boundary vocabulary in [ARCHITECTURE.md](../ARCHITECTURE.md). They do not pretend that downstream schemas, parser AST paths, driver API details, numeric import bounds or real-device outcomes have been implemented or verified at CP0a. Any substantive amendment requires a new decision and owner review, not a covert specification rewrite.

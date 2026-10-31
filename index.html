@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="The Quiet Index — a PostgreSQL detective game. Foundation build; investigations are not yet playable."
+    />
+    <meta name="color-scheme" content="dark light" />
+    <title>The Quiet Index</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" tabindex="0"
+      >Skip to main content</a
+    >
+    <header class="masthead">
+      <span>Port Meridian</span>
+      <span>Municipal Records Investigation Unit</span>
+    </header>
+    <main id="main-content" tabindex="-1">
+      <tqi-app>
+        <p class="build-label">Foundation checkpoint · CP0a</p>
+        <h1>The Quiet Index</h1>
+        <p class="tagline">
+          Every record is a witness.<br />Every missing row is a lie.
+        </p>
+        <p id="boot-notice" role="status">
+          Loading the interface. If this notice remains, check your connection
+          and try reloading. This introduction is still available.
+        </p>
+      </tqi-app>
+      <noscript>
+        <p class="notice">
+          JavaScript is disabled. You can read this introduction, but the
+          planned game needs JavaScript.
+        </p>
+      </noscript>
+    </main>
+    <footer class="site-footer">
+      Real PostgreSQL. Verifiable evidence. No account required.
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

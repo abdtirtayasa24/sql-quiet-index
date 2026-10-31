@@ -1,0 +1,59 @@
+name: Foundation quality gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24.14.1'
+          cache: npm
+      - run: npm install --global npm@11.5.2
+      - run: npm ci
+      - name: Strict application and tools types
+        run: npm run typecheck
+      - name: ESLint and component safety
+        run: npm run lint
+      - name: Formatting
+        run: npm run format:check
+      - name: Vitest (fails on zero tests)
+        run: npm run test:unit
+
+  built-browser:
+    needs: quality
+    # Screenshot baselines are intentionally platform-specific. Real Safari/iOS is separate.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24.14.1'
+          cache: npm
+      - run: npm install --global npm@11.5.2
+      - run: npm ci
+      - run: npx playwright install chromium firefox webkit
+      - name: Static production foundation build
+        run: npm run build
+      - name: Built-app smoke
+        run: npm run smoke:dist
+      - name: Built-app E2E
+        run: npm run test:e2e
+      - name: Desktop and 360px regression screenshots
+        run: npm run test:visual
+      - name: Automated accessibility (not a human AT audit)
+        run: npm run test:a11y
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: foundation-browser-report
+          path: playwright-report/
+          retention-days: 7

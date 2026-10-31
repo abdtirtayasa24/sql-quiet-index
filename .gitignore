@@ -5,3 +5,20 @@
 /graphify-out/manifest.json
 /graphify-out/cost.json
 /graphify-out/__pycache__/
+
+# Local dependencies, build/content staging and test evidence.
+/node_modules/
+/dist/
+/public/content/
+/test-results/
+/playwright-report/
+/coverage/
+*.tsbuildinfo
+
+# Never publish local configuration, credentials or private keys.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+npm-debug.log*

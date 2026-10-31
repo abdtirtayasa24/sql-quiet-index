@@ -26,8 +26,8 @@ Applies to **every task below**, in addition to its specific criteria:
 
 **Acceptance criteria:**
 - [x] D01–D13 proposed dispositions explicitly approved by the project owner; identity/mastery/evidence/filing approaches accepted (implementation not completed).
-- [ ] Worker, manifest, result and save boundary vocabulary defined without inventing APIs; Ubuntu VPS/Nginx access and device/tester owners assigned.
-- [ ] MVP vs post-MVP scope and unsupported-browser behavior documented.
+- [x] Worker, manifest, result and save boundary vocabulary defined without inventing APIs; Ubuntu VPS/Nginx access and device/tester owners assigned.
+- [x] MVP vs post-MVP scope and unsupported-browser behavior documented.
 
 **Verification:** Cross-check spec §§6–12 against decision log; human sign-off with no silent spec changes.  
 **Dependencies:** None.  
@@ -39,9 +39,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Create reproducible Node/npm project and strict TS/Vite static configuration, resolving compatible approved packages only.
 
 **Acceptance criteria:**
-- [ ] Exact PG/parser pins preserved; lockfile committed when authorized; Node/npm engine choices recorded.
-- [ ] Strict/noUncheckedIndexedAccess configs and worker ES format; production emits static dist only.
-- [ ] Build/content-staging exclusions prevent committing generated dependencies/assets or credentials.
+- [x] Exact PG/parser pins preserved; lockfile committed when authorized; Node/npm engine choices recorded. (Lockfile prepared and clean `npm ci` verified; commit intentionally awaits owner request.)
+- [x] Strict/noUncheckedIndexedAccess configs and worker ES format; production emits static dist only.
+- [x] Build/content-staging exclusions prevent committing generated dependencies/assets or credentials.
 
 **Verification:** `rtk proxy npm ci`; `rtk proxy npm run typecheck`; inspect effective Vite configuration.  
 **Dependencies:** T01.  
@@ -53,9 +53,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Add lean HTML entry, Lit registration/shell and initial accessible tokens without gameplay logic.
 
 **Acceptance criteria:**
-- [ ] Static build opens with semantic main/heading and readable boot/unsupported states.
-- [ ] Reactive-property/decorator mode is deliberate; no second UI library or unsafe content rendering.
-- [ ] Initial token values have recorded contrast checks and reduced-motion defaults.
+- [x] Static build opens with semantic main/heading and readable boot/unsupported states.
+- [x] Reactive-property/decorator mode is deliberate; no second UI library or unsafe content rendering.
+- [x] Initial token values have recorded contrast checks and reduced-motion defaults.
 
 **Verification:** Build and static preview; keyboard/360px inspection; no runtime Node/API/CDN requests.  
 **Dependencies:** T02.  
@@ -67,9 +67,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Wire required script names to working lint, unit and browser infrastructure; stage scripts as their tools land rather than fake success placeholders.
 
 **Acceptance criteria:**
-- [ ] Separate typecheck, lint/format, Vitest and built-app Playwright checks run in CI.
-- [ ] Every spec-required script has an assigned implementation task; unavailable checks fail clearly until introduced, never exit successfully as TODO.
-- [ ] Focused selector conventions and zero-match failures documented.
+- [ ] Separate typecheck, lint/format, Vitest and built-app Playwright checks run in CI. (Implementation wired with separate quality/browser jobs; identical checks and negative proofs pass locally. Actual hosted execution remains open until the first authorized commit/push.)
+- [x] Every spec-required script has an assigned implementation task; unavailable checks fail clearly until introduced, never exit successfully as TODO.
+- [x] Focused selector conventions and zero-match failures documented.
 
 **Verification:** Introduce temporary test/type failure to prove CI rejects it, then remove; run baseline checks.  
 **Dependencies:** T02,T03.  
@@ -77,8 +77,10 @@ Applies to **every task below**, in addition to its specific criteria:
 **Estimated scope:** M; formatting config is a separate child if needed.
 
 ### Checkpoint CP0a — foundation
-- [ ] T01–T04 reviewed; static shell works and installed dependencies are reproducible.
-- [ ] Type/build/lint/test commands genuinely execute; no application behavior claimed yet.
+- [x] T01–T04 reviewed; static shell works and installed dependencies are reproducible.
+- [x] Type/build/lint/test commands genuinely execute; no application behavior claimed yet.
+
+**CP0a review handoff:** The owner approved T01–T04 and authorized committing/pushing this checkpoint, then inspecting hosted CI. Local acceptance checks pass; hosted CI execution remains open until the pushed commit is verified. See [cp0a-review.md](cp0a-review.md) for evidence and file/slice map, and [owner-actions.md](owner-actions.md) for assigned follow-ups. Later PG/AST/editor/offline/device gates are not claimed; T05 is not authorized by this commit/CI request.
 
 ### T05 — Prove the real PostgreSQL worker
 

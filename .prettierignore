@@ -1,0 +1,15 @@
+node_modules/
+dist/
+public/content/
+coverage/
+playwright-report/
+test-results/
+graphify-out/
+package-lock.json
+# Preserve normative sources and historical planning formatting.
+docs/spec/
+docs/adr/0002-ubuntu-vps-nginx.md
+tasks/plan.md
+tasks/todo.md
+tasks/vps-deployment.md
+AGENTS.md
