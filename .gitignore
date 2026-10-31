@@ -1,0 +1,7 @@
+# Machine-local Graphify interpreters, caches and extraction intermediates.
+# Keep the portable graph, report and interactive HTML available for review.
+/graphify-out/.*
+/graphify-out/cache/
+/graphify-out/manifest.json
+/graphify-out/cost.json
+/graphify-out/__pycache__/
