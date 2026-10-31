@@ -1,1 +1,4 @@
+# Keep authored text consistent with Prettier on every checkout; binary files stay binary.
+* text=auto eol=lf
+
 graphify-out/graph.json merge=graphify
