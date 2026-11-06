@@ -1,4 +1,4 @@
-import { ESLint } from 'eslint';
+import { spawnSync } from 'node:child_process';
 import { expect, it } from 'vitest';
 
 it.each([
@@ -6,14 +6,32 @@ it.each([
   ['libpg-query', 'parse'],
 ])(
   'rejects %s on the new UI entrypoint, not just the original main.ts',
-  async (name, symbol) => {
-    const results = await new ESLint().lintText(
-      `import { ${symbol} } from '${name}';\nconsole.log(${symbol});\n`,
-      { filePath: 'src/feasibility.ts' },
+  (name, symbol) => {
+    // Native Node keeps typed ESLint outside Vitest's virtual module/compiler context.
+    const result = spawnSync(
+      process.execPath,
+      [
+        '--input-type=module',
+        '--eval',
+        `import { ESLint } from 'eslint';
+         let input = '';
+         for await (const chunk of process.stdin) input += chunk;
+         console.log(JSON.stringify(await new ESLint().lintText(input, {
+           filePath: 'src/feasibility.ts',
+         })));`,
+      ],
+      {
+        input: `import { ${symbol} } from '${name}';\nconsole.log(${symbol});\n`,
+        encoding: 'utf8',
+        timeout: 20_000,
+      },
     );
-    expect(results).toHaveLength(1);
-    expect(results[0]?.messages.map((message) => message.ruleId)).toContain(
-      'no-restricted-imports',
-    );
+    expect(result.error).toBeUndefined();
+    expect(result.status, result.stderr).toBe(0);
+    const reports: unknown = JSON.parse(result.stdout);
+    expect(reports).toMatchObject([
+      { messages: [{ ruleId: 'no-restricted-imports' }] },
+    ]);
   },
+  25_000,
 );

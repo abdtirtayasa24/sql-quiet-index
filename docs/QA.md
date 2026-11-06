@@ -1,6 +1,8 @@
-# CP0b feasibility QA
+# Feasibility QA — CP0b history and M0 review
 
-## Status and how to review
+**Current M0:** software proof implemented and owner-authorized for Git delivery/CI monitoring; actual device/AT/deployed-host acceptance and human go/no-go remain open. Current evidence/procedure is in the M0 section below. The CP0b record is preserved as history, not reused as an M0 pass.
+
+## CP0b status and how to review (historical)
 
 **Local automated evidence passes; the owner approves the CP0b code commit and reports successful manual functional checks on Android Chrome and Windows.** Real Safari/iOS, named AT audits and complete deployed security-header acceptance remain open. General platform success is not inferred to include unreported VoiceOver/TalkBack/NVDA or individual IME/clipboard checks.
 
@@ -19,7 +21,7 @@ Open `http://127.0.0.1:4173/feasibility.html`. The original `/` foundation remai
 - **Use native editor** retains draft, selection and undo/redo in the same in-memory editing model. **Use CodeMirror** returns to the rich editor. An actual synchronous mount error selects the native editor automatically and announces the switch.
 - Draft and history survive an editor adapter switch / component reconnect **within this page**, not reload, navigation or tab closure. No IndexedDB, service worker, campaign, save, offline pack or gameplay is implemented here.
 
-## Actual automated matrix
+## CP0b automated matrix (historical)
 
 Environment: Windows; built static `dist`; Playwright **1.64.1** Chromium, Firefox and WebKit. WebKit is not a real Safari/iOS audit. Tests run with restrictive preview response CSP, including the worker response; no broad `unsafe-inline` or `unsafe-eval` was added.
 
@@ -39,7 +41,7 @@ Environment: Windows; built static `dist`; Playwright **1.64.1** Chromium, Firef
 | Desktop/360px dark/light screenshot comparison                                                                        | Pass (Windows) | Not a baseline target | Not a baseline target |
 | Detailed real-device soft keyboard / IME / paste / AT / deployed policy (owner functional checks below)               | **Not run**    | **Not run**           | **Not run**           |
 
-Full commands/results and RED→GREEN evidence are in [the checkpoint review](../tasks/cp0b-review.md). All previous foundation visual/a11y/keyboard regressions also pass. CI is wired to execute these same commands; this **CP0b revision has not run on hosted CI**; the owner authorized a local commit only, not a push. The successful prior hosted run belongs to CP0a only.
+Full commands/results and RED→GREEN evidence are in [the checkpoint review](../tasks/cp0b-review.md). All previous foundation visual/a11y/keyboard regressions also pass. CI is wired to execute these same commands; the subsequently pushed CP0b [hosted run 41217792321](https://github.com/abdtirtayasa24/sql-quiet-index/actions/runs/41217792321) failed two typed ESLint import-boundary unit tests before any browser job ran. Local success did not imply remote success. M0's CI-1 follow-up isolates the same real assertions in native Node; see the [review](../tasks/m0-review.md). The earlier successful hosted run belongs to CP0a only.
 
 ### Defects discovered and resolved locally
 
@@ -101,4 +103,56 @@ Accountable coordinator: Abdul F. Tirtayasa, already assigned in [owner actions]
 
 For each run record: date, operator role (not personal contact data), device/OS/browser/AT version, build identifier, exact steps, observed result, adapter, screenshot/log references with private data removed, issue/fix and retest result. Blank rows are missing evidence, not passes.
 
-The Android/Windows functional checks and owner code-review approval above are checked. Until the remaining specific findings are supplied, **T07's complete manual criterion and the first CP0b acceptance checkbox remain open**. The owner explicitly authorized committing the CP0b code; do not push or start T08 without further instruction.
+The Android/Windows functional checks and owner code-review approval above are checked. Until the remaining specific findings are supplied, **T07's complete manual criterion and the first CP0b acceptance checkbox remain open**. CP0b was subsequently committed/pushed as `122a7fa`; the owner then authorized T08–T09 through M0, without a commit until review. Those newer instructions supersede the historical handoff restriction, not its missing factual evidence.
+
+## M0 implementation and local evidence
+
+Review `/technical.html` from `rtk proxy npm run build` → `rtk proxy npm run preview`. Keep the preview stopped during Playwright runs. [M0 review/file map](../tasks/m0-review.md) records predeclared slices and RED→GREEN evidence. The owner subsequently authorized commit/push and monitoring remote CI. No M0 deployment is authorized; local counts are not a hosted result.
+
+| Check                                                      | Observed local result                                                                                                                                                                                  |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Clean `npm ci`; strict app/tool/separate-SW TS; typed lint | Pass; exact engine/parser pins and prior lock package/version identities preserved                                                                                                                     |
+| `test:unit`                                                | 94 tests / 19 files passed; artifact integrity, bounded manifest/download, lifecycle/update/message validation                                                                                         |
+| `build`                                                    | Pass: vendor → coupled candidate/icons → actual injectManifest → final artifact/hash/notice gates                                                                                                      |
+| `test:e2e`                                                 | 66 built-app cases passed across Chromium, Firefox, WebKit; includes real syntax inspection and failure, both boot candidates and fresh offline client                                                 |
+| `test:pwa-update`                                          | 9 cases passed across all three engines: actual A/B bundles, old uncached worker continuity, deferred/approved/blocked updates, second-tab draft, missing new shell, missing engine and explicit retry |
+| `benchmark:boot`                                           | 9 complete cohorts, **90 timed trials**, five per strategy/condition/browser; warm-ups excluded                                                                                                        |
+| `test:a11y`                                                | 30 cases passed, both themes/input adapters, keyboard skip-link/reflow and axe; not human AT certification                                                                                             |
+| Visual review                                              | Four new technical images inspected; only dynamic release ID masked. Original eight baselines preserved; normal comparison is recorded in the M0 review                                                |
+| Supply chain                                               | 30 shipped packages / 97 selected file hashes and emitted binary/notices; four **low** build-only audit findings remain, no moderate/high/critical                                                     |
+
+### Boot observations and decision
+
+[Measured samples and method](benchmarks/m0-local.json), from one uncommitted Windows build, release `m0-4365fb90-9f04-4a4b-8bfc-d8751c6ca672`. Values below are nearest-rank first-playable P75 in milliseconds, **five observations per cell**, not a mobile prediction.
+
+| Browser engine | Cold initdb / snapshot | HTTP-warm initdb / snapshot | SW-offline initdb / snapshot |
+| -------------- | ---------------------- | --------------------------- | ---------------------------- |
+| Chromium       | 1667 / 723             | 1637 / 697                  | 1456 / 571                   |
+| Firefox        | 1758 / 618             | 1499 / 522                  | 1607 / 566                   |
+| WebKit         | 1719 / 605             | 1778 / 621                  | 1774 / 614                   |
+
+Cold means fresh browser contexts with SW blocked, **not** cold OS/CPU. Warm uses the preview's real HTTP revalidation, not an invented production cache policy. Offline closes all pages after a verified SW-owned download, then creates fresh offline clients. Maximum observed PG WASM allocation was **197,722,112 bytes**, not total process peak memory. Shell-ready cohort P75 was 80–161 ms. Input event→next-frame P75 was about 7–28 ms by cohort/adapter; this is not INP or hardware input latency. Chromium observed zero >50ms tasks during these trials; unsupported Firefox/WebKit long-task instrumentation is **null**, not zero.
+
+The opt-in proof pack contains 25 resources totaling **23,691,637 uncompressed artifact bytes**, including both candidates. The already-gzipped single snapshot is **4,771,634 bytes**. Separate gzip-level-9 estimates for other binaries are in the JSON; they are **not actual hosted wire transfers**. Worker Resource Timing samples do not cover every page/worker bootstrap byte. The local preview is not a compressed mobile HTTPS network.
+
+**Decision: retain initdb as the default; snapshot selection remains blocked on real-device evidence.** The fixture favors restoration locally, but it is not representative authored mission content and cannot establish Android/iOS first-download cost, memory envelope or whole-game performance. The emitted snapshot is a labeled comparison candidate, not the adopted gameplay strategy or a per-case snapshot.
+
+### Defects exposed by stronger tests
+
+- `.gz` snapshot URLs were transparently HTTP-decompressed; opaque `.snapshot` plus byte checks fixes the packaging defect.
+- Workbox glob@11 + the existing minimatch security override produced an empty precache. A failing real wildcard test and actual offline proof drove the scoped compatible glob@14 fix.
+- Vite changed a preload chunk after generateBundle; inventory hashing moved to final writeBundle bytes and a separate negative artifact gate detects drift.
+- In WebKit, a window-owned pack had 26 keys before the last page closed and zero afterward. Moving download ownership to a SW extendable message event passes fresh-client reopen and repeated offline trials. No storage-clearing or browser skip was used.
+- A force-network `fetch(cache:'reload')` probe is not portable offline in Firefox. The final app needs no such page-side request: downloads are SW-owned; default cached fetch, native Request matching and actual fresh offline worker construction are tested in every engine. Delivery-only encoding/length/Vary headers are normalized while CSP/nosniff/MIME remain intact.
+- Technical input initially exposed an unwired Inspect control; a RED browser test drove actual parser wiring. Injected Worker-construction failure now leaves input usable with a retry notice. Explicit skip-link tabindex fixes the observed WebKit keyboard failure.
+
+## Remaining M0 owner-operated acceptance — not waived
+
+Use a dedicated test profile/origin with no real player data; **never clear existing case storage to manufacture a cold benchmark**. Keep private contact details and raw personal-device logs out of Git. For every report record build release ID, device/model/RAM, OS/browser/AT versions, exact conditions/steps, raw observations, defects and retests.
+
+- [ ] **Real ~4GB Android Chrome and iOS Safari:** ≥5 trials of each strategy in separately labeled cold, repeat and offline conditions. Retain all raw observations/failures and P75; use actual network transferred-byte evidence and platform total peak-memory measurements. The UI's PG allocation is insufficient to define a safe device envelope. Confirm foreground input/selection/undo in CodeMirror and native textarea during boots, real IME/soft keyboard, paste and Ctrl/Cmd+Enter where supported. Recheck macOS Safari/Windows target browsers too.
+- [ ] **Named AT:** NVDA, TalkBack and VoiceOver task findings, including labels, status announcements, keyboard order/focus and both input modes. Automated WebKit/axe and earlier general Android/Windows success do not count as these audits.
+- [ ] **Actual HTTPS origin/native install:** inspect manifest and original local 192/512px icons; install from the browser's native UI, close every app tab/window, disconnect, reopen and run both candidates plus `/feasibility.html` PG/parser probes. Only the demo is claimed offline, never an act/save.
+- [ ] **Actual headers/MIME:** documents, `/sw.js`, dedicated workers, WASM, `.data`, opaque `.snapshot`, manifest and real 404s under enforced CSP/nosniff. Worker response CSP must survive offline caching; no broad inline/eval waiver. The snapshot must be delivered as opaque gzip-archive bytes without mislabeling them as an HTTP-decoded stream. Earlier Cloudflare inspection found absent CSP/nosniff response headers; no host fix or M0 deployment was performed here.
+- [ ] **Actual two-release origin:** retain old immutable assets; open two tabs, create an in-memory draft, install a second release, decline first, verify no forced reload, then copy wanted text and explicitly approve. The other tab must retain its draft and old uncached worker must still load. Missing new shell/engine must remain failed/not-ready and recover on explicit retry. Do not deploy the loopback Node test fixture. Save flushing/act cache retention/rollback hardening remains T33–T34, not an M0 claim.
+- [ ] **Human M0 go/no-go:** review all remaining factual gates and the provisional boot choice before T10. This software handoff does not mark the milestone accepted.

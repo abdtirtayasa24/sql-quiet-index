@@ -9,6 +9,9 @@
 # Local dependencies, build/content staging and test evidence.
 /node_modules/
 /dist/
+/generated/
+/dist-m0-a/
+/dist-m0-b/
 /public/content/
 /test-results/
 /playwright-report/

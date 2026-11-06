@@ -16,5 +16,6 @@
     "noEmit": true,
     "types": ["vite/client", "emscripten"]
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/sw.ts"]
 }

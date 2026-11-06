@@ -283,6 +283,60 @@
         "LICENSE": "869c30f368eb08735e779027b9f4bc9fea2f39624351856aebe42741f0bc0884",
         "package.json": "0396c646f74d52c1b0851074ecdb5cabf540af595ceb5e5a5136df2bf3c2f83b"
       }
+    },
+    {
+      "name": "workbox-core",
+      "version": "7.4.1",
+      "license": "MIT",
+      "integrity": "sha512-DT+vu46eh/2vRsSHTY4Xmc32Z1rr9PRlQUXr1Dx30ZuXRWwOsvZgGgcwxcasubQLQmbTNYZjv44LkBAQ4tT5tQ==",
+      "files": {
+        "LICENSE": "aee9670e09b75ca8a2a1fe62d545ae38a6797970caf0335628e3a4dd15bc9b6c",
+        "package.json": "8183a8c163071357217af3cfa311d4473eaff51cdd9d4d6465c6f905a4f22547",
+        "index.js": "43318e38b8558890dadb46351018be536d2e7bf017014ade52d503db78446268",
+        "setCacheNameDetails.js": "9c22264dc3fe99dbf5d8c7d9013bc70acfa7348bb03ee9a02e511b4891655524",
+        "_private/cacheNames.js": "98be69b12be96cadc2f2f10c06daf1aa3b3028efb3d836255f7db09eb66e94b0",
+        "_private/WorkboxError.js": "c73dae213c75ec1c0751a49ad537562e2b80ec58b4c2d0f5464b45ea975cfb81"
+      }
+    },
+    {
+      "name": "workbox-precaching",
+      "version": "7.4.1",
+      "license": "MIT",
+      "integrity": "sha512-cdr/9qByww7yzEp7zg/qI4ukUrrNjQLgN+ONQRpjy/VqGQXwkgHwr00KksGJK8v0VifwDXBb8a4cWNZH71jn3Q==",
+      "files": {
+        "LICENSE": "aee9670e09b75ca8a2a1fe62d545ae38a6797970caf0335628e3a4dd15bc9b6c",
+        "package.json": "7027c29a58d92e11a38116b53ca3fe378c436b70fb32deedc366ec56806f0e3b",
+        "index.js": "3d738b741f10a61e98ab05809b62645c49d016a163a1e02b89e93047cb81d36f",
+        "precacheAndRoute.js": "875887d43c277be714a63a29c1ff1e66e21889c576b573f2a5b39229e23f85ff",
+        "PrecacheController.js": "051cea46ca0c4a80c97b148d5e75508554045c20bcb2e76e3f96bdf6c7742003",
+        "PrecacheStrategy.js": "09290eb6b58f3d55b959d6e7e459e9338240bd67f5bcdf2e0e34fd369bc57edb"
+      }
+    },
+    {
+      "name": "workbox-routing",
+      "version": "7.4.1",
+      "license": "MIT",
+      "integrity": "sha512-yubJGErZOusuidAenaL5ypfhQOa7urxP/f8E0ws7FPb4039RiWXUWBAyUkmUoOL/BcQGen3h0J8872d51IYxtA==",
+      "files": {
+        "LICENSE": "aee9670e09b75ca8a2a1fe62d545ae38a6797970caf0335628e3a4dd15bc9b6c",
+        "package.json": "fd7ef06a25f20f39ebef9301dd0e515dce0ece9ca5b5a9fca34e64d4ef2b2aa8",
+        "index.js": "6c623181f500dec45d8d54df5f2bf35a86f35033d2611817db1b671b776ed993",
+        "registerRoute.js": "1b7fe447ee4a22489043c58dc5f672d85cb55dfb86f118f8f038978758ef0100",
+        "Router.js": "58d19799cbce1fd7da50bd88799b60eb3d071f639926d279075ea5f944cf4bba"
+      }
+    },
+    {
+      "name": "workbox-strategies",
+      "version": "7.4.1",
+      "license": "MIT",
+      "integrity": "sha512-GZxpaw9NbmOelj7667uZ2kpk5BFpOGbO4X0qjwh5ls8XQ8C+Lha5LQchTiUzsTFSS+NlUpftYAyOVXvQUrcqOQ==",
+      "files": {
+        "LICENSE": "aee9670e09b75ca8a2a1fe62d545ae38a6797970caf0335628e3a4dd15bc9b6c",
+        "package.json": "324081af44a971899add099598a17e047a58499b42537f459cff07e7767ff6fe",
+        "index.js": "bf9eb0e60bbaca80ece093253a55bb04bdb840792d7c16a375382390595b8ff6",
+        "Strategy.js": "6aa2d6d9ce67fc22c11a5e76c7d027f3427c9f813d9294a3ee3ac26bdc560afa",
+        "StrategyHandler.js": "f737a00c06d23399c3b7c6c180e3648e6c488cac5b3fdc5c69b798f885b2a239"
+      }
     }
   ]
 }

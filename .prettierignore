@@ -1,5 +1,8 @@
 node_modules/
 dist/
+dist-m0-a/
+dist-m0-b/
+generated/
 public/content/
 coverage/
 playwright-report/

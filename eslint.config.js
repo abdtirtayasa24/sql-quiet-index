@@ -9,6 +9,8 @@ export default defineConfig([
     ignores: [
       'node_modules/**',
       'dist/**',
+      'dist-m0-*/**',
+      'generated/**',
       'graphify-out/**',
       'public/content/**',
       'playwright-report/**',
@@ -28,7 +30,11 @@ export default defineConfig([
     ],
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.json', './tsconfig.tools.json'],
+        project: [
+          './tsconfig.json',
+          './tsconfig.tools.json',
+          './tsconfig.sw.json',
+        ],
         tsconfigRootDir: import.meta.dirname,
       },
     },

@@ -55,6 +55,10 @@ jobs:
         run: npm run test:e2e
         env:
           PLAYWRIGHT_HTML_REPORT: playwright-report/e2e
+      - name: Two-release M0 update, version skew and failed-release proof
+        run: npm run test:pwa-update
+      - name: Repeated local boot measurements (not device certification)
+        run: npm run benchmark:boot
       - name: Desktop and 360px regression screenshots
         run: npm run test:visual
         env:

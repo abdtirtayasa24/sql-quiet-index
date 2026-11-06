@@ -2,6 +2,8 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests/e2e',
+  outputDir: 'test-results/default',
+  testIgnore: ['pwa-update.spec.ts', 'boot-performance.spec.ts'],
   fullyParallel: true,
   forbidOnly: true,
   retries: 0,

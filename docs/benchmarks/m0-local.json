@@ -1,0 +1,4204 @@
+{
+  "baseCommit": "122a7fa",
+  "uncommittedImplementation": true,
+  "exportedAt": "2026-11-01T05:48:24.319Z",
+  "release": "m0-4365fb90-9f04-4a4b-8bfc-d8751c6ca672",
+  "environment": "Windows Playwright; loopback Vite production preview, one worker at a time; synthetic 5000-row fixture, not missions or real devices.",
+  "method": "Nearest-rank P75; five measured trials per strategy/cohort; own warm-ups excluded. Cold=fresh browser context/SW blocked, not cold OS/CPU. Warm=actual preview HTTP revalidation. Offline=explicit SW-owned verified download, all pages closed, fresh offline clients. Input event-to-next-frame is not INP; Resource Timing covers observed worker resources, not all wire traffic. PG WASM allocation is not total process peak memory; unsupported long-task observation is null.",
+  "assetFootprint": {
+    "totalOptInPackBytes": 23691637,
+    "binaries": [
+      {
+        "url": "/assets/base-C1zs8SDX.snapshot",
+        "bytes": 4771634,
+        "sha256": "67d115409ca8bd8e9e5ec4b9a958f0354f3225f3e7780cdfa706f2266d2a0b8e",
+        "gzipLevel9EstimateBytes": null
+      },
+      {
+        "url": "/assets/initdb-BnC8r6Zv.wasm",
+        "bytes": 300109,
+        "sha256": "0730c91ee9d6bf1c060c618c7c1ca1adcbb14191828ef794a4d77a85f66d965f",
+        "gzipLevel9EstimateBytes": 131856
+      },
+      {
+        "url": "/assets/libpg-query-DwCfCEfv.wasm",
+        "bytes": 1717872,
+        "sha256": "355c489d8b0bf2bac28b48408f656e818852d7000e1e66a67503ad2bc7cc6062",
+        "gzipLevel9EstimateBytes": 342219
+      },
+      {
+        "url": "/assets/pglite-BgbVgg6N.data",
+        "bytes": 6248509,
+        "sha256": "2e46ee079b4a922f7514f2d6d17099bbcb2ac26b7db4938374d663caa07b435e",
+        "gzipLevel9EstimateBytes": 2129417
+      },
+      {
+        "url": "/assets/pglite-C0uZ7c5N.wasm",
+        "bytes": 9087748,
+        "sha256": "90d7b3859ee8e9e9e222c63f1d4c2907606b27a29453c508ee9bae7b48a544c2",
+        "gzipLevel9EstimateBytes": 3287874
+      }
+    ]
+  },
+  "cohorts": [
+    {
+      "browser": "chromium",
+      "condition": "cold",
+      "summaries": [
+        {
+          "strategy": "initdb",
+          "samples": 5,
+          "firstPlayableP75Ms": 1666.699999988079,
+          "shellReadyP75Ms": 109.5,
+          "richInputToFrameP75Ms": 11.599999994039536,
+          "nativeInputToFrameP75Ms": 13.199999988079071,
+          "maxObservedPgWasmBytes": 197722112
+        },
+        {
+          "strategy": "snapshot",
+          "samples": 5,
+          "firstPlayableP75Ms": 723.1000000238419,
+          "shellReadyP75Ms": 105.30000001192093,
+          "richInputToFrameP75Ms": 12,
+          "nativeInputToFrameP75Ms": 11.099999994039536,
+          "maxObservedPgWasmBytes": 197722112
+        }
+      ],
+      "trials": [
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1731.300000011921,
+          "workerMs": 1655.800000011921,
+          "shellReadyMs": 109.5,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              12.400000005960464, 18.599999994039536, 11.199999988079071,
+              4.300000011920929, 14.700000017881393, 10.199999988079071, 5.5,
+              5.5999999940395355, 5.100000023841858
+            ],
+            "native": [
+              3.300000011920929, 0.5999999940395355, 15.400000005960464,
+              13.199999988079071, 11.199999988079071, 5.199999988079071,
+              1.899999976158142, 15.099999994039536, 11.599999994039536
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1656,
+          "workerMs": 1592.199999988079,
+          "shellReadyMs": 102.80000001192093,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              10.5, 4.5, 11.699999988079071, 9.5, 15.400000005960464,
+              8.900000005960464, 3.2000000178813934, 13.699999988079071,
+              7.299999982118607
+            ],
+            "native": [
+              13.299999982118607, 9.399999976158142, 5.5999999940395355,
+              0.8999999761581421, 13.5, 11.100000023841858, 7.4000000059604645,
+              3.0999999940395355, 15.800000011920929
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1666.699999988079,
+          "workerMs": 1613.5999999940395,
+          "shellReadyMs": 104,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              6.299999982118607, 8.599999994039536, 16.599999994039536,
+              10.900000005960464, 2.300000011920929, 11.900000005960464,
+              7.300000011920929, 2.9000000059604645, 11.599999994039536
+            ],
+            "native": [
+              1.2999999821186066, 13, 10, 6.9000000059604645, 4.300000011920929,
+              1.2000000178813934, 15.700000017881393, 13.900000005960464,
+              12.599999994039536
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1609.1000000238419,
+          "workerMs": 1525.8999999761581,
+          "shellReadyMs": 124.09999999403954,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.0999999940395355, 11, 4.800000011920929, 7.200000017881393,
+              3.4000000059604645, 15.199999988079071, 8, 3.5, 11.899999976158142
+            ],
+            "native": [
+              4, 0.6000000238418579, 15.699999988079071, 13.699999988079071,
+              11.199999988079071, 7, 4.199999988079071, 1.2999999821186066,
+              11.900000005960464
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1662.699999988079,
+          "workerMs": 1607.4000000059605,
+          "shellReadyMs": 103.90000000596046,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.0999999940395355, 6.5999999940395355, 10.800000011920929, 4,
+              16.700000017881393, 11.599999994039536, 5.4000000059604645,
+              8.299999982118607, 2.2999999821186066
+            ],
+            "native": [
+              10.800000011920929, 6.5, 2.5, 16.19999998807907,
+              14.099999994039536, 12, 6.799999982118607, 3.699999988079071,
+              1.4000000059604645
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 723.1000000238419,
+          "workerMs": 659.3000000119209,
+          "shellReadyMs": 107.2999999821186,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              12.199999988079071, 8.599999994039536, 5.699999988079071,
+              15.599999994039536, 10.899999976158142, 6.5999999940395355,
+              5.9000000059604645, 10.5, 3.5
+            ],
+            "native": [
+              3.699999988079071, 1.9000000059604645, 0.5999999940395355,
+              17.200000017881393, 0.5999999940395355, 5.9000000059604645,
+              3.7000000178813934, 1.2000000178813934, 7.699999988079071
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 716.9000000059605,
+          "workerMs": 634.0999999940395,
+          "shellReadyMs": 92.59999999403954,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              8.799999982118607, 4.5, 9.900000005960464, 4.299999982118607,
+              15.200000017881393, 9.700000017881393, 5.700000017881393, 2.5,
+              13.299999982118607
+            ],
+            "native": [
+              1.4000000059604645, 5.0999999940395355, 3, 1.2999999821186066,
+              13.799999982118607, 11.099999994039536, 8.099999994039536,
+              4.399999976158142, 2.399999976158142
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 727.5999999940395,
+          "workerMs": 659.4000000059605,
+          "shellReadyMs": 105.30000001192093,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              6.4000000059604645, 12, 7.199999988079071, 3.199999988079071,
+              12.400000005960464, 6.5999999940395355, 15.5, 9.599999994039536,
+              3.800000011920929
+            ],
+            "native": [
+              4.800000011920929, 1.0999999940395355, 12.099999994039536,
+              0.9000000059604645, 8.799999982118607, 5.0999999940395355,
+              0.699999988079071, 16.5, 13.900000005960464
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 707.4000000059605,
+          "workerMs": 602.5999999940395,
+          "shellReadyMs": 97,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.699999988079071, 7.299999982118607, 3.199999988079071,
+              12.400000005960464, 4.399999976158142, 16.400000005960464,
+              11.400000005960464, 7, 3.199999988079071
+            ],
+            "native": [
+              2.5999999940395355, 14.900000005960464, 12.900000005960464,
+              11.099999994039536, 8.800000011920929, 3.4000000059604645, 0.5,
+              14.5, 12.400000005960464
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 692.3000000119209,
+          "workerMs": 625.2999999821186,
+          "shellReadyMs": 96.09999999403954,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.899999976158142, 3.5, 13, 8.099999994039536, 2.699999988079071,
+              12, 3.699999988079071, 15.199999988079071, 11
+            ],
+            "native": [
+              1.4000000059604645, 12.100000023841858, 9, 3.7000000178813934,
+              0.9000000059604645, 9.699999988079071, 7.5999999940395355,
+              5.5999999940395355, 3.899999976158142
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "condition": "cold",
+      "summaries": [
+        {
+          "strategy": "initdb",
+          "samples": 5,
+          "firstPlayableP75Ms": 1758,
+          "shellReadyP75Ms": 151,
+          "richInputToFrameP75Ms": 7,
+          "nativeInputToFrameP75Ms": 8,
+          "maxObservedPgWasmBytes": 197722112
+        },
+        {
+          "strategy": "snapshot",
+          "samples": 5,
+          "firstPlayableP75Ms": 618,
+          "shellReadyP75Ms": 150,
+          "richInputToFrameP75Ms": 8,
+          "nativeInputToFrameP75Ms": 8,
+          "maxObservedPgWasmBytes": 197722112
+        }
+      ],
+      "trials": [
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 2129,
+          "workerMs": 2038,
+          "shellReadyMs": 309,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [5, 5, 3, 10, 4, 4, 7, 6, 7],
+            "native": [3, 2, 10, 8, 5, 2, 2, 9, 7]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1758,
+          "workerMs": 1701,
+          "shellReadyMs": 151,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [10, 5, 6, 4, 4, 12, 6, 4, 9],
+            "native": [0, 10, 6, 2, 1, 11, 7, 2, 1]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1523,
+          "workerMs": 1475,
+          "shellReadyMs": 147,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [6, 4, 6, 5, 10, 4, 4, 8, 4],
+            "native": [3, 1, 10, 7, 4, 1, 10, 8, 5]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1490,
+          "workerMs": 1440,
+          "shellReadyMs": 148,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [7, 6, 5, 3, 10, 5, 3, 9, 4],
+            "native": [1, 9, 7, 4, 1, 0, 11, 8, 6]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1441,
+          "workerMs": 1391,
+          "shellReadyMs": 145,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [5, 5, 5, 3, 9, 5, 5, 15, 8],
+            "native": [2, 11, 7, 2, 1, 11, 8, 5, 2]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 615,
+          "workerMs": 547,
+          "shellReadyMs": 150,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [12, 7, 4, 9, 5, 5, 11, 5, 3],
+            "native": [3, 1, 1, 11, 10, 7, 5, 3, 1]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 617,
+          "workerMs": 559,
+          "shellReadyMs": 139,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [13, 12, 4, 6, 4, 9, 4, 4, 9],
+            "native": [5, 2, 1, 12, 10, 7, 5, 1, 1]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 611,
+          "workerMs": 555,
+          "shellReadyMs": 139,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [9, 5, 4, 3, 8, 6, 5, 5, 7],
+            "native": [1, 3, 15, 13, 10, 7, 6, 4, 3]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 638,
+          "workerMs": 569,
+          "shellReadyMs": 152,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [4, 6, 5, 4, 8, 5, 5, 7, 4],
+            "native": [4, 1, 11, 8, 4, 1, 10, 5, 1]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 618,
+          "workerMs": 552,
+          "shellReadyMs": 142,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [13, 4, 4, 4, 12, 7, 11, 5, 3],
+            "native": [2, 1, 12, 10, 8, 6, 3, 1, 1]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "condition": "cold",
+      "summaries": [
+        {
+          "strategy": "initdb",
+          "samples": 5,
+          "firstPlayableP75Ms": 1719,
+          "shellReadyP75Ms": 161,
+          "richInputToFrameP75Ms": 26,
+          "nativeInputToFrameP75Ms": 10,
+          "maxObservedPgWasmBytes": 197722112
+        },
+        {
+          "strategy": "snapshot",
+          "samples": 5,
+          "firstPlayableP75Ms": 605,
+          "shellReadyP75Ms": 161,
+          "richInputToFrameP75Ms": 24,
+          "nativeInputToFrameP75Ms": 10,
+          "maxObservedPgWasmBytes": 197722112
+        }
+      ],
+      "trials": [
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1789,
+          "workerMs": 1721,
+          "shellReadyMs": 149,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [9, 56, 27, 6, 12, 6, 27, 5, 19],
+            "native": [2, 13, 7, 2, 1, 1, 5, 2, 12]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1667,
+          "workerMs": 1610,
+          "shellReadyMs": 139,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [11, 46, 25, 18, 14, 18, 4, 28, 7],
+            "native": [5, 2, 14, 11, 7, 1, 9, 6, 3]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1690,
+          "workerMs": 1645,
+          "shellReadyMs": 161,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [8, 22, 15, 51, 28, 21, 5, 6, 21],
+            "native": [1, 9, 5, 2, 6, 2, 13, 9, 5]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1719,
+          "workerMs": 1662,
+          "shellReadyMs": 147,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [8, 19, 53, 6, 21, 16, 36, 12, 26],
+            "native": [11, 7, 3, 1, 13, 10, 6, 3, 16]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1647,
+          "workerMs": 1583,
+          "shellReadyMs": 183,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [10, 53, 29, 19, 5, 25, 10, 23, 5],
+            "native": [8, 5, 2, 13, 10, 7, 1, 13, 11]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 608,
+          "workerMs": 549,
+          "shellReadyMs": 169,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [12, 25, 5, 4, 17, 9, 15, 23, 17],
+            "native": [6, 2, 15, 12, 9, 6, 2, 13, 9]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 575,
+          "workerMs": 519,
+          "shellReadyMs": 145,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [10, 36, 3, 19, 4, 24, 11, 6, 5],
+            "native": [2, 9, 7, 5, 3, 1, 14, 11, 9]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 578,
+          "workerMs": 531,
+          "shellReadyMs": 153,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [8, 27, 6, 9, 45, 39, 26, 13, 7],
+            "native": [7, 4, 1, 14, 11, 8, 6, 7, 5]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 605,
+          "workerMs": 511,
+          "shellReadyMs": 151,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [10, 30, 12, 12, 5, 57, 4, 27, 21],
+            "native": [5, 1, 12, 10, 6, 4, 2, 14, 11]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 591,
+          "workerMs": 532,
+          "shellReadyMs": 161,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [8, 24, 17, 3, 24, 5, 15, 10, 5],
+            "native": [5, 2, 14, 10, 7, 4, 1, 6, 4]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "condition": "offline",
+      "summaries": [
+        {
+          "strategy": "initdb",
+          "samples": 5,
+          "firstPlayableP75Ms": 1456.4000000059605,
+          "shellReadyP75Ms": 99.90000000596046,
+          "richInputToFrameP75Ms": 11.699999988079071,
+          "nativeInputToFrameP75Ms": 9.400000005960464,
+          "maxObservedPgWasmBytes": 197722112
+        },
+        {
+          "strategy": "snapshot",
+          "samples": 5,
+          "firstPlayableP75Ms": 570.8999999761581,
+          "shellReadyP75Ms": 79.80000001192093,
+          "richInputToFrameP75Ms": 11.200000017881393,
+          "nativeInputToFrameP75Ms": 11.300000011920929,
+          "maxObservedPgWasmBytes": 197722112
+        }
+      ],
+      "trials": [
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1587,
+          "workerMs": 1503.199999988079,
+          "shellReadyMs": 107.59999999403954,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.5, 10.5, 3.800000011920929, 12.699999988079071,
+              7.699999988079071, 3.9000000059604645, 14.900000005960464,
+              9.599999994039536, 4.0999999940395355
+            ],
+            "native": [
+              8.5, 4, 1.7000000178813934, 12.199999988079071, 9.099999994039536,
+              6.799999982118607, 3.5999999940395355, 0.699999988079071,
+              14.900000005960464
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1383.0999999940395,
+          "workerMs": 1341.9000000059605,
+          "shellReadyMs": 99.90000000596046,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.9000000059604645, 8, 3.4000000059604645, 12.199999988079071,
+              6.899999976158142, 3.5, 12.199999988079071, 3.0999999940395355,
+              13.099999994039536
+            ],
+            "native": [
+              15.899999976158142, 11.200000017881393, 5.9000000059604645,
+              3.2000000178813934, 0.7000000178813934, 12.599999994039536,
+              8.800000011920929, 4.800000011920929, 3.0999999940395355
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1389.300000011921,
+          "workerMs": 1317.1000000238419,
+          "shellReadyMs": 78.40000000596046,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              5.799999982118607, 7.299999982118607, 3, 15.699999988079071,
+              11.699999988079071, 7.9000000059604645, 3.0999999940395355, 13,
+              9.799999982118607
+            ],
+            "native": [
+              1.4000000059604645, 8.599999994039536, 5, 1.800000011920929,
+              8.299999982118607, 5.199999988079071, 2, 13.899999976158142,
+              8.900000005960464
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1353.2999999821186,
+          "workerMs": 1290.4000000059605,
+          "shellReadyMs": 77.2999999821186,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.9000000059604645, 12.899999976158142, 5.299999982118607, 7.5, 3,
+              15.400000005960464, 11.099999994039536, 7.4000000059604645,
+              3.800000011920929
+            ],
+            "native": [
+              2.199999988079071, 11.300000011920929, 8.199999988079071,
+              6.0999999940395355, 3.9000000059604645, 16.700000017881393,
+              11.700000017881393, 8.300000011920929, 4.700000017881393
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1456.4000000059605,
+          "workerMs": 1384.2000000178814,
+          "shellReadyMs": 79.90000000596046,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              6.200000017881393, 5.199999988079071, 9.900000005960464,
+              3.7000000178813934, 12.299999982118607, 7.899999976158142, 3.5,
+              15.5, 11
+            ],
+            "native": [
+              1.5999999940395355, 11.300000011920929, 9.400000005960464,
+              7.800000011920929, 5.5, 1.5, 12.400000005960464,
+              8.799999982118607, 5.5
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 567.6999999880791,
+          "workerMs": 513.3999999761581,
+          "shellReadyMs": 75.59999999403954,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              8.400000005960464, 11.200000017881393, 5.0999999940395355,
+              7.700000017881393, 2.600000023841858, 4.4000000059604645,
+              15.300000011920929, 8.300000011920929, 3.199999988079071
+            ],
+            "native": [
+              2.7000000178813934, 0.7000000178813934, 14.900000005960464,
+              12.799999982118607, 10.299999982118607, 1.2000000178813934,
+              14.599999994039536, 11.199999988079071, 6.899999976158142
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 629.1999999880791,
+          "workerMs": 564.3000000119209,
+          "shellReadyMs": 80.30000001192093,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.100000023841858, 12.900000005960464, 8.400000005960464,
+              5.300000011920929, 2.5999999940395355, 15.400000005960464,
+              11.200000017881393, 6.700000017881393, 2.800000011920929
+            ],
+            "native": [
+              1.7000000178813934, 8.5, 8.700000017881393, 5.200000017881393, 1,
+              7.300000011920929, 4.200000017881393, 0.7000000178813934,
+              14.099999994039536
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 541.7000000178814,
+          "workerMs": 479.7000000178814,
+          "shellReadyMs": 74.09999999403954,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.5999999940395355, 5.4000000059604645, 7.199999988079071,
+              3.199999988079071, 2.5999999940395355, 13.900000005960464,
+              9.199999988079071, 4.299999982118607, 12.699999988079071
+            ],
+            "native": [
+              1.199999988079071, 17.600000023841858, 14.900000005960464,
+              12.700000017881393, 11.300000011920929, 9.400000005960464,
+              6.300000011920929, 4.4000000059604645, 2.800000011920929
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 570.8999999761581,
+          "workerMs": 507.7999999821186,
+          "shellReadyMs": 77.5,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.700000017881393, 9.099999994039536, 2.800000011920929, 15, 10.5,
+              6.800000011920929, 12.700000017881393, 7.5999999940395355,
+              3.2000000178813934
+            ],
+            "native": [
+              1.2000000178813934, 6.799999982118607, 3, 0.5999999940395355,
+              7.800000011920929, 4, 1.300000011920929, 16.599999994039536,
+              14.099999994039536
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 566.7999999821186,
+          "workerMs": 514.8999999761581,
+          "shellReadyMs": 79.80000001192093,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              13.900000005960464, 5.5, 7.5, 5.799999982118607,
+              19.900000005960464, 14.400000005960464, 4.799999982118607,
+              10.799999982118607, 7.5999999940395355
+            ],
+            "native": [
+              3, 0.7999999821186066, 13.400000005960464, 11.200000017881393,
+              9.300000011920929, 7.100000023841858, 4.100000023841858,
+              1.7000000178813934, 14.799999982118607
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "condition": "offline",
+      "summaries": [
+        {
+          "strategy": "initdb",
+          "samples": 5,
+          "firstPlayableP75Ms": 1607,
+          "shellReadyP75Ms": 127,
+          "richInputToFrameP75Ms": 8,
+          "nativeInputToFrameP75Ms": 7,
+          "maxObservedPgWasmBytes": 197722112
+        },
+        {
+          "strategy": "snapshot",
+          "samples": 5,
+          "firstPlayableP75Ms": 566,
+          "shellReadyP75Ms": 119,
+          "richInputToFrameP75Ms": 7,
+          "nativeInputToFrameP75Ms": 7,
+          "maxObservedPgWasmBytes": 197722112
+        }
+      ],
+      "trials": [
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1607,
+          "workerMs": 1559,
+          "shellReadyMs": 109,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [9, 7, 7, 6, 4, 9, 4, 2, 8],
+            "native": [4, 1, 1, 2, 2, 6, 1, 1, 9]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1431,
+          "workerMs": 1387,
+          "shellReadyMs": 127,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [5, 12, 8, 4, 6, 4, 9, 4, 3],
+            "native": [2, 7, 5, 2, 1, 12, 6, 1, 1]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1398,
+          "workerMs": 1357,
+          "shellReadyMs": 112,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [6, 7, 9, 9, 4, 4, 4, 11, 5],
+            "native": [4, 1, 1, 13, 11, 8, 6, 4, 2]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1523,
+          "workerMs": 1485,
+          "shellReadyMs": 114,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [7, 8, 7, 7, 8, 4, 12, 6, 5],
+            "native": [2, 2, 8, 4, 5, 8, 5, 1, 1]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1652,
+          "workerMs": 1610,
+          "shellReadyMs": 130,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [8, 12, 5, 11, 6, 5, 7, 2, 10],
+            "native": [7, 3, 1, 9, 7, 4, 1, 0, 11]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 570,
+          "workerMs": 532,
+          "shellReadyMs": 119,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [6, 5, 5, 17, 12, 6, 3, 5, 4],
+            "native": [2, 1, 12, 9, 7, 6, 4, 3, 0]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 537,
+          "workerMs": 498,
+          "shellReadyMs": 120,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [6, 7, 12, 5, 3, 6, 3, 4, 7],
+            "native": [5, 2, 2, 9, 7, 4, 2, 1, 13]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 566,
+          "workerMs": 517,
+          "shellReadyMs": 117,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [8, 8, 7, 5, 5, 8, 7, 4, 4],
+            "native": [2, 5, 2, 1, 11, 9, 7, 5, 3]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 526,
+          "workerMs": 481,
+          "shellReadyMs": 103,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [6, 6, 13, 4, 3, 5, 5, 4, 6],
+            "native": [2, 7, 3, 1, 1, 12, 10, 8, 6]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 541,
+          "workerMs": 494,
+          "shellReadyMs": 119,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [6, 4, 5, 5, 4, 6, 3, 6, 7],
+            "native": [4, 2, 1, 10, 7, 6, 4, 3, 2]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "condition": "offline",
+      "summaries": [
+        {
+          "strategy": "initdb",
+          "samples": 5,
+          "firstPlayableP75Ms": 1774,
+          "shellReadyP75Ms": 126,
+          "richInputToFrameP75Ms": 28,
+          "nativeInputToFrameP75Ms": 11,
+          "maxObservedPgWasmBytes": 197722112
+        },
+        {
+          "strategy": "snapshot",
+          "samples": 5,
+          "firstPlayableP75Ms": 614,
+          "shellReadyP75Ms": 126,
+          "richInputToFrameP75Ms": 24,
+          "nativeInputToFrameP75Ms": 10,
+          "maxObservedPgWasmBytes": 197722112
+        }
+      ],
+      "trials": [
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1719,
+          "workerMs": 1684,
+          "shellReadyMs": 99,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [10, 57, 8, 35, 15, 22, 4, 20, 14],
+            "native": [7, 2, 13, 10, 7, 4, 2, 11, 8]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1795,
+          "workerMs": 1746,
+          "shellReadyMs": 120,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [15, 14, 7, 63, 4, 24, 6, 11, 4],
+            "native": [8, 2, 2, 5, 12, 7, 3, 13, 9]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1774,
+          "workerMs": 1738,
+          "shellReadyMs": 126,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [12, 14, 6, 57, 7, 37, 12, 15, 52],
+            "native": [11, 6, 2, 15, 12, 9, 5, 2, 14]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1773,
+          "workerMs": 1704,
+          "shellReadyMs": 136,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [10, 61, 13, 6, 59, 52, 27, 17, 4],
+            "native": [7, 2, 13, 11, 8, 4, 1, 13, 1]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1694,
+          "workerMs": 1654,
+          "shellReadyMs": 123,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [9, 28, 8, 7, 25, 7, 69, 58, 24],
+            "native": [11, 7, 4, 1, 13, 10, 7, 4, 8]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 591,
+          "workerMs": 543,
+          "shellReadyMs": 126,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [10, 16, 3, 34, 21, 14, 4, 40, 34],
+            "native": [2, 10, 8, 5, 1, 12, 10, 1, 7]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 602,
+          "workerMs": 558,
+          "shellReadyMs": 122,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [10, 22, 11, 26, 9, 4, 10, 4, 16],
+            "native": [8, 2, 13, 10, 6, 4, 1, 14, 11]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 624,
+          "workerMs": 538,
+          "shellReadyMs": 152,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [8, 24, 17, 17, 11, 41, 30, 25, 14],
+            "native": [2, 9, 7, 5, 3, 1, 13, 11, 8]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 546,
+          "workerMs": 496,
+          "shellReadyMs": 123,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [46, 5, 18, 9, 4, 29, 14, 9, 5],
+            "native": [9, 2, 12, 9, 6, 4, 1, 14, 11]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 614,
+          "workerMs": 556,
+          "shellReadyMs": 103,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [10, 28, 22, 3, 28, 23, 8, 8, 3],
+            "native": [1, 12, 10, 8, 6, 5, 4, 2, 13]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 0,
+              "encodedBytes": 0,
+              "decodedBytes": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "browser": "chromium",
+      "condition": "warm",
+      "summaries": [
+        {
+          "strategy": "initdb",
+          "samples": 5,
+          "firstPlayableP75Ms": 1637.4000000059605,
+          "shellReadyP75Ms": 100.7999999821186,
+          "richInputToFrameP75Ms": 11.200000017881393,
+          "nativeInputToFrameP75Ms": 12.300000011920929,
+          "maxObservedPgWasmBytes": 197722112
+        },
+        {
+          "strategy": "snapshot",
+          "samples": 5,
+          "firstPlayableP75Ms": 697,
+          "shellReadyP75Ms": 93.60000002384186,
+          "richInputToFrameP75Ms": 12.400000005960464,
+          "nativeInputToFrameP75Ms": 12.400000005960464,
+          "maxObservedPgWasmBytes": 197722112
+        }
+      ],
+      "trials": [
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1548.800000011921,
+          "workerMs": 1504.800000011921,
+          "shellReadyMs": 81.7000000178814,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              6.199999988079071, 14.699999988079071, 9.900000005960464,
+              6.0999999940395355, 2.5999999940395355, 15.700000017881393,
+              11.200000017881393, 7.0999999940395355, 5.799999982118607
+            ],
+            "native": [
+              1.300000011920929, 14.800000011920929, 13.400000005960464,
+              12.200000017881393, 10.200000017881393, 7.300000011920929,
+              3.4000000059604645, 0.9000000059604645, 16
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 300,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1637.4000000059605,
+          "workerMs": 1553.7000000178814,
+          "shellReadyMs": 129.7000000178814,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.700000017881393, 3.5, 15.099999994039536, 11.899999976158142,
+              8.099999994039536, 4, 10.199999988079071, 6, 2.2999999821186066
+            ],
+            "native": [
+              3.300000011920929, 0.9000000059604645, 14.600000023841858, 10,
+              5.200000017881393, 1.600000023841858, 15.5, 12.300000011920929,
+              9.600000023841858
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 300,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1604.1000000238419,
+          "workerMs": 1541.2999999821186,
+          "shellReadyMs": 86.09999999403954,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              6.200000017881393, 12.800000011920929, 7.200000017881393,
+              3.5999999940395355, 12.599999994039536, 8.199999988079071,
+              3.0999999940395355, 14.400000005960464, 11.099999994039536
+            ],
+            "native": [
+              6.299999982118607, 4.5999999940395355, 3.199999988079071,
+              1.2999999821186066, 13.899999976158142, 10.799999982118607,
+              7.5999999940395355, 2.7999999821186066, 17.5
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 300,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1605,
+          "workerMs": 1534.699999988079,
+          "shellReadyMs": 100.7999999821186,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.5, 4.4000000059604645, 17.19999998807907, 12.699999988079071,
+              6.9000000059604645, 3, 10, 4.5, 16
+            ],
+            "native": [
+              4.199999988079071, 1.800000011920929, 17.5, 13.900000005960464,
+              10.599999994039536, 7.200000017881393, 3.800000011920929,
+              1.0999999940395355, 12.300000011920929
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 300,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1717.5,
+          "workerMs": 1670.6000000238419,
+          "shellReadyMs": 97.60000002384186,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              5.0999999940395355, 10.599999994039536, 4, 14.900000005960464,
+              10.300000011920929, 6.200000017881393, 2.600000023841858,
+              8.799999982118607, 3.5
+            ],
+            "native": [
+              6.699999988079071, 4.399999976158142, 2.899999976158142,
+              1.699999988079071, 0.3999999761581421, 13.800000011920929,
+              9.300000011920929, 3.699999988079071, 13.800000011920929
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 300,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 674.8000000119209,
+          "workerMs": 629.5999999940395,
+          "shellReadyMs": 95.90000000596046,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              8.5, 8, 2.9000000059604645, 12.599999994039536, 8.600000023841858,
+              5.4000000059604645, 10.400000005960464, 6.5999999940395355,
+              3.199999988079071
+            ],
+            "native": [
+              0.8999999761581421, 16.599999994039536, 14.800000011920929,
+              12.199999988079071, 8, 5.300000011920929, 0.5999999940395355,
+              13.5, 11.400000005960464
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 300,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 300,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 684.9000000059605,
+          "workerMs": 638,
+          "shellReadyMs": 91.90000000596046,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              11.300000011920929, 3.199999988079071, 3.7999999821186066,
+              14.800000011920929, 3.5999999940395355, 11.699999988079071,
+              8.699999988079071, 3.699999988079071, 13.300000011920929
+            ],
+            "native": [
+              1.4000000059604645, 15.100000023841858, 12.900000005960464,
+              9.800000011920929, 4.4000000059604645, 1.7000000178813934,
+              16.200000017881393, 13.400000005960464, 10.900000005960464
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 300,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 300,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 721.3000000119209,
+          "workerMs": 659.9000000059605,
+          "shellReadyMs": 93.60000002384186,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              14.700000017881393, 12.400000005960464, 3.0999999940395355,
+              14.699999988079071, 10.299999982118607, 6.9000000059604645, 5.5,
+              14.599999994039536, 9.599999994039536
+            ],
+            "native": [
+              1.2000000178813934, 6.299999982118607, 3.0999999940395355,
+              0.9000000059604645, 14, 11.300000011920929, 8.199999988079071, 5,
+              1.0999999940395355
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 300,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 300,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 697,
+          "workerMs": 631.5,
+          "shellReadyMs": 80.40000000596046,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.5, 9.400000005960464, 2.5999999940395355, 17.599999994039536,
+              14.300000011920929, 8.599999994039536, 4.199999988079071, 17, 10
+            ],
+            "native": [
+              1.699999988079071, 11.699999988079071, 9.199999988079071,
+              4.299999982118607, 2, 16.400000005960464, 12.400000005960464,
+              8.600000023841858, 5.600000023841858
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 300,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 300,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 647.9000000059605,
+          "workerMs": 596.5999999940395,
+          "shellReadyMs": 85.90000000596046,
+          "pgWasmBytes": 197722112,
+          "longTasks": 0,
+          "inputToFrameMs": {
+            "rich": [
+              7.4000000059604645, 5.899999976158142, 8.199999988079071,
+              2.899999976158142, 12.800000011920929, 11.300000011920929,
+              4.600000023841858, 3.300000011920929, 14.299999982118607
+            ],
+            "native": [
+              3.300000011920929, 0.7000000178813934, 13.700000017881393,
+              10.400000005960464, 8.400000005960464, 5.5, 3.2000000178813934,
+              1.100000023841858, 15.400000005960464
+            ]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 300,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 300,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "browser": "firefox",
+      "condition": "warm",
+      "summaries": [
+        {
+          "strategy": "initdb",
+          "samples": 5,
+          "firstPlayableP75Ms": 1499,
+          "shellReadyP75Ms": 131,
+          "richInputToFrameP75Ms": 7,
+          "nativeInputToFrameP75Ms": 7,
+          "maxObservedPgWasmBytes": 197722112
+        },
+        {
+          "strategy": "snapshot",
+          "samples": 5,
+          "firstPlayableP75Ms": 522,
+          "shellReadyP75Ms": 125,
+          "richInputToFrameP75Ms": 9,
+          "nativeInputToFrameP75Ms": 9,
+          "maxObservedPgWasmBytes": 197722112
+        }
+      ],
+      "trials": [
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1457,
+          "workerMs": 1415,
+          "shellReadyMs": 144,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [9, 7, 4, 6, 3, 10, 4, 4, 9],
+            "native": [2, 1, 7, 2, 3, 7, 5, 3, 1]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1442,
+          "workerMs": 1398,
+          "shellReadyMs": 131,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [6, 4, 11, 5, 3, 9, 4, 4, 7],
+            "native": [2, 1, 10, 8, 5, 3, 2, 1, 12]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1481,
+          "workerMs": 1438,
+          "shellReadyMs": 112,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [7, 5, 4, 5, 3, 9, 4, 3, 10],
+            "native": [3, 1, 10, 5, 3, 2, 9, 5, 3]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1590,
+          "workerMs": 1548,
+          "shellReadyMs": 113,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [8, 5, 4, 7, 3, 3, 7, 3, 3],
+            "native": [2, 10, 6, 2, 1, 10, 6, 3, 3]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1499,
+          "workerMs": 1455,
+          "shellReadyMs": 127,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [25, 16, 4, 6, 5, 5, 4, 8, 4],
+            "native": [1, 10, 7, 5, 2, 0, 8, 5, 2]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 498,
+          "workerMs": 456,
+          "shellReadyMs": 129,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [15, 15, 6, 5, 5, 4, 9, 4, 3],
+            "native": [1, 4, 1, 1, 12, 9, 7, 4, 3]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 505,
+          "workerMs": 455,
+          "shellReadyMs": 125,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [6, 9, 6, 16, 9, 6, 3, 11, 6],
+            "native": [1, 0, 11, 9, 7, 4, 2, 1, 13]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 484,
+          "workerMs": 442,
+          "shellReadyMs": 113,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [11, 6, 4, 3, 9, 4, 3, 10, 5],
+            "native": [1, 11, 9, 7, 4, 2, 0, 12, 9]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 548,
+          "workerMs": 506,
+          "shellReadyMs": 121,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [7, 3, 8, 4, 3, 12, 8, 3, 2],
+            "native": [1, 3, 1, 1, 12, 8, 4, 2, 1]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 522,
+          "workerMs": 477,
+          "shellReadyMs": 118,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [8, 8, 10, 11, 6, 4, 5, 4, 9],
+            "native": [6, 3, 1, 12, 11, 8, 6, 3, 2]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "browser": "webkit",
+      "condition": "warm",
+      "summaries": [
+        {
+          "strategy": "initdb",
+          "samples": 5,
+          "firstPlayableP75Ms": 1778,
+          "shellReadyP75Ms": 152,
+          "richInputToFrameP75Ms": 25,
+          "nativeInputToFrameP75Ms": 10,
+          "maxObservedPgWasmBytes": 197722112
+        },
+        {
+          "strategy": "snapshot",
+          "samples": 5,
+          "firstPlayableP75Ms": 621,
+          "shellReadyP75Ms": 141,
+          "richInputToFrameP75Ms": 20,
+          "nativeInputToFrameP75Ms": 12,
+          "maxObservedPgWasmBytes": 197722112
+        }
+      ],
+      "trials": [
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1677,
+          "workerMs": 1612,
+          "shellReadyMs": 155,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [11, 14, 5, 59, 29, 22, 5, 12, 4],
+            "native": [2, 11, 6, 3, 6, 3, 14, 10, 7]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1633,
+          "workerMs": 1586,
+          "shellReadyMs": 152,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [14, 13, 20, 44, 27, 14, 7, 24, 17],
+            "native": [7, 4, 2, 13, 10, 7, 4, 1, 1]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1656,
+          "workerMs": 1606,
+          "shellReadyMs": 144,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [15, 18, 12, 5, 65, 13, 21, 11, 25],
+            "native": [5, 2, 12, 9, 5, 1, 6, 4, 16]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1778,
+          "workerMs": 1730,
+          "shellReadyMs": 148,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [10, 44, 35, 26, 12, 26, 7, 5, 18],
+            "native": [14, 9, 6, 2, 12, 7, 4, 13, 10]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "initdb",
+          "firstPlayableMs": 1780,
+          "workerMs": 1710,
+          "shellReadyMs": 144,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [8, 61, 25, 5, 12, 6, 71, 6, 21],
+            "native": [11, 7, 2, 2, 7, 5, 1, 13, 10]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 646,
+          "workerMs": 590,
+          "shellReadyMs": 145,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [19, 16, 13, 6, 25, 10, 25, 10, 4],
+            "native": [11, 1, 12, 11, 8, 6, 4, 2, 13]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 573,
+          "workerMs": 530,
+          "shellReadyMs": 141,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [7, 22, 11, 18, 4, 46, 26, 20, 6],
+            "native": [10, 7, 4, 1, 14, 12, 10, 8, 5]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 595,
+          "workerMs": 545,
+          "shellReadyMs": 128,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [13, 5, 19, 12, 11, 5, 25, 7, 12],
+            "native": [2, 7, 4, 2, 14, 1, 14, 11, 8]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 621,
+          "workerMs": 560,
+          "shellReadyMs": 138,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [11, 6, 24, 9, 27, 5, 10, 5, 26],
+            "native": [3, 15, 12, 1, 8, 5, 3, 1, 13]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        },
+        {
+          "strategy": "snapshot",
+          "firstPlayableMs": 595,
+          "workerMs": 526,
+          "shellReadyMs": 137,
+          "pgWasmBytes": 197722112,
+          "longTasks": null,
+          "inputToFrameMs": {
+            "rich": [11, 17, 10, 4, 43, 4, 28, 12, 5],
+            "native": [3, 15, 13, 9, 6, 2, 13, 10, 7]
+          },
+          "observedWorkerResources": [
+            {
+              "url": "http://127.0.0.1:4173/assets/libpg-query-DwCfCEfv.wasm",
+              "transferBytes": 1718172,
+              "encodedBytes": 1717872,
+              "decodedBytes": 1717872
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/base-C1zs8SDX.snapshot",
+              "transferBytes": 4771934,
+              "encodedBytes": 4771634,
+              "decodedBytes": 4771634
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/initdb-BnC8r6Zv.wasm",
+              "transferBytes": 300409,
+              "encodedBytes": 300109,
+              "decodedBytes": 300109
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-C0uZ7c5N.wasm",
+              "transferBytes": 9088048,
+              "encodedBytes": 9087748,
+              "decodedBytes": 9087748
+            },
+            {
+              "url": "http://127.0.0.1:4173/assets/pglite-BgbVgg6N.data",
+              "transferBytes": 6248809,
+              "encodedBytes": 6248509,
+              "decodedBytes": 6248509
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -43,3 +43,11 @@ The Lit editor uses Shadow DOM for local styles and label/help ownership, a ≥1
 Default CodeMirror keyword purple failed dark contrast at 1.71:1. The custom syntax highlighter now uses the previously checked accent/warning/muted tokens for keywords, literals and comments, with bold/italic differentiation. Axe AA checks pass for both input modes/themes on all three automated browser engines; they are not human AT certification. Controls introduce no authored animation.
 
 Four additional Windows/Chromium baselines (`feasibility-dark-360.png`, `feasibility-dark-1280.png`, `feasibility-light-360.png`, `feasibility-light-1280.png`) were visually inspected before a normal comparison pass. They show the initial editor/probe states, not an approved production gameplay screen or every error/result state. Behavioral failure paths and current manual gaps are documented in [QA](QA.md).
+
+## M0 technical desk
+
+`/technical.html` deliberately extends the same restrained engineering desk, not the future campaign workspace. Shared proof selectors preserve existing foundation/CP0b appearance; technical-only spacing separates wrapped 44px buttons, long release IDs wrap, and labels remain native. No new theme, UI library, external art/font or motion. The install icon is an original three-line records-ledger glyph generated locally at 192/512px, not a stock brand asset.
+
+Boot, opt-in offline download and update controls expose real operations and explicit loading/error/ready text. The editor's Inspect action is wired to the existing typed parser without executing arbitrary SQL; Worker construction failure leaves the editor usable. Update copy says that drafts are in-memory only and requires acknowledgment before an explicit reload; another tab is not automatically refreshed.
+
+The four new `technical-{dark|light}-{360|1280}.png` baselines were inspected after implementation corrections, before ordinary comparison. Only the variable build-release label is masked (the magenta bar is a screenshot mask, not runtime UI); controls, layout and copy are not hidden. Previous eight images are unchanged. Keyboard skip-link and reflow at 320/360/768/1280 plus rich/native axe checks pass on Chromium/Firefox/WebKit. Explicit skip-link tabindex addresses the observed WebKit Tab behavior. These are automated/visual findings, not real mobile/AT certification.

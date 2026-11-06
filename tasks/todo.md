@@ -133,7 +133,7 @@ Applies to **every task below**, in addition to its specific criteria:
 - [ ] T05–T07 prove exact artifacts, actual AST paths and usable SQL input.
 - [x] Record failed browsers/features; no weakening PostgreSQL or grading to bypass failures. Local parser asset/MIME, shortcut and syntax-contrast defects fixed; WebKit synthetic-fill limitation and remaining real-device/deployment gaps recorded in [QA](../docs/QA.md).
 
-**CP0b review handoff:** Owner code review and Android Chrome/Windows functional acceptance are recorded; the owner authorizes committing CP0b. Remaining named AT/Safari and deployed response-CSP criteria remain open. [Evidence/file map](cp0b-review.md). Commit only; no push or T08 implementation authorized by this request.
+**CP0b review handoff:** Owner code review and Android Chrome/Windows functional acceptance are recorded; CP0b was committed/pushed as `122a7fa` after separate authorization. Remaining named AT/Safari and deployed response-CSP criteria remain open. [Evidence/file map](cp0b-review.md). The owner now authorizes T08–T09 through M0 using TDD; [M0 child slices](m0-review.md). No commit/push/deployment or T10 until separately requested.
 
 ### T08 — Select a measured boot strategy
 
@@ -141,7 +141,11 @@ Applies to **every task below**, in addition to its specific criteria:
 
 **Acceptance criteria:**
 - [ ] Cold/warm/offline P75, bytes, memory and input responsiveness recorded on desktop, real Android and iOS Safari.
+  - [x] Reproducible built benchmark and 90 local Windows trials (five per strategy/condition/browser), raw observations, byte footprint and explicit metric limitations in [QA](../docs/QA.md) / [measurements](../docs/benchmarks/m0-local.json).
+  - [ ] Actual Android/iOS transfer, total peak memory, input and P75 findings; desktop automation is not device evidence.
 - [ ] Snapshot ships only if first-playable improves without repeat/offline regression; no per-case giant snapshots.
+  - [x] One exact-engine/WASM/seed-coupled gzip candidate with negative integrity tests. Initdb remains default; the emitted candidate is explicitly benchmark-only, not an adopted gameplay snapshot.
+  - [ ] Final production strategy selection after real-device/wire evidence.
 - [ ] Define tested memory envelope and browser compatibility notice; emulator-only results labeled honestly.
 
 **Verification:** Repeated reproducible browser benchmarks and actual device report; checksums verify snapshot engine coupling.  
@@ -154,9 +158,10 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Implement minimal custom injectManifest worker/update prompt for a PG demo before relying on offline promises.
 
 **Acceptance criteria:**
-- [ ] Production-built offline demo works, with engine/parser explicitly downloaded rather than unconditional huge precache.
-- [ ] Waiting update never forces reload/activation; explicit approval updates safely.
-- [ ] CSP/MIME and stale-shell/new-assets scenario documented; no hidden runtime network dependency.
+- [x] Production-built offline demo works, with engine/parser explicitly downloaded rather than unconditional huge precache. Three-engine proof includes closing every page and constructing fresh offline clients; complete marker follows every size/hash check.
+- [x] Waiting update never forces reload/activation; explicit approval updates safely in the built A/B proof. Deferred/blocked/approved updates preserve the non-reloaded tab; because no save repository exists yet, the proof requires acknowledgment that wanted draft text was copied instead of claiming a save flush.
+- [x] Local CSP/MIME and stale-shell/new-assets scenario documented; no hidden runtime network dependency in the demo. Missing new shell cannot replace the last working release; missing engine stays not-ready and explicit retry succeeds.
+- [ ] Actual HTTPS/native install/update/security-header evidence remains an owner-operated gate; local fixture is not a host acceptance.
 
 **Verification:** Two-release production-preview E2E; disconnect/reopen version() demo; inspect generated precache URLs.  
 **Dependencies:** T05,T06,T08.  
@@ -165,8 +170,10 @@ Applies to **every task below**, in addition to its specific criteria:
 
 ### Checkpoint M0 — mandatory go/no-go
 - [ ] GATE-PG, GATE-AST, GATE-TYPES, GATE-BUILD; editor/device and update proof attached.
-- [ ] Dependency/asset/boot decisions recorded; actual device gaps remain blockers, not presumed passes.
+- [x] Dependency/asset/provisional boot decisions recorded; actual device gaps remain blockers, not presumed passes. See [M0 review](m0-review.md), [architecture](../docs/ARCHITECTURE.md), [QA](../docs/QA.md).
 - [ ] Human approval before reliable-shell implementation or broad content production.
+
+**M0 review handoff:** software proof implemented using recorded RED→GREEN slices; local suites and measured samples attached. M0 is **not fully accepted**: T08 actual Android/iOS/memory choice, AT/HTTPS findings and human go/no-go remain open. The owner subsequently authorized commit/push and remote CI monitoring, including necessary CI repair. No deployment or T10 is authorized.
 
 ## Phase 1 — reliable investigator shell (M1)
 

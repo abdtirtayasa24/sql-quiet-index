@@ -1,11 +1,11 @@
-tqi-feasibility {
+:is(tqi-feasibility, tqi-technical) {
   display: block;
   min-width: 0;
 }
-tqi-feasibility section {
+:is(tqi-feasibility, tqi-technical) section {
   margin-block: var(--space-8, 2rem);
 }
-tqi-feasibility pre {
+:is(tqi-feasibility, tqi-technical) pre {
   max-height: 24rem;
   max-width: 100%;
   overflow: auto;
@@ -17,10 +17,10 @@ tqi-feasibility pre {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
-tqi-feasibility pre:empty {
+:is(tqi-feasibility, tqi-technical) pre:empty {
   display: none;
 }
-tqi-feasibility button {
+:is(tqi-feasibility, tqi-technical) button {
   min-height: 44px;
   padding: 0.5rem 1rem;
   background: var(--color-surface);
@@ -30,15 +30,28 @@ tqi-feasibility button {
   font: inherit;
   cursor: pointer;
 }
-tqi-feasibility button:hover {
+:is(tqi-feasibility, tqi-technical) button:hover {
   background: var(--color-bg);
 }
-tqi-feasibility button:disabled {
+:is(tqi-feasibility, tqi-technical) button:disabled {
   cursor: wait;
   color: var(--color-muted);
 }
-tqi-feasibility button:focus-visible,
-tqi-feasibility pre:focus-visible {
+:is(tqi-feasibility, tqi-technical) button:focus-visible,
+:is(tqi-feasibility, tqi-technical) pre:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
+}
+tqi-technical button {
+  margin: 0.25rem 0.5rem 0.25rem 0;
+}
+tqi-technical label {
+  display: block;
+  max-width: 65ch;
+  padding-block: 0.5rem;
+}
+tqi-technical #proof-release {
+  font: var(--font-size-small) / 1.65 var(--font-mono);
+  color: var(--color-muted);
+  overflow-wrap: anywhere;
 }

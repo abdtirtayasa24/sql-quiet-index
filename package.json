@@ -14,17 +14,19 @@
   },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
-    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.tools.json",
+    "preview": "vite preview --host 0.0.0.0 --port 4173 --strictPort",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.tools.json && tsc --noEmit -p tsconfig.sw.json",
     "lint": "eslint . --max-warnings 0",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "test": "npm run test:unit",
     "test:unit": "vitest run",
-    "test:e2e": "playwright test foundation.spec.ts engine.spec.ts ast.spec.ts editor.spec.ts",
+    "test:e2e": "playwright test foundation.spec.ts engine.spec.ts ast.spec.ts editor.spec.ts boot-benchmark.spec.ts pwa-spike.spec.ts",
+    "test:pwa-update": "playwright test --config playwright.m0.config.ts",
+    "benchmark:boot": "playwright test --config playwright.benchmark.config.ts",
     "test:visual": "playwright test visual.spec.ts --project chromium",
     "test:a11y": "playwright test a11y.spec.ts",
-    "build": "npm run verify:vendor && vite build && node tools/verify-foundation.mjs && node tools/verify-third-party.mjs --dist",
+    "build": "npm run verify:vendor && node tools/build-base-snapshot.mjs && node tools/build-proof-icons.mjs && vite build && node tools/verify-foundation.mjs && node tools/verify-third-party.mjs --dist && node tools/verify-m0-dist.mjs",
     "smoke:dist": "playwright test --grep @smoke",
     "verify:vendor": "node tools/verify-third-party.mjs",
     "validate:content": "node tools/pending-gate.mjs validate:content",
@@ -44,7 +46,10 @@
     "lit": "3.3.3"
   },
   "overrides": {
-    "minimatch": "11.0.3"
+    "minimatch": "11.0.3",
+    "workbox-build": {
+      "glob": "14.0.3"
+    }
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
@@ -59,6 +64,9 @@
     "typescript": "6.0.3",
     "typescript-eslint": "8.72.1",
     "vite": "8.3.5",
-    "vitest": "5.0.5"
+    "vite-plugin-pwa": "2.0.0",
+    "vitest": "5.0.5",
+    "workbox-core": "7.4.1",
+    "workbox-precaching": "7.4.1"
   }
 }

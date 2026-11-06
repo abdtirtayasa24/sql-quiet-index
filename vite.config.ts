@@ -1,4 +1,11 @@
 import { readFileSync } from 'node:fs';
+import { randomUUID } from 'node:crypto';
+import { pwaProof } from './tools/pwa-plugin.mjs';
+import { m0Assets } from './tools/m0-assets.ts';
+
+const release = process.env.TQI_PROOF_RELEASE ?? `m0-${randomUUID()}`;
+if (!/^[A-Za-z0-9-]{1,80}$/.test(release))
+  throw new Error('Invalid proof release ID.');
 import { defineConfig } from 'vite';
 import type { Plugin } from 'vite';
 
@@ -28,6 +35,8 @@ function parserAsset(): Plugin {
 
 export default defineConfig({
   base: '/',
+  appType: 'mpa',
+  define: { __M0_RELEASE__: JSON.stringify(release) },
   preview: {
     headers: {
       'Content-Security-Policy':
@@ -36,6 +45,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    pwaProof(),
     {
       name: 'static-feasibility-policy',
       generateBundle() {
@@ -65,12 +75,13 @@ export default defineConfig({
       },
       configurePreviewServer(server) {
         server.middlewares.use((request, response, next) => {
-          if (request.url?.split('?')[0]?.endsWith('.data'))
+          if (/\.(?:data|snapshot)$/.test(request.url?.split('?')[0] ?? ''))
             response.setHeader('Content-Type', 'application/octet-stream');
           next();
         });
       },
     },
+    m0Assets(release),
   ],
   optimizeDeps: { exclude: ['@electric-sql/pglite'] },
   worker: { format: 'es', plugins: () => [parserAsset()] },
@@ -78,6 +89,8 @@ export default defineConfig({
     target: 'es2022',
     outDir: 'dist',
     emptyOutDir: true,
-    rolldownOptions: { input: ['index.html', 'feasibility.html'] },
+    rolldownOptions: {
+      input: ['index.html', 'feasibility.html', 'technical.html'],
+    },
   },
 });
