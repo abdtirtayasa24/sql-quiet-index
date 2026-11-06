@@ -23,6 +23,8 @@ it.each([
       {
         input: `import { ${symbol} } from '${name}';\nconsole.log(${symbol});\n`,
         encoding: 'utf8',
+        // Virtual lintText input cannot use CI's immutable on-disk TS program.
+        env: { ...process.env, CI: 'true', TSESTREE_SINGLE_RUN: 'false' },
         timeout: 20_000,
       },
     );
