@@ -1,6 +1,19 @@
-# Feasibility QA — CP0b history and M0 review
+# QA — CP1a local durability and historical feasibility
 
-**Current M0:** software proof implemented and owner-authorized for Git delivery/CI monitoring; actual device/AT/deployed-host acceptance and human go/no-go remain open. Current evidence/procedure is in the M0 section below. The CP0b record is preserved as history, not reused as an M0 pass.
+**Current CP1a:** T10–T12 native durability is implemented and owner-approved for Git delivery/CI monitoring; [contracts](STORAGE.md) and [executed evidence](../tasks/cp1a-review.md). M0 was committed/pushed through `201ed3e`, with [hosted quality/browser CI passing](https://github.com/abdtirtayasa24/sql-quiet-index/actions/runs/42190341112). Actual M0 device/AT/deployed-host findings remain open, not inferred from the owner's subsequent CP1a implementation authorization. Historical records below are not substituted for new evidence.
+
+## CP1a review procedure
+
+Build and preview with RTK, then open `http://127.0.0.1:4173/storage.html`. Creating a local case file is explicit; typing into the native draft field never executes SQL or earns evidence. Check pending/saving/committed text, reload, theme/language/motion, and local recovery download. Stop preview before automated suites own port 4173.
+
+`rtk proxy npm run test:storage` compiles a **test-only** fixture from the real storage modules, then runs real native IDB and built-desk journeys across Chromium/Firefox/WebKit. No fake IndexedDB, production reset control or globally shipped test API. Coverage includes:
+
+- Exact v1 keys/indexes, cryptographic seed, strict durability hint, aborted creation, late request failure after earlier success, blocked open/late connection close, versionchange and malformed existing schema.
+- Two tabs, stable event-ID union, same-batch duplicates, timestamp/tab/revision ordering and stale draft writes that cannot change navigation/progress.
+- Pure copied sequential migration, duplicate/mixed-future rejection, legacy-reference archival, native backup/metadata rollback and future read-only recovery.
+- 500ms debounce and immediate-text hidden flush, actual reload/resume, denied convenience settings, partial/complete isolated-origin eviction, quota pause/recovery download/retry, queued-write abort and real PG worker termination plus disposable cache deletion without canonical data loss.
+
+Storage axe/keyboard tests cover empty/ready states, both themes and 320/360/768/1280 reflow, with create-action focus restored to the draft. New four Windows/Chromium 360/1280 screenshots mask only generated campaign ID/seed; existing twelve baselines remain unchanged. These tests are not named AT, real Safari/iOS/Android, physical disk exhaustion or OS power-loss certification. Recovery JSON is not T13–T14 canonical interchange. Current CI configuration explicitly invokes the storage suite, but local evidence is not a hosted result: inspect the run for the exact pushed CP1a commit.
 
 ## CP0b status and how to review (historical)
 

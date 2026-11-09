@@ -90,7 +90,12 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     rolldownOptions: {
-      input: ['index.html', 'feasibility.html', 'technical.html'],
+      input: [
+        'index.html',
+        'feasibility.html',
+        'technical.html',
+        'storage.html',
+      ],
     },
   },
 });

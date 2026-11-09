@@ -22,6 +22,7 @@
     "test": "npm run test:unit",
     "test:unit": "vitest run",
     "test:e2e": "playwright test foundation.spec.ts engine.spec.ts ast.spec.ts editor.spec.ts boot-benchmark.spec.ts pwa-spike.spec.ts",
+    "test:storage": "node tools/build-storage-fixture.mjs && playwright test \"storage-(create|drafts|recovery|ui).spec.ts\" --output test-results/storage",
     "test:pwa-update": "playwright test --config playwright.m0.config.ts",
     "benchmark:boot": "playwright test --config playwright.benchmark.config.ts",
     "test:visual": "playwright test visual.spec.ts --project chromium",

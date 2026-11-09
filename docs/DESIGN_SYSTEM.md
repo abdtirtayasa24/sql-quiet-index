@@ -44,6 +44,12 @@ Default CodeMirror keyword purple failed dark contrast at 1.71:1. The custom syn
 
 Four additional Windows/Chromium baselines (`feasibility-dark-360.png`, `feasibility-dark-1280.png`, `feasibility-light-360.png`, `feasibility-light-1280.png`) were visually inspected before a normal comparison pass. They show the initial editor/probe states, not an approved production gameplay screen or every error/result state. Behavioral failure paths and current manual gaps are documented in [QA](QA.md).
 
+## CP1a local durability desk
+
+`/storage.html` reuses the checked foundation tokens with a native draft field (minimum 160px, 16px monospace), labeled 44px preference controls, wrapped actions and explicit pending/committed/conflict/recovery text. Persisted dark/light overrides repeat the same checked palette, not a new theme. EN/ID review copy changes document language without changing SQL. The view emits intents; it never calls IndexedDB directly.
+
+Keyboard creation moves focus to the newly available draft rather than losing it when the creation button disappears. Empty/ready axe and reduced-motion reflow checks cover three automated engines at 320/360/768/1280. Four new `storage-{dark|light}-{360|1280}.png` images are reviewed before comparison; only dynamic ID/seed are masked (pink is test masking, not UI). All previous twelve baselines remain intact. This is a review surface, not the T15 workspace or a human AT audit. See [storage](STORAGE.md) and [review](../tasks/cp1a-review.md).
+
 ## M0 technical desk
 
 `/technical.html` deliberately extends the same restrained engineering desk, not the future campaign workspace. Shared proof selectors preserve existing foundation/CP0b appearance; technical-only spacing separates wrapped 44px buttons, long release IDs wrap, and labels remain native. No new theme, UI library, external art/font or motion. The install icon is an original three-line records-ledger glyph generated locally at 192/512px, not a stock brand asset.

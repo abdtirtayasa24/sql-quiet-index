@@ -33,11 +33,19 @@ Assignment is not a claim that the future checks below have passed. These facts 
 
 CP0b's Android Chrome/Windows functional report is recorded and not requested again. These are **new M0-specific findings**, using the existing owner coordination assignment:
 
-- [ ] Review the uncommitted [M0 proof and file map](m0-review.md), local [90-trial measurements](../docs/benchmarks/m0-local.json) and [QA procedure](../docs/QA.md).
+- [ ] Review the [M0 proof and file map](m0-review.md), local [90-trial measurements](../docs/benchmarks/m0-local.json) and [QA procedure](../docs/QA.md).
 - [ ] Supply actual Android/iOS cold/repeat/offline P75, transferred bytes, total peak memory and editor/IME results; record build/device/OS/browser versions and a tested memory envelope.
 - [ ] Supply named VoiceOver/TalkBack/NVDA findings; earlier general platform success is not inferred to include them.
 - [ ] After separate deployment authorization, run native-install/offline/two-release and document/worker CSP/MIME/nosniff checks at the actual HTTPS test origin. Earlier Cloudflare proof lacked CSP/nosniff response headers; no host configuration was changed during M0 coding.
 - [ ] Decide M0 go/no-go and the provisional initdb-versus-snapshot choice with that evidence. Do not infer approval of T10, commit, push or deployment from a software handoff.
+
+M0 software was committed through `201ed3e` with hosted CI passing. The owner then explicitly authorized CP1a development; this does not fill the factual findings above.
+
+## CP1a software review — approved for Git delivery
+
+- [x] Owner approved [T10–T12 changes, TDD evidence and acceptance ledger](cp1a-review.md) and the [native storage contract](../docs/STORAGE.md).
+- [ ] Build/preview `/storage.html`: explicit create, save/reload, preferences, truthful recovery messages and local recovery-copy download. The original proof pages remain separate; this desk does not execute player SQL.
+- [x] Owner explicitly authorized staging/commit/push and remote CI monitoring. No T13 or deployment is authorized. Real-device/AT/host gates above remain open; canonical interchange is T13–T14, not this recovery copy.
 
 ## Before T38: silent act playtests
 

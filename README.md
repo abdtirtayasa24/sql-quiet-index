@@ -1,6 +1,6 @@
 # The Quiet Index
 
-A local-first PostgreSQL detective learning game, built with Lit, strict TypeScript, Vite and vanilla CSS. **Current checkpoint: M0 software proof, owner-authorized for Git delivery and CI monitoring. Real-device/AT/host acceptance remains open.** The static foundation, engine/input desk and opt-in offline/update/boot benchmark work locally. Missions, arbitrary player-query execution, grading and durable saves are not implemented yet. The 24-mission MVP precedes the full 80-mission season.
+A local-first PostgreSQL detective learning game, built with Lit, strict TypeScript, Vite and vanilla CSS. **Current checkpoint: CP1a local durability (T10–T12), implemented and owner-approved for Git delivery and CI monitoring. Real-device/AT/host acceptance remains open.** The static proofs and native IndexedDB campaign/draft/settings/recovery desk work locally. Missions, arbitrary player-query execution, grading and canonical case-file export/import are not implemented yet. The 24-mission MVP precedes the full 80-mission season.
 
 ## Run locally
 
@@ -19,7 +19,7 @@ rtk proxy npm run build
 rtk proxy npm run preview
 ```
 
-Open `http://127.0.0.1:4173` for the unchanged foundation, or **`http://127.0.0.1:4173/feasibility.html`** for the CP0b proof desk. Inspect SQL parses but never executes your input; the PostgreSQL button runs only the five fixed spec probes. Open **`http://127.0.0.1:4173/technical.html`** for the M0 benchmark, explicit PG/parser offline download and prompt-controlled updates. Its approximately 23.7 MB proof pack includes both benchmark candidates; no act or save is claimed available offline. The snapshot is experimental, not the selected gameplay boot strategy. Draft/history is retained only within the current page, not saved on reload. No database/service/credentials or production Node process is required. Stop the preview before running Playwright; the harness owns port 4173 and fails instead of reusing a possibly stale server.
+Open `http://127.0.0.1:4173` for the unchanged foundation, or **`http://127.0.0.1:4173/feasibility.html`** for the CP0b proof desk. Inspect SQL parses but never executes your input; the PostgreSQL button runs only the five fixed spec probes. Open **`http://127.0.0.1:4173/technical.html`** for the M0 benchmark, explicit PG/parser offline download and prompt-controlled updates. Its approximately 23.7 MB proof pack includes both benchmark candidates; no act or save is claimed available offline. The snapshot is experimental, not the selected gameplay boot strategy. Those engine-proof drafts/history remain in-page only. Open **`http://127.0.0.1:4173/storage.html`** for actual native campaign creation, durable SQL drafts, preferences and recovery-copy downloads. This is a storage review desk, not a playable mission or canonical T13–T14 interchange UI; see [storage contracts](docs/STORAGE.md). No database/service/credentials or production Node process is required. Stop the preview before running Playwright; the harness owns port 4173 and fails instead of reusing a possibly stale server.
 
 ## Executable checks
 
@@ -33,6 +33,7 @@ Open `http://127.0.0.1:4173` for the unchanged foundation, or **`http://127.0.0.
 | `build`             | Vendor → coupled snapshot/icons → Vite/custom injectManifest → final artifact/hash/binary/notice gates; not content release |
 | `smoke:dist`        | Built foundation, real PG/AST/editor, benchmark and offline-reopen smoke in all three engines                               |
 | `test:e2e`          | Built foundation, worker/parser, editor/metadata/fallback/shortcut/lifecycle/error checks                                   |
+| `test:storage`      | Built native-IDB fixture and desk: atomicity, two tabs, migration rollback, future/quota/eviction recovery                  |
 | `test:pwa-update`   | Serial two-release static-origin proof, stale assets/two tabs, declined/approved/failed updates and download retry          |
 | `benchmark:boot`    | Five trials per strategy/condition/browser; 90 timed observations, not real-device certification                            |
 | `test:visual`       | Chromium Windows snapshots, dark/light ×360/1280px; compare reviewed baselines                                              |
@@ -71,6 +72,8 @@ Inspect every changed image before acceptance. Never update images merely to rem
 - [Accepted clarification ADR](docs/adr/0001-contract-clarifications.md)
 - [Design system and contrast method](docs/DESIGN_SYSTEM.md)
 - [Pinned dependencies, licenses and audit exception](docs/THIRD_PARTY.md)
+- [CP1a review, acceptance ledger and changed-file map](tasks/cp1a-review.md)
+- [Native storage/draft/migration contracts](docs/STORAGE.md)
 - [M0 evidence, child slices and remaining acceptance](tasks/m0-review.md)
 - [Measured local benchmark samples](docs/benchmarks/m0-local.json)
 - [Historical CP0b evidence and file/slice map](tasks/cp0b-review.md)
@@ -81,4 +84,4 @@ Inspect every changed image before acceptance. Never update images merely to rem
 
 The root shell uses static Lit reactive properties (no decorators) and light DOM for shared document landmarks/focus. The isolated editor uses tested Shadow DOM; PGlite/parser construction stays in the dedicated worker, not the UI. Engine assets are downloaded only on explicit demo use and are not part of the foundation's initial runtime requests. No state library, backend, tracker, runtime CDN or deployment change is introduced.
 
-**Checkpoint workflow:** CP0b was separately committed/pushed as `122a7fa`. The owner authorized T08–T09 through M0 using TDD and subsequently authorized commit/push with remote CI monitoring. This is Git delivery approval, not full M0 acceptance. Do not deploy or begin T10 without further instruction. M0's real Android/iOS measurements, named AT audits, actual HTTPS install/update/security-header findings and human go/no-go remain open. Automated WebKit and earlier CP0b functional acceptance do not substitute for them.
+**Checkpoint workflow:** M0 was committed/pushed through `201ed3e`, with hosted quality/browser CI passing. The owner subsequently authorized T10–T12 through CP1a using TDD. The owner reviewed and approved CP1a, then explicitly requested commit/push with remote CI monitoring. **Do not deploy or begin T13** until separately requested. CP1a software completion is not full M0/M1 or public-release acceptance. M0's real Android/iOS measurements, named AT audits, actual HTTPS install/update/security-header findings and human go/no-go remain open. Automated WebKit and earlier CP0b functional acceptance do not substitute for them.

@@ -1,0 +1,88 @@
+tqi-storage-desk {
+  display: block;
+  min-width: 0;
+}
+tqi-storage-desk section {
+  margin-block: var(--space-8);
+}
+tqi-storage-desk [data-variable] {
+  overflow-wrap: anywhere;
+  font-family: var(--font-mono);
+}
+tqi-storage-desk label {
+  display: block;
+}
+tqi-storage-desk :is(button, select, textarea) {
+  box-sizing: border-box;
+  min-height: var(--control-min-size);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  padding: var(--space-2) var(--space-4);
+}
+tqi-storage-desk :is(button, select) {
+  cursor: pointer;
+}
+tqi-storage-desk button {
+  color: var(--color-accent);
+}
+tqi-storage-desk button:hover {
+  background: var(--color-bg);
+}
+tqi-storage-desk button:disabled {
+  color: var(--color-muted);
+  cursor: wait;
+}
+tqi-storage-desk :is(button, select, textarea):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+tqi-storage-desk textarea {
+  display: block;
+  width: 100%;
+  min-height: 160px;
+  resize: vertical;
+  font: 1rem/1.6 var(--font-mono);
+}
+tqi-storage-desk select {
+  display: block;
+  width: 100%;
+  margin-top: var(--space-2);
+}
+.storage-preferences {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: var(--space-4);
+}
+.storage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+html[data-storage-theme='dark'] {
+  color-scheme: dark;
+  --color-bg: oklch(0.18 0.015 250);
+  --color-surface: oklch(0.23 0.015 250);
+  --color-text: oklch(0.95 0.007 85);
+  --color-muted: oklch(0.76 0.012 250);
+  --color-accent: oklch(0.82 0.105 180);
+  --color-warning: oklch(0.85 0.13 80);
+  --color-danger: oklch(0.76 0.14 18);
+  --color-border: oklch(0.58 0.012 250);
+}
+html[data-storage-theme='light'] {
+  color-scheme: light;
+  --color-bg: oklch(0.97 0.003 250);
+  --color-surface: oklch(1 0 0);
+  --color-text: oklch(0.24 0.012 250);
+  --color-muted: oklch(0.43 0.02 250);
+  --color-accent: oklch(0.42 0.08 180);
+  --color-warning: oklch(0.44 0.09 80);
+  --color-danger: oklch(0.43 0.16 18);
+  --color-border: oklch(0.5 0.012 250);
+}
+html[data-storage-motion='reduce'] {
+  --motion-duration: 0s;
+}

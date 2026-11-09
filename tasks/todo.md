@@ -173,7 +173,7 @@ Applies to **every task below**, in addition to its specific criteria:
 - [x] Dependency/asset/provisional boot decisions recorded; actual device gaps remain blockers, not presumed passes. See [M0 review](m0-review.md), [architecture](../docs/ARCHITECTURE.md), [QA](../docs/QA.md).
 - [ ] Human approval before reliable-shell implementation or broad content production.
 
-**M0 review handoff:** software proof implemented using recorded RED→GREEN slices; local suites and measured samples attached. M0 is **not fully accepted**: T08 actual Android/iOS/memory choice, AT/HTTPS findings and human go/no-go remain open. The owner subsequently authorized commit/push and remote CI monitoring, including necessary CI repair. No deployment or T10 is authorized.
+**M0 review handoff:** software proof implemented using recorded RED→GREEN slices; local suites and measured samples attached. M0 is **not fully accepted**: T08 actual Android/iOS/memory choice, AT/HTTPS findings and human go/no-go remain open. The owner subsequently authorized commit/push and remote CI monitoring, including necessary CI repair. The owner subsequently authorized T10–T12 through CP1a using TDD. This is development scope, not inferred closure of outstanding manual M0 evidence. [CP1a review](cp1a-review.md); the owner subsequently approved Git delivery and remote CI monitoring, not deployment or T13.
 
 ## Phase 1 — reliable investigator shell (M1)
 
@@ -182,9 +182,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Add native IDB schema/open lifecycle and transactional campaign+seed creation.
 
 **Acceptance criteria:**
-- [ ] All v1 stores/key paths/indexes created without storing unique progress in PGlite.
-- [ ] Creation commits campaign/seed together; abort leaves no partial campaign.
-- [ ] Unavailable/blocked/versionchange IDB produces actionable state rather than silent new game.
+- [x] All v1 stores/key paths/indexes created without storing unique progress in PGlite.
+- [x] Creation commits campaign/seed together; abort leaves no partial campaign.
+- [x] Unavailable/blocked/versionchange IDB produces actionable state rather than silent new game.
 
 **Verification:** Unit schema tests and real-browser transaction abort/reopen checks.  
 **Dependencies:** M0.  
@@ -196,9 +196,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Add small localStorage settings and IDB mission draft lifecycle without overwriting simultaneous progress.
 
 **Acceptance criteria:**
-- [ ] 500ms draft debounce plus hidden-visibility flush; no beforeunload-only assumption.
-- [ ] Two tabs merge evidence/solved events by ID and apply deterministic draft conflict policy using current transactional records.
-- [ ] Locale/theme/motion settings survive reload without becoming sole canonical progress.
+- [x] 500ms draft debounce plus hidden-visibility flush; no beforeunload-only assumption.
+- [x] Two tabs merge evidence/solved events by ID and apply deterministic draft conflict policy using current transactional records.
+- [x] Locale/theme/motion settings survive reload without becoming sole canonical progress.
 
 **Verification:** Two-tab delayed-write race, hidden/reopen and blocked-localStorage tests.  
 **Dependencies:** T10.  
@@ -210,9 +210,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Add pure migration chain, transaction rollback and explicit quota/missing/future-version recovery states.
 
 **Acceptance criteria:**
-- [ ] Migration runs on copies and preserves solved IDs, notes, evidence; stale row refs become archived_legacy.
-- [ ] Unknown future save preserved/read-only; surviving pointer with missing IDB offers import, not silent reset.
-- [ ] Quota/abort keeps in-memory work exportable, pauses evidence writes and never displays false saved status.
+- [x] Migration runs on copies and preserves solved IDs, notes, evidence; stale row refs become archived_legacy.
+- [x] Unknown future save preserved/read-only; surviving pointer with missing IDB offers import, not silent reset. CP1a supplies a truthful compatible-release import invitation; actual canonical import is T14.
+- [x] Quota/abort keeps in-memory work exportable, pauses evidence writes and never displays false saved status. Recovery copy is not T13 canonical interchange.
 
 **Verification:** Migration crash injection, future-version fixture, quota fault, complete-vs-partial eviction tests.  
 **Dependencies:** T10,T11.  
@@ -220,8 +220,10 @@ Applies to **every task below**, in addition to its specific criteria:
 **Estimated scope:** M.
 
 ### Checkpoint CP1a — local durability
-- [ ] T10–T12 transaction/recovery checks pass on a built app.
-- [ ] No cache/database reset path can erase canonical progress.
+- [x] T10–T12 transaction/recovery checks pass on a built app.
+- [x] No cache/database reset path can erase canonical progress. No production database clear/delete/reset operation; disposable cache/PG-worker teardown leaves native canonical records unchanged in isolated browser tests.
+
+**CP1a software handoff:** [Evidence/file map](cp1a-review.md) and [native storage contract](../docs/STORAGE.md). All checkpoint software criteria are exercised with real built-browser IDB, not only mocks. v1 is the first actual save format; future migration steps are test fixtures, not a fictional v2 deployment. CodeMirror workspace integration and canonical export/import remain T13–T15. Owner review is approved; staging/commit/push and remote CI monitoring are explicitly authorized. No deployment or T13. Actual M0 device/AT/host findings remain open.
 
 ### T13 — Export a canonical, lossless case file
 
