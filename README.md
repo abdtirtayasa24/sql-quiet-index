@@ -67,6 +67,20 @@ rtk proxy npm run test:visual
 
 Inspect every changed image before acceptance. Never update images merely to remove a failure. HTML browser reports are generated under ignored `playwright-report/`; traces/failure artifacts under `test-results/`. Local pass counts are not a hosted CI result; inspect the run for the exact pushed commit.
 
+## Local Graphify navigation
+
+The entire `graphify-out/` directory is generated and Git-ignored. Local post-commit/post-checkout hooks update code relationships there in place; no post-commit cache-copy or graph-restore workaround is needed. Existing ignored evidence/caches may stay local. Generated graphs are not distributed with fresh clones.
+
+On each new clone, install the repository-local hooks and build the code graph:
+
+```sh
+rtk proxy graphify hook install
+rtk proxy graphify hook status
+rtk proxy graphify update .
+```
+
+The hook refreshes structural code relationships when relevant code changes; documentation-only commits do not perform semantic extraction. Refresh documentation semantics explicitly with the bundled Graphify skill using local host-agent extraction; do not upload repository content to external services without permission. Always verify graph claims against source and the normative spec.
+
 ## Architecture and review
 
 - [Normative specification](docs/spec/SPEC-001-The-Quiet-Index-v1.1.md)
