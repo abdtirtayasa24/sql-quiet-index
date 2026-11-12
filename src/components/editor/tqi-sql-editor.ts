@@ -15,6 +15,8 @@ export class TqiSqlEditor extends LitElement {
     dark: { type: Boolean },
     notice: { state: true },
     nativeMode: { state: true },
+    executionMode: { type: Boolean },
+    disabled: { type: Boolean },
   };
   static override styles = css`
     :host {
@@ -73,6 +75,8 @@ export class TqiSqlEditor extends LitElement {
       color: var(--color-text);
     }
   `;
+  declare executionMode: boolean;
+  declare disabled: boolean;
   declare tables: readonly VisibleTable[];
   declare dark: boolean;
   declare private notice: string;
@@ -82,6 +86,8 @@ export class TqiSqlEditor extends LitElement {
   private changeTimer: ReturnType<typeof setTimeout> | undefined;
   constructor() {
     super();
+    this.executionMode = false;
+    this.disabled = false;
     this.tables = [];
     this.dark = false;
     this.notice = 'CodeMirror active. Draft stays in this page only.';
@@ -89,6 +95,13 @@ export class TqiSqlEditor extends LitElement {
   }
   get value(): string {
     return this.model.text;
+  }
+  setText(text: string) {
+    if (this.adapter) this.adapter.setText(text);
+    else this.model.edit(text, text.length, text.length);
+  }
+  focusInput() {
+    this.adapter?.focus();
   }
   get selection(): { anchor: number; head: number } {
     const { anchor, head } = this.model.state.selection.main;
@@ -112,6 +125,13 @@ export class TqiSqlEditor extends LitElement {
       this.adapter?.reconfigure(this.tables, this.dark);
   }
   private changed = () => {
+    this.dispatchEvent(
+      new CustomEvent<SqlIntent>('sql-input', {
+        detail: { sql: this.value },
+        bubbles: true,
+        composed: true,
+      }),
+    );
     clearTimeout(this.changeTimer);
     this.changeTimer = setTimeout(
       () =>
@@ -126,6 +146,7 @@ export class TqiSqlEditor extends LitElement {
     );
   };
   private run = () => {
+    if (this.disabled) return;
     this.dispatchEvent(
       new CustomEvent<SqlIntent>('sql-run', {
         detail: { sql: this.value },
@@ -169,17 +190,24 @@ export class TqiSqlEditor extends LitElement {
   protected override render() {
     return html`
       <p id="sql-help">
-        Ctrl+Enter or Command+Enter inspects syntax only; SQL is not executed.
-        Tab leaves the editor. Drafts are not saved on reload.
+        ${
+          this.executionMode
+            ? 'Ctrl+Enter or Command+Enter runs a read-only practice query. Tab leaves the editor. Draft saving status appears above.'
+            : 'Ctrl+Enter or Command+Enter inspects syntax only; SQL is not executed. Tab leaves the editor. Drafts are not saved on reload.'
+        }
       </p>
       <div id="editor-host"></div>
       <div class="actions">
-        <button type="button" @click=${this.run}>Inspect SQL</button>
+        <button type="button" ?disabled=${this.disabled} @click=${this.run}>
+          ${this.executionMode ? 'Run SQL' : 'Inspect SQL'}
+        </button>
         <button type="button" @click=${this.switchMode}>
           ${this.nativeMode ? 'Use CodeMirror' : 'Use native editor'}
         </button>
       </div>
-      <p role="status">${this.notice}</p>
+      <p role="status">
+        ${this.executionMode ? (this.nativeMode ? 'Native textarea active. Draft and undo history retained.' : 'CodeMirror active. Draft and undo history retained.') : this.notice}
+      </p>
     `;
   }
 }

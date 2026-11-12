@@ -21,6 +21,24 @@ const raw = {
     { url: '/technical.html', bytes: 4, sha256: hash('html'), kind: 'shell' },
   ],
 };
+it('accepts only the explicit new workspace document in the bounded proof pack', () => {
+  const workspace = {
+    ...raw,
+    resources: [{ ...raw.resources[1], url: '/workspace.html' }],
+  };
+  expect(readProofManifest(workspace, 'test-a').resources[0]?.url).toBe(
+    '/workspace.html',
+  );
+  expect(() =>
+    readProofManifest(
+      {
+        ...workspace,
+        resources: [{ ...workspace.resources[0], url: '/unreviewed.html' }],
+      },
+      'test-a',
+    ),
+  ).toThrow();
+});
 function memoryCache(): ProofCache {
   const data = new Map<string, Response>();
   return {

@@ -95,6 +95,7 @@ export default defineConfig({
         'feasibility.html',
         'technical.html',
         'storage.html',
+        'workspace.html',
       ],
     },
   },

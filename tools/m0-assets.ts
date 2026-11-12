@@ -36,7 +36,7 @@ export function m0Assets(release: string): Plugin {
       if (!options.dir)
         throw new Error('M0 assets require a static output directory.');
       const artifacts = Object.values(bundle).filter((item) =>
-        /^(?:assets\/.*\.(?:js|css|wasm|data|snapshot)|(?:index|feasibility|technical)\.html)$/.test(
+        /^(?:assets\/.*\.(?:js|css|wasm|data|snapshot)|(?:index|feasibility|technical|workspace)\.html)$/.test(
           item.fileName,
         ),
       );

@@ -24,6 +24,7 @@
     "build:save-validator": "node tools/build-save-validator.mjs",
     "test:portable": "node tools/build-storage-fixture.mjs && playwright test \"portable-(db|ui).spec.ts\" navigation.spec.ts --output test-results/portable",
     "test:e2e": "playwright test foundation.spec.ts engine.spec.ts ast.spec.ts editor.spec.ts boot-benchmark.spec.ts pwa-spike.spec.ts",
+    "test:workspace": "playwright test workspace-layout.spec.ts workspace-results.spec.ts workspace-editor.spec.ts workspace-recovery.spec.ts workspace-offline.spec.ts --output test-results/workspace",
     "test:storage": "node tools/build-storage-fixture.mjs && playwright test \"storage-(create|drafts|recovery|ui).spec.ts\" --output test-results/storage",
     "test:pwa-update": "playwright test --config playwright.m0.config.ts",
     "benchmark:boot": "playwright test --config playwright.benchmark.config.ts",

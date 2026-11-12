@@ -21,7 +21,7 @@ try {
   for (const entry of manifest.resources) {
     if (
       typeof entry.url !== 'string' ||
-      !/^\/(?:assets\/[A-Za-z0-9_.-]+|(?:index|feasibility|technical)\.html)$/.test(
+      !/^\/(?:assets\/[A-Za-z0-9_.-]+|(?:index|feasibility|technical|workspace)\.html)$/.test(
         entry.url,
       ) ||
       entry.url.includes('..') ||

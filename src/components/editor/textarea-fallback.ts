@@ -59,6 +59,12 @@ export function mountTextarea(
   sync();
   return {
     focus: () => input.focus(),
+    setText(text) {
+      if (text === model.text) return;
+      model.edit(text, text.length, text.length);
+      sync();
+      options.changed();
+    },
     destroy() {
       snapshot();
       input.remove();

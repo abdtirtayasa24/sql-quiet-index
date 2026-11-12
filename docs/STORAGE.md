@@ -4,9 +4,17 @@ Authority: [spec §12](spec/SPEC-001-The-Quiet-Index-v1.1.md), [approved D08/D13
 
 ## Implemented boundary
 
-`/storage.html` is a separate Lit/native-input review desk, not a gameplay workspace. It performs actual local creation, draft saving, preference changes and recovery downloads. It does not execute SQL, grade, invent earned evidence, implement canonical import/export, or make an offline campaign available. Canonical interchange and typed navigation now live at `/#/settings` and `/#/home`. The existing CodeMirror proof remains separate; T16–T18 workspace integration must bind immediate current text/hidden flush to the draft service without stacking two 500ms debounces.
+`/storage.html` is a separate Lit/native-input review desk, not a gameplay workspace. It performs actual local creation, draft saving, preference changes and recovery downloads. It does not execute SQL, grade, invent earned evidence, implement canonical import/export, or make an offline campaign available. Canonical interchange and typed navigation now live at `/#/settings` and `/#/home`. The original CodeMirror proof remains separate. M1's `/workspace.html` now binds immediate `sql-input` text to the existing draft service, without stacking the old proof-page event's debounce. See [M1 review](../tasks/m1-review.md).
 
 `src/types/save.ts` defines campaign, mission/draft and storage-failure contracts. `src/storage/` owns native IndexedDB, tiny preferences, ordering and pure migrations. `src/app/` orchestrates startup, debounce, retained pending work and recovery; the view only renders snapshots/emits intents. No storage library, backend or new dependency.
+
+## M1 workbench persistence boundary
+
+The workbench reuses `StorageController`/`DraftController` and the existing canonical active campaign/mission key. It creates a campaign only after an explicit button, preserves campaign seed/solved IDs/provenance, and patches only the current draft and campaign timestamp using existing conflict-aware transactions. Imported notes, attempts, evidence, concept events and verdicts survive real run/reset/export; native three-engine tests verify this. Sample SQL data is disposable per tab, never the save. No database version/migration/store/index/dependency change is introduced.
+
+Immediate rich/native input reaches the sole 500ms debounce. Hidden visibility, explicit Run and normal workbench-link navigation flush current text; worker reset never discards it. Closing a running-query page and reopening restores the committed draft. Browser/OS crashes before commit and complete origin eviction remain limitations, not guaranteed protection. Existing two-tab timestamp/tab/revision conflicts and quota/future/corrupt states remain canonical; the workbench does not overwrite them with a new persistence policy.
+
+History is at most ten in-page unique SQL runs, not durable query-attempt retention. SQL beyond 12,000 characters is not written: it is explicitly labeled unsaved, disables execution, and can be downloaded alongside readable records in a best-effort workbench recovery JSON. A quota-paused draft also offers recovery. This recovery format is not canonical importable interchange; use Settings for supported v1 case-file export/import. Neither offline proof caches nor worker resets store or clear player progress.
 
 ## Native schema
 

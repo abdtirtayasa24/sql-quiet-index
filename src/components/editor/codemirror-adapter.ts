@@ -9,6 +9,7 @@ import type { EditorModel, VisibleTable } from './editor-contract';
 
 export interface EditorAdapter {
   focus(): void;
+  setText(text: string): void;
   destroy(): void;
   reconfigure(tables: readonly VisibleTable[], dark: boolean): void;
 }
@@ -117,6 +118,12 @@ export function mountCodeMirror(
   const view = new EditorView({ state: model.state, parent: host });
   return {
     focus: () => view.focus(),
+    setText(text) {
+      if (text !== model.text)
+        view.dispatch({
+          changes: { from: 0, to: view.state.doc.length, insert: text },
+        });
+    },
     destroy() {
       model.state = view.state;
       view.destroy();

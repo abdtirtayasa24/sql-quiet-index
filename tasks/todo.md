@@ -278,9 +278,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Implement reusable tabs/dialog/status and responsive workspace container before adding mission-specific skins.
 
 **Acceptance criteria:**
-- [ ] Keyboard tabs, modal Escape/focus restore and non-obscured focus work across Shadow DOM.
-- [ ] Desktop and 360px layouts show reachable Run action, correct overflow and reduced motion.
-- [ ] Explicit loading/error/disabled states and tokenized styles pass contrast checks.
+- [x] Keyboard tabs, modal Escape/focus restore and non-obscured focus work across Shadow DOM in built Chromium/Firefox/WebKit automation.
+- [x] Desktop and 360px layouts show reachable Run action, correct overflow and reduced motion; four new images visually reviewed, ordinary comparison passes.
+- [x] Explicit loading/error/disabled states and tokenized styles pass automated AA checks; existing checked palettes reused.
 
 **Verification:** Focus E2E, axe checks, reviewed desktop/360px/theme snapshots.  
 **Dependencies:** T07,T15.  
@@ -292,9 +292,10 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Present schema, row-array results, SQLSTATE explanations, query history and hint ladder through typed view models.
 
 **Acceptance criteria:**
-- [ ] Semantic table preserves duplicate names/NULL display, shows 200 of N and internal scroll; no unsafeHTML.
-- [ ] Visible-only schema, one primary diagnosis and ≤2 details; one status announcement per explicit run.
-- [ ] History and four free hint rungs are keyboard reachable; reusable presentation has no SQL/evidence business logic.
+- [x] Semantic table preserves duplicate names/NULL display, shows 200 of N and internal scroll; no unsafeHTML.
+- [x] Visible-only schema, one primary diagnosis and ≤2 details; distinct completion status per explicit run (automated DOM/unit evidence, not a named screen-reader audit).
+- [x] History and four free hint rungs are keyboard reachable; reusable presentation has no SQL/evidence business logic.
+- [ ] Named screen-reader status/Shadow DOM audit remains required; automated axe is not this evidence.
 
 **Verification:** Table/XSS fixtures, screen-reader status check, built-app schema/hint/history E2E.  
 **Dependencies:** T16,T06.  
@@ -306,9 +307,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Implement engine-client serialization, request/session guards, watchdog and deterministic restart in the real workspace.
 
 **Acceptance criteria:**
-- [ ] Every message validates session/request; termination rejects pending work with ENGINE_RESET and ignores late responses.
-- [ ] Draft and canonical save survive timeout/reset/reload; mission seed restored before next run.
-- [ ] Query budgets and recovery loading state are honest; reset only mission DB, not campaign progress.
+- [x] Every workspace message validates session/request; termination rejects active/queued work with ENGINE_RESET and ignores late responses.
+- [x] Draft and canonical save survive timeout/reset/close/reopen; the same saved campaign seed restores synthetic practice data before next run. Authored mission loading remains T19–T20, not claimed here.
+- [x] Query budgets and recovery loading state are honest; reset only disposable practice DB, not campaign progress.
 
 **Verification:** Runaway/late-message/navigation/reload tests in built browser; two independent tab workers.  
 **Dependencies:** T05,T11,T15–T17.  
@@ -316,9 +317,12 @@ Applies to **every task below**, in addition to its specific criteria:
 **Estimated scope:** M.
 
 ### Checkpoint M1 — reliable shell
-- [ ] Real CodeMirror SQL → worker → result; close/reopen draft, export/import and basic offline demo succeed.
-- [ ] GATE-SAVE, GATE-COMPONENTS, GATE-TYPES and initial GATE-VISUAL; no narrative dependence on an unproven save.
-- [ ] T10–T18 review complete; real IDB and browser recovery tested, not only mocked.
+- [x] Real restricted CodeMirror SQL → worker → result; close/reopen draft, canonical export/import regression and fresh offline workbench/demo succeed on three automated engines.
+- [x] Initial shell save/component/type/visual automation passes; full-release GATE-SAVE and device/AT/hosting gates are not closed by this shell proof.
+- [x] Owner M1 software/layout review and explicit one-line commit/push authorization; real IDB/browser recovery software checks passed, not only mocks.
+- [ ] Outstanding named AT/device/HTTPS evidence remains open, not inferred from software approval.
+
+**M1 review handoff:** Owner authorized T16–T18 using TDD and explicitly prohibited commits until review. [M1 slices, executed evidence, file map and manual blockers](m1-review.md). `/workspace.html` is a restricted local SQL practice surface, not a published mission/grader; mission links remain locked. Canonical v1 save/dependency pins/old baselines are unchanged. The owner subsequently approved M1 and the [all-tab layout](m1-layout-review.md), explicitly requesting a one-line commit and push. Deliver the approved changes via Git, then stop: no deployment or T19.
 
 ## Phase 2 — grading/content infrastructure (M2)
 

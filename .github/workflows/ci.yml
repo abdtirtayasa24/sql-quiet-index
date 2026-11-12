@@ -63,6 +63,10 @@ jobs:
         run: npm run test:portable
         env:
           PLAYWRIGHT_HTML_REPORT: playwright-report/portable
+      - name: M1 read-only SQL workspace and recovery
+        run: npm run test:workspace
+        env:
+          PLAYWRIGHT_HTML_REPORT: playwright-report/workspace
       - name: Two-release M0 update, version skew and failed-release proof
         run: npm run test:pwa-update
       - name: Repeated local boot measurements (not device certification)

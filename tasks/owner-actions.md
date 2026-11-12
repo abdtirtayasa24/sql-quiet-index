@@ -52,7 +52,16 @@ M0 software was committed through `201ed3e` with hosted CI passing. The owner th
 - [x] Owner authorized T13–T15 using TDD, then stop without staging/commit/push.
 - [x] Owner approved CP1b after functional review on the owner-updated `https://sql.abdtirtayasa24.workers.dev` staging build: `/storage.html` saving/recovery download and settings export/import/local recovery-copy download worked. [CP1b changes/evidence](cp1b-review.md) and [portable-file contracts](../docs/STORAGE.md) retain the detailed automated proof and limits. No device/browser versions or AT/header findings were supplied.
 - [ ] Build/preview `/#/settings`: export, select, preview, explicit merge/new copy, original-file download and invalid/future recovery; visit `/#/mission/021` and back/forward navigation.
-- [x] Owner explicitly requested commit/push with a one-line message. No T16 or further agent deployment is authorized; actual device/AT/hosting gates remain open.
+- [x] Owner explicitly requested commit/push with a one-line message; delivered as `08879b3`. The owner subsequently authorized T16–T18 through M1; actual device/AT/hosting gates remain open.
+
+## M1 software review — approved for Git delivery
+
+- [x] Owner authorized T16–T18 through M1 using TDD, explicitly no commit until after review.
+- [x] Owner reviewed [M1 changes/evidence and limitations](m1-review.md), reported basic SELECT/WHERE/GROUP BY functional success on their staging `/workspace`, requested the [all-tab layout](m1-layout-review.md), and subsequently approved it.
+- [ ] Try CodeMirror/native input and Ctrl/Cmd+Enter, grouped-column feedback, duplicate names/NULL, four free hints, keyboard history/tabs/dialog, draft reload, timeout/reset and settings export/import. Workbench drafts edit the active campaign's mission draft; use a disposable review profile or export wanted work first.
+- [ ] On `/technical.html`, explicitly download the proof pack, close pages, disconnect and reopen `/workspace.html`; it is a synthetic SQL practice proof, not offline mission/act availability.
+- [ ] Supply named screen-reader status/Shadow DOM findings and real-device/HTTPS/performance findings listed above. No automation is a substitute.
+- [x] Owner explicitly requested commit/push with a one-line message after approval. No T19 or agent deployment is authorized.
 
 ## Before T38: silent act playtests
 

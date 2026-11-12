@@ -99,6 +99,7 @@ export class TqiNavigationDesk extends LitElement {
       ${view.phase === 'ready' && route.kind === 'act' ? html`<p>This is the route for Act ${route.actId}, not a published playable act. Saved evidence remains local and can be exported from Settings.</p>` : ''}
       ${view.phase === 'ready' && route.kind === 'casebook' ? html`<p>${view.counts.evidence ?? 0} evidence record(s), ${view.counts.notes ?? 0} note(s). Their text and provenance are preserved in case-file exports. The interactive casebook is a later task; this route does not award or rewrite evidence.</p>` : ''}
       ${view.phase === 'ready' && route.kind === 'practice' ? html`<p>No practice packs are published yet. Saved concept events remain intact; navigating here does not grant mastery or completion credit.</p>` : ''}
+      ${view.phase === 'ready' && (route.kind === 'home' || route.kind === 'practice') ? html`<p><a href="/workspace.html">Open local SQL workbench</a> — read-only sample records; no mission or mastery credit.</p>` : ''}
       ${route.kind === 'not-found' ? html`<p>This route is not recognized. Choose Home above; saved records have not been changed.</p>` : ''}
       ${route.kind === 'settings' ? html`<tqi-portable-desk .view=${this.portableView} .hasOriginal=${this.hasOriginal} .canExport=${view.phase === 'ready' && view.campaigns.length > 0} .canImport=${view.phase === 'ready' || (view.phase === 'storage-error' && (view.code === 'missing' || view.code === 'corrupt'))}></tqi-portable-desk>` : ''}
       <p>
