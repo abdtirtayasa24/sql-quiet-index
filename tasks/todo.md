@@ -211,7 +211,7 @@ Applies to **every task below**, in addition to its specific criteria:
 
 **Acceptance criteria:**
 - [x] Migration runs on copies and preserves solved IDs, notes, evidence; stale row refs become archived_legacy.
-- [x] Unknown future save preserved/read-only; surviving pointer with missing IDB offers import, not silent reset. CP1a supplies a truthful compatible-release import invitation; actual canonical import is T14.
+- [x] Unknown future save preserved/read-only; surviving pointer with missing IDB offers import, not silent reset. CP1a supplied a compatible-release invitation; CP1b now provides actual canonical import at `/#/settings`.
 - [x] Quota/abort keeps in-memory work exportable, pauses evidence writes and never displays false saved status. Recovery copy is not T13 canonical interchange.
 
 **Verification:** Migration crash injection, future-version fixture, quota fault, complete-vs-partial eviction tests.  
@@ -223,16 +223,16 @@ Applies to **every task below**, in addition to its specific criteria:
 - [x] T10–T12 transaction/recovery checks pass on a built app.
 - [x] No cache/database reset path can erase canonical progress. No production database clear/delete/reset operation; disposable cache/PG-worker teardown leaves native canonical records unchanged in isolated browser tests.
 
-**CP1a software handoff:** [Evidence/file map](cp1a-review.md) and [native storage contract](../docs/STORAGE.md). All checkpoint software criteria are exercised with real built-browser IDB, not only mocks. v1 is the first actual save format; future migration steps are test fixtures, not a fictional v2 deployment. CodeMirror workspace integration and canonical export/import remain T13–T15. Owner review is approved; staging/commit/push and remote CI monitoring are explicitly authorized. No deployment or T13. Actual M0 device/AT/host findings remain open.
+**CP1a software handoff:** [Evidence/file map](cp1a-review.md) and [native storage contract](../docs/STORAGE.md). All checkpoint software criteria are exercised with real built-browser IDB, not only mocks. v1 is the first actual save format; future migration steps are test fixtures, not a fictional v2 deployment. Owner review was approved; CP1a was delivered as `26e89d8` and hosted quality/browser CI passed. The owner subsequently authorized T13–T15 through CP1b using TDD, with another review stop before Git delivery. CodeMirror/query workspace integration remains T16–T18. No deployment or T16. Actual M0 device/AT/host findings remain open.
 
 ### T13 — Export a canonical, lossless case file
 
 **Description:** Serialize all defined progress collections with deterministic integrity hash and Blob download.
 
 **Acceptance criteria:**
-- [ ] Recursive key ordering/UTF-8 SHA-256 excludes integrity field and round-trips bigint-safe record representations.
-- [ ] Mastery events, evidence/query provenance, notes, choices and solved IDs exported, not just active mission.
-- [ ] Unsupported-save recovery can export preserved original data without destructive conversion.
+- [x] Recursive key ordering/UTF-8 SHA-256 excludes integrity field and round-trips bigint-safe record representations.
+- [x] Mastery events, evidence/query provenance, notes, choices and solved IDs exported, not just active mission.
+- [x] Unsupported-save recovery can export preserved original data without destructive conversion.
 
 **Verification:** Known digest vectors, Unicode/nested-key tests, browser download and logical-equality round-trip fixture.  
 **Dependencies:** T12.  
@@ -244,9 +244,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Validate bounded untrusted save JSON before opening a write transaction.
 
 **Acceptance criteria:**
-- [ ] 5MiB cap, schema/string/count/version/hash checks and recursive pollution-key rejection; malformed imports cannot partially write.
-- [ ] Preview supports confirmed merge or new copy with all campaign-linked foreign IDs remapped.
-- [ ] Merge dedupes stable IDs, unions solved progress and follows approved draft/choice conflicts without silent overwrite.
+- [x] 5MiB cap, schema/string/count/version/hash checks and recursive pollution-key rejection; malformed imports cannot partially write.
+- [x] Preview supports confirmed merge or new copy with all campaign-linked foreign IDs remapped.
+- [x] Merge dedupes stable IDs, unions solved progress and follows approved draft/choice conflicts without silent overwrite.
 
 **Verification:** Corruption, oversized/polluting/malformed JSON, conflicting campaigns, atomic failure and full export/import browser tests.  
 **Dependencies:** T13.  
@@ -258,9 +258,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Wire home/act/mission/casebook/practice/settings hash routes to immutable state and typed commands.
 
 **Acceptance criteria:**
-- [ ] Deep-link mission route explains locked state; navigation cancellation cannot accept stale SQL result.
-- [ ] No app-server routing requirement or global event-bus dependency.
-- [ ] Bootstrap/unsupported/storage error view models have explicit discriminated states and focus destinations.
+- [x] Deep-link mission route explains locked state; navigation cancellation cannot accept stale SQL result. Typed engine port/generation contract tested; integrated arbitrary SQL workspace remains T16–T18.
+- [x] No app-server routing requirement or global event-bus dependency.
+- [x] Bootstrap/unsupported/storage error view models have explicit discriminated states and focus destinations.
 
 **Verification:** Unit hash parsing/route tests; built static deep-link/navigation smoke.  
 **Dependencies:** T10,T11.  
@@ -268,8 +268,10 @@ Applies to **every task below**, in addition to its specific criteria:
 **Estimated scope:** M.
 
 ### Checkpoint CP1b — portable progress/navigation
-- [ ] T13–T15 preserve all existing records and survive direct hash navigation.
-- [ ] Import error never replaces canonical campaign without confirmation.
+- [x] T13–T15 preserve all existing records and survive direct hash navigation.
+- [x] Import error never replaces canonical campaign without confirmation.
+
+**CP1b review handoff:** [Predeclared slices, RED→GREEN fixes, executed evidence and changed-file map](cp1b-review.md). Original bytes, full seven-collection round-trip and native three-engine transactions are tested; local operational backups/meta and prior sixteen visual baselines are unchanged. The owner approved CP1b after reporting successful storage/settings checks on the owner-updated Cloudflare staging deployment and explicitly requested a one-line commit and push. Git delivery is authorized; no T16 or further agent deployment. Actual devices/AT/HTTPS and complete M1 remain open.
 
 ### T16 — Build accessible workspace primitives
 

@@ -1,8 +1,16 @@
-# QA — CP1a local durability and historical feasibility
+# QA — CP1b portable progress/navigation and historical feasibility
 
-**Current CP1a:** T10–T12 native durability is implemented and owner-approved for Git delivery/CI monitoring; [contracts](STORAGE.md) and [executed evidence](../tasks/cp1a-review.md). M0 was committed/pushed through `201ed3e`, with [hosted quality/browser CI passing](https://github.com/abdtirtayasa24/sql-quiet-index/actions/runs/42190341112). Actual M0 device/AT/deployed-host findings remain open, not inferred from the owner's subsequent CP1a implementation authorization. Historical records below are not substituted for new evidence.
+**Current CP1b:** T13–T15 portable progress and typed navigation are implemented and owner-approved for commit/push after storage/settings functional review on the owner-updated Cloudflare staging deployment; [executed evidence/file map](../tasks/cp1b-review.md). CP1a was delivered as `26e89d8`, with [hosted quality/browser CI passing](https://github.com/abdtirtayasa24/sql-quiet-index/actions/runs/42552847584). See native durability [contracts](STORAGE.md) and [executed evidence](../tasks/cp1a-review.md). M0 was committed/pushed through `201ed3e`, with [hosted quality/browser CI passing](https://github.com/abdtirtayasa24/sql-quiet-index/actions/runs/42190341112). Actual M0 device/AT/deployed-host findings remain open, not inferred from the owner's subsequent CP1a implementation authorization. Historical records below are not substituted for new evidence.
 
-## CP1a review procedure
+## CP1b review procedure
+
+Build with `rtk proxy npm ci` and `rtk proxy npm run build`; preview with `rtk proxy npm run preview`, then visit `http://127.0.0.1:4173/#/settings` (stop preview before Playwright). Inspect exact [v1 file/schema/conflict limits](STORAGE.md). Do not use real private notes as automated fixtures or upload exported data.
+
+`test:portable` exercises real File input/Blob downloads, full seven-collection round-trip, preview/no-write/explicit merge or copy, stable ID/provenance remapping, latest-record transactions, identity/capacity/collision failures, native constraint/quota rollback, future original bytes including BOM, read-only local formats, pointer recovery, six direct hash routes, back/forward, bootstrap generation/focus races and BFCache lifecycle. Test-only library routes exist only inside isolated contexts and are absent from production dist. Bounded complete synthetic fixtures are not authored missions or proof of learning.
+
+The additional axe/keyboard/reflow suite covers empty/preview/error/future states, dark/light, 320/360/768/1280 and explicit preview/status focus. Four `portable-{dark,light}-{360,1280}.png` images are visually reviewed before ordinary comparison; prior sixteen baselines remain unchanged, with no new masking or tolerance increase. Full relevant regression counts/commands belong to the executed review ledger, not guesses from truncated output. CI explicitly adds the portable suite; **no hosted CP1b success is inferred from the owner's staging review**. Owner-reported saving/recovery and export/import/recovery findings are recorded in the checkpoint ledger; no additional device/version/AT/header findings were supplied. Actual iOS/Safari/Android, named AT, physical quota/power-loss, HTTPS and performance gates remain open. T15's typed cancellation port is tested; integrated arbitrary SQL/CodeMirror workspace and complete M1 remain T16–T18.
+
+## CP1a review procedure (historical scope)
 
 Build and preview with RTK, then open `http://127.0.0.1:4173/storage.html`. Creating a local case file is explicit; typing into the native draft field never executes SQL or earns evidence. Check pending/saving/committed text, reload, theme/language/motion, and local recovery download. Stop preview before automated suites own port 4173.
 

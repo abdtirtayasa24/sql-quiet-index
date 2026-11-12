@@ -337,6 +337,30 @@
         "Strategy.js": "6aa2d6d9ce67fc22c11a5e76c7d027f3427c9f813d9294a3ee3ac26bdc560afa",
         "StrategyHandler.js": "f737a00c06d23399c3b7c6c180e3648e6c488cac5b3fdc5c69b798f885b2a239"
       }
+    },
+    {
+      "name": "ajv",
+      "version": "8.20.0",
+      "license": "MIT",
+      "integrity": "sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==",
+      "files": {
+        "package.json": "1f9033ee5a6515e7d76938b7072941862d1ed228a6879cc7fe10cdeb75107989",
+        "LICENSE": "a05350a88e318e4f5f2c2a1ff1e2e88daa4dd38e6e78b71cccae422bdc762cc3",
+        "dist/runtime/ucs2length.js": "1df012dd3d23fced07255a7204798004509687cb1f431ae0ab976db436bbd890",
+        "dist/runtime/equal.js": "c94467da09ee94e5d194483a7ab821b9bb3bf1c04397270f2ab53dea9de59274",
+        "dist/standalone/index.js": "361d58a7523548bb1b9c782135fae27e76d93c8feaba8c4d613331dbcd3b888f"
+      }
+    },
+    {
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "license": "MIT",
+      "integrity": "sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==",
+      "files": {
+        "package.json": "a5c63940db0260739be9e2ac67f3aac268df4db5770420ee4e34e493152f97d2",
+        "LICENSE": "7bf9b2de73a6b356761c948d0e9eeb4be6c1270bd04c79cd489c1e400ffdfc1a",
+        "index.js": "eb469e206280321a3878f2335ec98aa2104a155079d8ed83a23029098dccd215"
+      }
     }
   ]
 }

@@ -11,7 +11,7 @@ test('@smoke renders the built Lit shell without runtime errors or external requ
     if (!request.url().startsWith(`${baseURL}/`))
       externalRequests.push(request.url());
   });
-  await page.goto('/#/home');
+  await page.goto('/');
   await expect(page.getByRole('main')).toHaveCount(1);
   await expect(
     page.getByRole('heading', { level: 1, name: 'The Quiet Index' }),

@@ -11,6 +11,10 @@ import { compareDrafts } from './draft-policy';
 import { campaignStores, DB_NAME, DB_VERSION, schema } from './schema';
 import { migrateCollections } from './migrations';
 import type { MigrationSteps } from './migrations';
+import type { CaseFile, CaseCollections } from '../types/case-file';
+import { ImportFailure, MAX_FILE_BYTES } from '../types/case-file';
+import { canonicalJson } from './export-import';
+import type * as SaveValidator from './import-validator';
 
 function failure(error: unknown): StorageFailure {
   if (error instanceof StorageFailure) return error;
@@ -324,6 +328,83 @@ export class ProgressDb {
         }
       },
     );
+  }
+  async importCaseFile(
+    file: CaseFile,
+    mode: 'merge' | 'copy',
+    confirmed: boolean,
+  ): Promise<{ campaignIds: string[]; conflicts: string[] }> {
+    if (confirmed !== true) throw new ImportFailure('confirmation');
+    if (mode !== 'merge' && mode !== 'copy') throw new ImportFailure('schema');
+    const validator: typeof SaveValidator = await import('./import-validator');
+    const { copyCollections, mergeCollections } =
+      await import('./import-policy');
+    // Revalidate and detach before opening any writing transaction.
+    const safe = await validator.validateCaseFile(canonicalJson(file));
+    const incoming = Object.fromEntries(
+      campaignStores.map((name) => [name, safe[name]]),
+    ) as CaseCollections;
+    const ids = new Map(
+      incoming.campaigns.map((row) => [
+        row.campaignId,
+        `c-${crypto.randomUUID()}`,
+      ]),
+    );
+    const input = mode === 'copy' ? copyCollections(incoming, ids) : incoming;
+    type Outcome =
+      | { ok: true; campaignIds: string[]; conflicts: string[] }
+      | { ok: false; error: ImportFailure };
+    const outcome = await this.write<Outcome>(
+      [...campaignStores],
+      (tx, set, fail) => {
+        const local: Collections = {};
+        let remaining = campaignStores.length;
+        for (const name of campaignStores) {
+          const request = tx.objectStore(name).getAll();
+          request.onsuccess = () => {
+            try {
+              const rows: unknown = request.result;
+              if (!Array.isArray(rows)) throw new ImportFailure('schema');
+              local[name] = rows;
+              if (--remaining !== 0) return;
+              if (
+                mode === 'copy' &&
+                local.campaigns?.some(
+                  (row) =>
+                    isObject(row) &&
+                    input.campaigns.some(
+                      (next) => next.campaignId === row.campaignId,
+                    ),
+                )
+              )
+                throw new ImportFailure('identity');
+              const plan = mergeCollections(local as CaseCollections, input);
+              const envelope = { ...safe, ...plan.collections };
+              validator.checkCaseFile(envelope);
+              if (
+                new TextEncoder().encode(canonicalJson(envelope)).byteLength >
+                MAX_FILE_BYTES
+              )
+                throw new ImportFailure('capacity');
+              // No writes are scheduled until the entire latest-record plan validates.
+              for (const store of campaignStores)
+                for (const row of plan.collections[store])
+                  tx.objectStore(store).put(row);
+              set({
+                ok: true,
+                campaignIds: input.campaigns.map((row) => row.campaignId),
+                conflicts: plan.conflicts,
+              });
+            } catch (error) {
+              if (error instanceof ImportFailure) set({ ok: false, error });
+              else fail(error);
+            }
+          };
+        }
+      },
+    );
+    if (!outcome.ok) throw outcome.error;
+    return { campaignIds: outcome.campaignIds, conflicts: outcome.conflicts };
   }
   snapshot(): Promise<Collections> {
     if (this.db.objectStoreNames.length === 0) return Promise.resolve({});

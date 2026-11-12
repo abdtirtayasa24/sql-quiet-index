@@ -1,0 +1,114 @@
+tqi-navigation-desk,
+tqi-portable-desk {
+  display: block;
+  min-width: 0;
+}
+tqi-navigation-desk nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin-block: var(--space-6);
+  border-block: 1px solid var(--color-border);
+  padding-block: var(--space-2);
+}
+tqi-navigation-desk nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--control-min-size);
+}
+tqi-navigation-desk nav a[aria-current='page'] {
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+}
+tqi-portable-desk section {
+  margin-block: var(--space-8);
+}
+tqi-portable-desk :is(button, select, input[type='file']) {
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--control-min-size);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+}
+tqi-portable-desk button {
+  color: var(--color-accent);
+  cursor: pointer;
+}
+tqi-portable-desk button:hover:not(:disabled) {
+  background: var(--color-bg);
+}
+tqi-portable-desk button:active:not(:disabled) {
+  background: var(--color-surface);
+}
+tqi-portable-desk :disabled {
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
+tqi-portable-desk :is(button, select, input):focus-visible,
+tqi-navigation-desk :is(a, h1):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+}
+tqi-portable-desk :is(label, select, input[type='file']) {
+  display: block;
+  margin-block: var(--space-2);
+}
+tqi-portable-desk input[type='file'] {
+  width: 100%;
+  padding: var(--space-3);
+}
+tqi-portable-desk input::file-selector-button {
+  font: inherit;
+  padding: var(--space-2);
+  margin-right: var(--space-3);
+}
+.portable-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+.portable-help {
+  color: var(--color-muted);
+}
+.portable-id {
+  font-family: var(--font-mono);
+  overflow-wrap: anywhere;
+}
+.portable-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-8);
+  padding-block: var(--space-4);
+  border-block: 1px solid var(--color-border);
+}
+.portable-counts div {
+  min-width: 8rem;
+}
+.portable-counts dt {
+  color: var(--color-muted);
+}
+.portable-counts dd {
+  margin: 0;
+  font: 1.25rem var(--font-mono);
+}
+tqi-portable-desk .portable-consent {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--control-min-size);
+  padding-block: var(--space-3);
+  cursor: pointer;
+}
+.portable-consent input {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  accent-color: var(--color-accent);
+}
+tqi-portable-desk [role='alert'] {
+  color: var(--color-danger);
+}

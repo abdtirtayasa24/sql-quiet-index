@@ -1,0 +1,335 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sql.thetirtayasa.my.id/schemas/save.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "saveVersion",
+    "exportedAt",
+    "appVersion",
+    "campaigns",
+    "missionStates",
+    "attempts",
+    "evidence",
+    "notes",
+    "conceptEvents",
+    "verdicts",
+    "integrity"
+  ],
+  "properties": {
+    "format": { "const": "the-quiet-index-save" },
+    "saveVersion": { "const": 1 },
+    "exportedAt": { "$ref": "#/definitions/time" },
+    "appVersion": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "campaigns": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": { "$ref": "#/definitions/campaign" }
+    },
+    "missionStates": {
+      "type": "array",
+      "maxItems": 640,
+      "items": { "$ref": "#/definitions/mission" }
+    },
+    "attempts": {
+      "type": "array",
+      "maxItems": 8000,
+      "items": { "$ref": "#/definitions/attempt" }
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 2000,
+      "items": { "$ref": "#/definitions/evidence" }
+    },
+    "notes": {
+      "type": "array",
+      "maxItems": 1000,
+      "items": { "$ref": "#/definitions/note" }
+    },
+    "conceptEvents": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": { "$ref": "#/definitions/event" }
+    },
+    "verdicts": {
+      "type": "array",
+      "maxItems": 80,
+      "items": { "$ref": "#/definitions/verdict" }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "payloadHex"],
+      "properties": {
+        "algorithm": { "const": "SHA-256" },
+        "payloadHex": { "$ref": "#/definitions/hash" }
+      }
+    }
+  },
+  "definitions": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$",
+      "maxLength": 128
+    },
+    "missionId": { "type": "string", "pattern": "^(00[1-9]|0[1-7][0-9]|080)$" },
+    "actId": { "type": "string", "pattern": "^act(0[1-9]|10)$" },
+    "time": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$",
+      "maxLength": 24
+    },
+    "hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "value": {
+      "anyOf": [
+        { "type": "null" },
+        { "type": "boolean" },
+        { "type": "number" },
+        { "type": "string", "maxLength": 12000 },
+        {
+          "type": "array",
+          "maxItems": 2000,
+          "items": { "$ref": "#/definitions/value" }
+        },
+        {
+          "type": "object",
+          "maxProperties": 64,
+          "propertyNames": { "maxLength": 128 },
+          "additionalProperties": { "$ref": "#/definitions/value" }
+        }
+      ]
+    },
+    "stamp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["updatedAt", "tabId", "revision"],
+      "properties": {
+        "updatedAt": { "$ref": "#/definitions/time" },
+        "tabId": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "campaign": {
+      "type": "object",
+      "maxProperties": 64,
+      "additionalProperties": { "$ref": "#/definitions/value" },
+      "required": [
+        "campaignId",
+        "saveVersion",
+        "contentVersion",
+        "engineVersion",
+        "seed",
+        "createdAt",
+        "updatedAt",
+        "activeMissionId",
+        "locale",
+        "completedMissionIds",
+        "endingId"
+      ],
+      "properties": {
+        "campaignId": { "$ref": "#/definitions/id" },
+        "saveVersion": { "const": 1 },
+        "contentVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engineVersion": { "type": "string", "minLength": 1, "maxLength": 32 },
+        "seed": { "type": "string", "pattern": "^[0-9a-f]{8,16}$" },
+        "createdAt": { "$ref": "#/definitions/time" },
+        "updatedAt": { "$ref": "#/definitions/time" },
+        "activeMissionId": { "$ref": "#/definitions/missionId" },
+        "locale": { "enum": ["en", "id"] },
+        "completedMissionIds": {
+          "type": "array",
+          "maxItems": 80,
+          "uniqueItems": true,
+          "items": { "$ref": "#/definitions/missionId" }
+        },
+        "endingId": {
+          "anyOf": [{ "type": "null" }, { "$ref": "#/definitions/id" }]
+        }
+      }
+    },
+    "mission": {
+      "type": "object",
+      "maxProperties": 64,
+      "additionalProperties": { "$ref": "#/definitions/value" },
+      "required": [
+        "campaignId",
+        "saveVersion",
+        "missionId",
+        "status",
+        "seedVariant",
+        "lastDraft",
+        "draftStamp",
+        "lastRunAt",
+        "hintMaxSeen",
+        "bestOutcome",
+        "acceptedQueryHash",
+        "firstSolvedAt"
+      ],
+      "properties": {
+        "campaignId": { "$ref": "#/definitions/id" },
+        "saveVersion": { "const": 1 },
+        "missionId": { "$ref": "#/definitions/missionId" },
+        "status": { "enum": ["in_progress", "solved"] },
+        "seedVariant": { "type": "integer", "minimum": 0, "maximum": 10000 },
+        "lastDraft": { "type": "string", "maxLength": 12000 },
+        "draftStamp": { "$ref": "#/definitions/stamp" },
+        "lastRunAt": {
+          "anyOf": [{ "type": "null" }, { "$ref": "#/definitions/time" }]
+        },
+        "hintMaxSeen": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "bestOutcome": {
+          "anyOf": [{ "type": "null" }, { "$ref": "#/definitions/id" }]
+        },
+        "acceptedQueryHash": {
+          "anyOf": [{ "type": "null" }, { "$ref": "#/definitions/hash" }]
+        },
+        "firstSolvedAt": {
+          "anyOf": [{ "type": "null" }, { "$ref": "#/definitions/time" }]
+        }
+      }
+    },
+    "attempt": {
+      "type": "object",
+      "maxProperties": 64,
+      "additionalProperties": { "$ref": "#/definitions/value" },
+      "required": [
+        "campaignId",
+        "saveVersion",
+        "attemptId",
+        "missionId",
+        "timestamp"
+      ],
+      "properties": {
+        "campaignId": { "$ref": "#/definitions/id" },
+        "saveVersion": { "const": 1 },
+        "attemptId": { "$ref": "#/definitions/id" },
+        "missionId": { "$ref": "#/definitions/missionId" },
+        "timestamp": { "$ref": "#/definitions/time" },
+        "queryText": { "type": "string", "maxLength": 12000 }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "maxProperties": 64,
+      "additionalProperties": { "$ref": "#/definitions/value" },
+      "required": [
+        "campaignId",
+        "saveVersion",
+        "evidenceId",
+        "actId",
+        "missionId",
+        "nodeId",
+        "seedVariant",
+        "queryText",
+        "queryHash",
+        "rowKeys",
+        "selectedRecordRefs",
+        "filedAt",
+        "contentVersion"
+      ],
+      "properties": {
+        "campaignId": { "$ref": "#/definitions/id" },
+        "saveVersion": { "const": 1 },
+        "evidenceId": { "$ref": "#/definitions/id" },
+        "actId": { "$ref": "#/definitions/actId" },
+        "missionId": { "$ref": "#/definitions/missionId" },
+        "nodeId": { "$ref": "#/definitions/id" },
+        "seedVariant": { "type": "integer", "minimum": 0, "maximum": 10000 },
+        "queryText": { "type": "string", "maxLength": 12000 },
+        "queryHash": { "$ref": "#/definitions/hash" },
+        "rowKeys": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000,
+          "items": { "type": "string", "maxLength": 12000 }
+        },
+        "selectedRecordRefs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000,
+          "items": {
+            "type": "object",
+            "required": ["table", "pk"],
+            "additionalProperties": false,
+            "properties": {
+              "table": {
+                "type": "string",
+                "pattern": "^[a-z_][a-z0-9_]{0,62}$"
+              },
+              "pk": { "type": "string", "minLength": 1, "maxLength": 1024 }
+            }
+          }
+        },
+        "filedAt": { "$ref": "#/definitions/time" },
+        "contentVersion": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "status": { "enum": ["active", "archived_legacy"] }
+      }
+    },
+    "note": {
+      "type": "object",
+      "maxProperties": 64,
+      "additionalProperties": { "$ref": "#/definitions/value" },
+      "required": [
+        "campaignId",
+        "saveVersion",
+        "noteId",
+        "actId",
+        "text",
+        "updatedAt"
+      ],
+      "properties": {
+        "campaignId": { "$ref": "#/definitions/id" },
+        "saveVersion": { "const": 1 },
+        "noteId": { "$ref": "#/definitions/id" },
+        "actId": { "$ref": "#/definitions/actId" },
+        "text": { "type": "string", "maxLength": 8000 },
+        "updatedAt": { "$ref": "#/definitions/time" }
+      }
+    },
+    "event": {
+      "type": "object",
+      "maxProperties": 64,
+      "additionalProperties": { "$ref": "#/definitions/value" },
+      "required": [
+        "campaignId",
+        "saveVersion",
+        "eventId",
+        "conceptId",
+        "itemId"
+      ],
+      "properties": {
+        "campaignId": { "$ref": "#/definitions/id" },
+        "saveVersion": { "const": 1 },
+        "eventId": { "$ref": "#/definitions/id" },
+        "conceptId": { "$ref": "#/definitions/id" },
+        "itemId": { "$ref": "#/definitions/id" }
+      }
+    },
+    "verdict": {
+      "type": "object",
+      "maxProperties": 64,
+      "additionalProperties": { "$ref": "#/definitions/value" },
+      "required": ["campaignId", "saveVersion", "actId"],
+      "properties": {
+        "campaignId": { "$ref": "#/definitions/id" },
+        "saveVersion": { "const": 1 },
+        "actId": { "$ref": "#/definitions/actId" },
+        "updatedAt": { "$ref": "#/definitions/time" }
+      }
+    }
+  }
+}

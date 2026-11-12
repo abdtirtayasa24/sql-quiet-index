@@ -45,7 +45,14 @@ M0 software was committed through `201ed3e` with hosted CI passing. The owner th
 
 - [x] Owner approved [T10–T12 changes, TDD evidence and acceptance ledger](cp1a-review.md) and the [native storage contract](../docs/STORAGE.md).
 - [ ] Build/preview `/storage.html`: explicit create, save/reload, preferences, truthful recovery messages and local recovery-copy download. The original proof pages remain separate; this desk does not execute player SQL.
-- [x] Owner explicitly authorized staging/commit/push and remote CI monitoring. No T13 or deployment is authorized. Real-device/AT/host gates above remain open; canonical interchange is T13–T14, not this recovery copy.
+- [x] Owner explicitly authorized staging/commit/push and remote CI monitoring. Delivered `26e89d8`; [hosted quality/browser CI passed](https://github.com/abdtirtayasa24/sql-quiet-index/actions/runs/42552847584). Real-device/AT/host gates above remain open; the native desk's recovery copy is not canonical interchange.
+
+## CP1b software review — approved for Git delivery
+
+- [x] Owner authorized T13–T15 using TDD, then stop without staging/commit/push.
+- [x] Owner approved CP1b after functional review on the owner-updated `https://sql.abdtirtayasa24.workers.dev` staging build: `/storage.html` saving/recovery download and settings export/import/local recovery-copy download worked. [CP1b changes/evidence](cp1b-review.md) and [portable-file contracts](../docs/STORAGE.md) retain the detailed automated proof and limits. No device/browser versions or AT/header findings were supplied.
+- [ ] Build/preview `/#/settings`: export, select, preview, explicit merge/new copy, original-file download and invalid/future recovery; visit `/#/mission/021` and back/forward navigation.
+- [x] Owner explicitly requested commit/push with a one-line message. No T16 or further agent deployment is authorized; actual device/AT/hosting gates remain open.
 
 ## Before T38: silent act playtests
 

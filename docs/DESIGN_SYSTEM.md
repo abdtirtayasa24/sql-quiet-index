@@ -50,6 +50,14 @@ Four additional Windows/Chromium baselines (`feasibility-dark-360.png`, `feasibi
 
 Keyboard creation moves focus to the newly available draft rather than losing it when the creation button disappears. Empty/ready axe and reduced-motion reflow checks cover three automated engines at 320/360/768/1280. Four new `storage-{dark|light}-{360|1280}.png` images are reviewed before comparison; only dynamic ID/seed are masked (pink is test masking, not UI). All previous twelve baselines remain intact. This is a review surface, not the T15 workspace or a human AT audit. See [storage](STORAGE.md) and [review](../tasks/cp1a-review.md).
 
+## CP1b portable progress/navigation desk
+
+Root `/#/settings` reuses the checked restrained navy/teal and light palettes, system fonts, plain ruled sections, 44px native controls and no authored animation. Native file selection, inline preview/counts, mode selection and explicit checkbox consent avoid an unnecessary modal; changing mode requires renewed consent. A bounded escaped file-name label clarifies the retained selection while resetting the picker permits choosing the same file again. SQL/notes/provenance stay private in the case file, not decorative UI.
+
+Hash navigation uses native links with current-page text emphasis. Heading/skip-link focus never destroys the route; preview/error/commit destinations take priority over older startup callbacks. The WebKit keyboard regression explicitly checks preview readiness, enabled checkbox focus/Space, Tab/Enter and committed status focus. Recovery text is actionable, not a false saved/secured announcement.
+
+Four `portable-{dark,light}-{360,1280}.png` full-page preview images were inspected, the ambiguous picker label was corrected, only those four regenerated and inspected again, then compared normally. Synthetic fixture IDs are deterministic, so no masking is needed. Existing sixteen baselines remain unchanged. Automated axe/reflow and browser evidence is not real-device/AT certification; the new engineering desk uses English MVP copy, not a claim that L01 translation or the later SQL workspace is finished.
+
 ## M0 technical desk
 
 `/technical.html` deliberately extends the same restrained engineering desk, not the future campaign workspace. Shared proof selectors preserve existing foundation/CP0b appearance; technical-only spacing separates wrapped 44px buttons, long release IDs wrap, and labels remain native. No new theme, UI library, external art/font or motion. The install icon is an original three-line records-ledger glyph generated locally at 192/512px, not a stock brand asset.
