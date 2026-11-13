@@ -1,0 +1,267 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sql.thetirtayasa.my.id/schemas/mission.v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "seedVersion",
+    "id",
+    "actId",
+    "caseId",
+    "type",
+    "role",
+    "difficulty",
+    "i18n",
+    "requires",
+    "teaches",
+    "reinforces",
+    "storyRequires",
+    "visibleTables",
+    "visibleColumns",
+    "seedProfile",
+    "assessment",
+    "grade",
+    "evidence",
+    "hints",
+    "followUp",
+    "availableFrom"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "contentVersion": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9.-]{0,39}$"
+    },
+    "seedVersion": { "const": 1 },
+    "id": { "type": "string", "pattern": "^(00[1-9]|0[1-7][0-9]|080)$" },
+    "actId": { "$ref": "#/definitions/act" },
+    "caseId": { "$ref": "#/definitions/act" },
+    "type": { "enum": ["concept", "practice", "capstone"] },
+    "role": { "enum": ["teach", "drill", "spike", "rest", "mastery"] },
+    "difficulty": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "i18n": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "brief", "success"],
+      "properties": {
+        "title": { "$ref": "#/definitions/key" },
+        "brief": { "$ref": "#/definitions/key" },
+        "success": { "$ref": "#/definitions/key" }
+      }
+    },
+    "requires": { "$ref": "#/definitions/ids" },
+    "teaches": { "$ref": "#/definitions/ids" },
+    "reinforces": { "$ref": "#/definitions/ids" },
+    "storyRequires": { "$ref": "#/definitions/keys" },
+    "visibleTables": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/id" }
+    },
+    "visibleColumns": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 12,
+      "propertyNames": { "$ref": "#/definitions/id" },
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 32,
+        "uniqueItems": true,
+        "items": { "$ref": "#/definitions/id" }
+      }
+    },
+    "seedProfile": { "$ref": "#/definitions/id" },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["itemId", "packId"],
+      "properties": {
+        "itemId": { "$ref": "#/definitions/key" },
+        "packId": { "$ref": "#/definitions/key" }
+      }
+    },
+    "grade": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resultKind",
+        "referenceQueries",
+        "comparison",
+        "constraints",
+        "wrongFixtures"
+      ],
+      "properties": {
+        "resultKind": { "const": "table" },
+        "referenceQueries": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 10,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^(reference\\.sql|variants/[a-z][a-z0-9_]{0,39}\\.sql)$"
+          }
+        },
+        "comparison": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "columnNames",
+            "columnNamePolicy",
+            "order",
+            "types",
+            "numericTolerance",
+            "maxRows"
+          ],
+          "properties": {
+            "columnNames": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 12,
+              "items": { "$ref": "#/definitions/id" }
+            },
+            "columnNamePolicy": { "enum": ["exact", "aliases_allowed"] },
+            "order": { "enum": ["ordered", "unordered_multiset"] },
+            "types": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 12,
+              "items": {
+                "enum": [
+                  "bool",
+                  "int2",
+                  "int4",
+                  "int8",
+                  "numeric",
+                  "text",
+                  "varchar",
+                  "date",
+                  "timestamp",
+                  "timestamptz",
+                  "uuid",
+                  "jsonb",
+                  "_int4",
+                  "_text"
+                ]
+              }
+            },
+            "numericTolerance": { "const": "exact" },
+            "maxRows": { "type": "integer", "minimum": 1, "maximum": 1000 }
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "when", "must", "feedback"],
+            "properties": {
+              "id": { "$ref": "#/definitions/id" },
+              "when": { "enum": ["always", "ast.outerJoin"] },
+              "must": {
+                "enum": [
+                  "ast.outerJoin",
+                  "ast.nullAntiMatch",
+                  "ast.selfJoin",
+                  "ast.groupBy",
+                  "ast.orderBy",
+                  "ast.filter",
+                  "ast.join"
+                ]
+              },
+              "feedback": { "$ref": "#/definitions/key" }
+            }
+          }
+        },
+        "wrongFixtures": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "sql", "diagnostic"],
+            "properties": {
+              "id": { "$ref": "#/definitions/id" },
+              "sql": {
+                "type": "string",
+                "pattern": "^wrong_[a-z][a-z0-9_]{0,39}\\.sql$"
+              },
+              "diagnostic": { "$ref": "#/definitions/key" }
+            }
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nodeId",
+        "selection",
+        "requiresQueryProof",
+        "sourceTables",
+        "rowKeyColumns"
+      ],
+      "properties": {
+        "nodeId": { "$ref": "#/definitions/key" },
+        "selection": { "const": "at_least_one_valid_row" },
+        "requiresQueryProof": { "const": true },
+        "sourceTables": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/definitions/id" }
+        },
+        "rowKeyColumns": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/definitions/id" }
+        }
+      }
+    },
+    "hints": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/key" }
+    },
+    "followUp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["itemId", "variant", "objectiveKey", "predicateKey"],
+      "properties": {
+        "itemId": { "$ref": "#/definitions/key" },
+        "variant": { "type": "integer", "minimum": 1, "maximum": 1000 },
+        "objectiveKey": { "$ref": "#/definitions/key" },
+        "predicateKey": { "$ref": "#/definitions/key" }
+      }
+    },
+    "availableFrom": { "$ref": "#/definitions/act" }
+  },
+  "definitions": {
+    "act": { "type": "string", "pattern": "^act(0[1-9]|10)$" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]{0,63}$" },
+    "key": { "type": "string", "pattern": "^[a-z][a-z0-9_.]{0,95}$" },
+    "ids": {
+      "type": "array",
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/id" }
+    },
+    "keys": {
+      "type": "array",
+      "maxItems": 64,
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/key" }
+    }
+  }
+}

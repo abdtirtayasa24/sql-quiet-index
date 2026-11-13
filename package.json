@@ -30,10 +30,11 @@
     "benchmark:boot": "playwright test --config playwright.benchmark.config.ts",
     "test:visual": "playwright test visual.spec.ts --project chromium",
     "test:a11y": "playwright test a11y.spec.ts",
-    "build": "npm run verify:vendor && npm run build:save-validator && node tools/build-base-snapshot.mjs && node tools/build-proof-icons.mjs && vite build && node tools/verify-foundation.mjs && node tools/verify-third-party.mjs --dist && node tools/verify-m0-dist.mjs",
+    "build": "npm run validate:content && npm run verify:vendor && npm run build:save-validator && node tools/build-base-snapshot.mjs && node tools/build-proof-icons.mjs && vite build && node tools/verify-foundation.mjs && node tools/verify-third-party.mjs --dist && node tools/verify-m0-dist.mjs",
     "smoke:dist": "playwright test --grep @smoke",
     "verify:vendor": "node tools/verify-third-party.mjs",
-    "validate:content": "node tools/pending-gate.mjs validate:content",
+    "validate:content": "node tools/validate-content.mjs",
+    "validate:graphs": "node tools/validate-graphs.mjs",
     "test:fixtures": "node tools/pending-gate.mjs test:fixtures"
   },
   "dependencies": {

@@ -63,6 +63,13 @@ M0 software was committed through `201ed3e` with hosted CI passing. The owner th
 - [ ] Supply named screen-reader status/Shadow DOM findings and real-device/HTTPS/performance findings listed above. No automation is a substitute.
 - [x] Owner explicitly requested commit/push with a one-line message after approval. No T19 or agent deployment is authorized.
 
+## CP2a content foundations — approved for Git delivery
+
+- [x] Owner authorized T19–T21 through CP2a using TDD, with review before any commit/push.
+- [x] Owner approved [CP2a changes, contracts, test evidence and limitations](cp2a-review.md) and [content authoring contract](../docs/CONTENT_AUTHORING.md).
+- [ ] Review the exact twelve-table baseline/seed identity contract, closed manifest predicates, 80-ID outline versus empty publication registry, and synthetic graph/progression/removal evidence. No mission/grading, real-player plot discovery or learner outcome is claimed.
+- [x] Owner explicitly requested commit/push and inspection/monitoring of hosted CI. The local WebKit caveat and manual gates remain open; no T22, mission publication or deployment is authorized.
+
 ## Before T38: silent act playtests
 
 - [ ] Recruit 5–7 consenting participants per act, including true beginners, intermediate/advanced SQL users and mobile-only/keyboard/screen-reader perspectives.

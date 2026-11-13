@@ -1,4 +1,14 @@
-# QA — M1 local SQL workbench and historical feasibility
+# QA — CP2a content foundations and historical feasibility
+
+## CP2a — owner-approved for Git delivery
+
+Owner authorized T19–T21 through CP2a using TDD and a review stop, then approved the changes and explicitly requested commit/push and remote CI inspection/monitoring. M1 was delivered as `c6d1b77`; older no-T19 statements below are historical. [Full executed evidence, RED→GREEN corrections, file map and limits](../tasks/cp2a-review.md). No T22, mission publication or deployment.
+
+`test:unit` now passes **230 tests / 42 files**, including actual PostgreSQL 18 **three acts × five seeds**, baseline constraints/columns/row budgets, shared identity replay, PRNG vectors and bounded source/manifest/graph rejection. `validate:content` is real and reports 80 outline IDs, **zero playable missions and zero authored cases**; `validate:graphs` is real too. Synthetic separate-act routes reach 008/016/024 with independent paths/distinct items, and fail on missing/optional clues, graph cycles, source/task duplication and unlock/familiar deadlocks. These are authoring foundation proofs, not runnable probe grading, human plot discoverability or learning evidence.
+
+Executed build/types/lint/format, smoke (21), E2E (69), native storage (63), portable (63), visual (24), automated a11y (54), two-release update (9) and desktop benchmark (9 cohorts/90 trials) passed. No baselines/runtime UI/dependency pins/save schema changed. The full unit run initially timed out the existing snapshot test under 42 concurrent workers; bounding concurrency at two preserves all deadlines/assertions and passes all 230.
+
+**Browser regression caveat:** full workspace runs remain **26/27**, with WebKit fresh-offline navigation failure initially and a 90s multi-tab recovery timeout in subsequent serial/final parallel suites. Three isolated WebKit offline runs and one targeted recovery run passed unchanged; these do not erase the failures. Final trace shows long real-keyboard typing (~28.9s for the long query alone), but root cause is unproven. CP2a does not change workspace/worker/SW/browser-test code, retry/timeout/tolerance settings or hide a browser. Retained logs/traces and exact commands are in the ledger. Treat a fully green workspace regression as an outstanding review caveat, not inferred acceptance. Real-device/AT/HTTPS/performance/M0 evidence also remains open.
 
 ## M1 software review — owner-approved for Git delivery
 

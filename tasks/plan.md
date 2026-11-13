@@ -5,6 +5,10 @@
 **Execution checklist:** [`todo.md`](todo.md). Task IDs below refer to that file.  
 **Planning baseline:** two specification documents and MIT `LICENSE`; application implementation began only after the approved planning commit/push. Current authorized scope is Phase 1 T16–T18 through M1, using TDD and [predeclared children](m1-review.md); software and the [layout follow-up](m1-layout-review.md) are locally verified and owner-approved for a one-line commit and push. Stop after Git delivery; no T19 or deployment authorized. M0 software was committed through `201ed3e` with hosted quality/browser CI passing; outstanding manual M0 evidence is not waived or marked passed.
 
+## Current authorization — CP2a
+
+M1 and the all-tab follow-up were delivered as `c6d1b77`. The owner then authorized **T19–T21 through CP2a using TDD**, with a review stop before any commit/push. The owner subsequently approved CP2a and explicitly requested commit/push and remote CI verification; deliver the reviewed changes, inspect the previous CI failure and monitor the new run, then stop. [CP2a child slices, frozen content contracts and executed evidence](cp2a-review.md) supersede earlier no-T19/current-scope wording above; older checkpoint records remain historical. No T22, mission publication or deployment is authorized. Existing device/AT/HTTPS/performance and M0 go/no-go evidence remains open. D01–D13 and the full approved plan are not reopened.
+
 ## 1. Overview and release boundaries
 
 Build a free, account-free detective learning PWA at `https://sql.thetirtayasa.my.id`. The differentiator is evaluating real PostgreSQL queries and explaining misconceptions, not checking a suspect's name. Browser-local execution, durable evidence provenance, and a reproducible content-validation pipeline are core product features.

@@ -4,6 +4,10 @@
 
 Read [`plan.md`](plan.md) and the normative spec first. T tasks deliver MVP engineering; C tasks deliver individual MVP missions; later acts are gated expansion work. Dependencies are task IDs, not calendar order. Verification commands are planned package-script contracts, not existing/passed commands. Use RTK for all shell commands; query Graphify before navigating relationships, then verify source text.
 
+## Current execution — CP2a
+
+M1 was delivered as `c6d1b77`. The owner subsequently authorized T19–T21 through CP2a using TDD and a stop for review before any commit/push. The owner subsequently approved CP2a and explicitly requested commit/push plus remote CI inspection/monitoring. See [the CP2a ledger](cp2a-review.md). This supersedes historical no-T19 handoffs below; no T22, mission publication or deployment is authorized. Full-plan approval is unchanged. Manual M0/M1 evidence remains open.
+
 ## Global task acceptance / Definition of Done
 
 Applies to **every task below**, in addition to its specific criteria:
@@ -331,9 +335,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Implement the twelve-table baseline schema, specified PRNG and reviewed shared case-identity/mission-delta contract.
 
 **Acceptance criteria:**
-- [ ] Same version/seed/case/mission/variant yields stable IDs/timestamps and coherent shared identities.
-- [ ] FK/CHECKs, NULL/duplicate/decoy and row-budget invariants hold on ≥5 fixed seeds.
-- [ ] Parameterized/escaped generated literals only; no grading/answer lookup table.
+- [x] Same version/seed/case/mission/variant yields stable IDs/timestamps and coherent shared identities.
+- [x] FK/CHECKs, NULL/duplicate/decoy and row-budget invariants hold on ≥5 fixed seeds (three acts × five seeds in actual PG18).
+- [x] Parameterized/escaped generated literals only; no grading/answer lookup table.
 
 **Verification:** PRNG golden vectors, data/FK/timeline/NULL/cardinality fixture tests.  
 **Dependencies:** T01(D02),T05.  
@@ -345,9 +349,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Define strict manifest types/schemas and distinguish 80-mission outline from published playable assets.
 
 **Acceptance criteria:**
-- [ ] Unknown keys, invalid paths/IDs/concepts/locales/constraint predicates fail with source location; x_* policy explicit.
-- [ ] All 80 authoritative mission IDs/arcs exist in season outline, only implemented content enters playable registry.
-- [ ] Exact source-to-generated SQL variant naming and required content counts specified.
+- [x] Unknown keys, invalid paths/IDs/concepts/locales/constraint predicates fail with source location; x_* policy explicit (closed schema rejects them).
+- [x] All 80 authoritative mission IDs/arcs exist in season outline, only implemented content enters playable registry (currently empty).
+- [x] Exact source-to-generated SQL variant naming and required content counts specified in [authoring contract](../docs/CONTENT_AUTHORING.md).
 
 **Verification:** `rtk proxy npm run validate:content` passes valid miniature pack and rejects malformed examples.  
 **Dependencies:** T01(D09),T19.  
@@ -359,9 +363,9 @@ Applies to **every task below**, in addition to its specific criteria:
 **Description:** Implement runtime-independent graph contracts/lints and solvability simulation before case authoring scales.
 
 **Acceptance criteria:**
-- [ ] Reject cycles, dangling/contradictory IDs, clue depending on conclusion, impossible taught/mastery/story prerequisites and invalid sawtooth metadata.
-- [ ] Three distinct source/reasoning paths reachable; every optional single-clue removal preserves required robustness and approved resolution feasibility.
-- [ ] Practice item coverage allows act-critical concepts to reach familiar without seed-variant farming.
+- [x] Reject cycles, dangling/contradictory IDs, clue depending on conclusion, impossible taught/mastery/story prerequisites and invalid sawtooth metadata.
+- [x] Three distinct source/reasoning paths reachable; every optional single-clue removal preserves required robustness and approved resolution feasibility in synthetic positive/negative fixtures.
+- [x] Practice item coverage allows act-critical concepts to reach familiar without seed-variant farming in synthetic validation (not human learning evidence).
 
 **Verification:** Synthetic good/deadlocked/cyclic/duplicate-path graphs; route-to-each-synthesis simulation.  
 **Dependencies:** T20,T01(D03,D05–D07).  
@@ -369,8 +373,10 @@ Applies to **every task below**, in addition to its specific criteria:
 **Estimated scope:** M.
 
 ### Checkpoint CP2a — content foundations
-- [ ] T19–T21 stable identity/data/schema/graph contracts accepted.
-- [ ] Validator failures are meaningful; complete novice progression is demonstrably possible in synthetic cases.
+- [x] T19–T21 stable identity/data/schema/graph contracts accepted by the owner; recorded browser/manual caveats remain open.
+- [x] Validator failures are meaningful; complete novice progression is demonstrably possible in synthetic cases.
+
+**CP2a review handoff:** [Predeclared slices, executed evidence, changed files and limitations](cp2a-review.md). T19–T21 software criteria are implemented/tested and owner-approved for Git delivery with remote CI verification. Public mission/case registry stays empty; real solution grading and source staging remain future tasks. Full unit (230), content/graph, strict/build and listed browser suites pass, but the full workspace regression has intermittent WebKit offline/recovery failures (26/27), retained and investigated without weakened assertions. The owner explicitly authorized commit/push and remote CI inspection/monitoring; stop after delivery/verification, with no T22 or deployment. Earlier M0/M1 manual gates remain open.
 
 ### T22 — Compare PostgreSQL typed results without precision loss
 

@@ -1,0 +1,698 @@
+{
+  "schemaVersion": 1,
+  "contentVersion": "2026.10.1",
+  "acts": [
+    {
+      "id": "act01",
+      "title": "The Missing Receipt",
+      "arc": "A harbor clerk vanishes after a midnight delivery; security declares it a clerical mix-up."
+    },
+    {
+      "id": "act02",
+      "title": "Ghost Shift",
+      "arc": "Badge logs contradict payroll and overtime; the first ECHO-17 trace appears."
+    },
+    {
+      "id": "act03",
+      "title": "The False Alibi",
+      "arc": "A harbor guard is blamed; three independent systems disagree about who was at the quay."
+    },
+    {
+      "id": "act04",
+      "title": "The Missing Tide",
+      "arc": "Sensor readings disappear from the flood barrier system before a deadly storm drill."
+    },
+    {
+      "id": "act05",
+      "title": "Glass Office",
+      "arc": "Procurement payments are distributed through front firms."
+    },
+    {
+      "id": "act06",
+      "title": "Debt Map",
+      "arc": "Eviction orders align with flood-risk remapping; evidence is buried in layered views."
+    },
+    {
+      "id": "act07",
+      "title": "The Broken Key",
+      "arc": "Maintenance timestamps and forged correspondence expose who moved the alert cutoff."
+    },
+    {
+      "id": "act08",
+      "title": "The Echo Archive",
+      "arc": "Historical record versions reveal recurring ECHO-17 patterns across years."
+    },
+    {
+      "id": "act09",
+      "title": "Flood Protocol",
+      "arc": "A command chain threatens to open the barrier during a storm; authority is obscured."
+    },
+    {
+      "id": "act10",
+      "title": "The Last Query",
+      "arc": "Mentor credibility is challenged; the network and motive converge before a publication choice."
+    }
+  ],
+  "missions": [
+    {
+      "id": "001",
+      "actId": "act01",
+      "title": "Open the intake ledger",
+      "objective": "Show every active incident.",
+      "construct": "SELECT + FROM",
+      "concepts": ["select_from"]
+    },
+    {
+      "id": "002",
+      "actId": "act01",
+      "title": "Relevant incident columns",
+      "objective": "Show just the incident IDs, dates and location.",
+      "construct": "Column selection and alias",
+      "concepts": ["projection"]
+    },
+    {
+      "id": "003",
+      "actId": "act01",
+      "title": "Harbor incidents",
+      "objective": "Isolate harbor incidents.",
+      "construct": "WHERE =",
+      "concepts": ["filter_eq"]
+    },
+    {
+      "id": "004",
+      "actId": "act01",
+      "title": "After midnight",
+      "objective": "Identify reports filed after midnight on the relevant date.",
+      "construct": "Comparisons + date literal",
+      "concepts": ["comparison", "date_literal"]
+    },
+    {
+      "id": "005",
+      "actId": "act01",
+      "title": "Official and informal descriptions",
+      "objective": "Compare official and informal descriptions.",
+      "construct": "AND, OR, parentheses",
+      "concepts": ["boolean_logic"]
+    },
+    {
+      "id": "006",
+      "actId": "act01",
+      "title": "The recurring mark",
+      "objective": "Find consignments with the recurring mark.",
+      "construct": "LIKE / ILIKE",
+      "concepts": ["pattern_match"]
+    },
+    {
+      "id": "007",
+      "actId": "act01",
+      "title": "Latest deliveries",
+      "objective": "Sort incoming deliveries and inspect the latest few.",
+      "construct": "ORDER BY ... LIMIT",
+      "concepts": ["sort_limit"]
+    },
+    {
+      "id": "008",
+      "actId": "act01",
+      "title": "First dispatch memo",
+      "objective": "Reconcile two incident facts to file the first dispatch memo.",
+      "construct": "Review checkpoint",
+      "concepts": ["filter_eq", "sort_limit"]
+    },
+    {
+      "id": "009",
+      "actId": "act02",
+      "title": "Night badge scans",
+      "objective": "Count all badge scans from the night shift.",
+      "construct": "COUNT(*)",
+      "concepts": ["count"]
+    },
+    {
+      "id": "010",
+      "actId": "act02",
+      "title": "Unique badges",
+      "objective": "Count unique badges among scans.",
+      "construct": "COUNT(DISTINCT ...)",
+      "concepts": ["count_distinct"]
+    },
+    {
+      "id": "011",
+      "actId": "act02",
+      "title": "Overtime by employee",
+      "objective": "Total paid overtime by employee.",
+      "construct": "GROUP BY + SUM",
+      "concepts": ["group_by", "sum"]
+    },
+    {
+      "id": "012",
+      "actId": "act02",
+      "title": "Scan intervals",
+      "objective": "Find earliest and latest scans per badge.",
+      "construct": "MIN / MAX + grouping",
+      "concepts": ["min_max", "group_by"]
+    },
+    {
+      "id": "013",
+      "actId": "act02",
+      "title": "Unusually busy badges",
+      "objective": "Select badges with an unusually high scan count.",
+      "construct": "HAVING COUNT(*)",
+      "concepts": ["having"]
+    },
+    {
+      "id": "014",
+      "actId": "act02",
+      "title": "Regular or suspect shifts",
+      "objective": "Classify shifts as regular or suspect.",
+      "construct": "CASE + aggregate",
+      "concepts": ["case_expression"]
+    },
+    {
+      "id": "015",
+      "actId": "act02",
+      "title": "Repair grouped projection",
+      "objective": "Repair a flawed grouped query that selects an ungrouped employee field.",
+      "construct": "Grouping-column constraint",
+      "concepts": ["grouped_projection"]
+    },
+    {
+      "id": "016",
+      "actId": "act02",
+      "title": "Wage-timeline conclusion",
+      "objective": "File a three-source wage-timeline conclusion.",
+      "construct": "Consolidation",
+      "concepts": ["group_by", "having", "grouped_projection"]
+    },
+    {
+      "id": "017",
+      "actId": "act03",
+      "title": "Badge to staff",
+      "objective": "Match badge IDs to staff records.",
+      "construct": "INNER JOIN",
+      "concepts": ["join_keys"]
+    },
+    {
+      "id": "018",
+      "actId": "act03",
+      "title": "Assigned vehicles",
+      "objective": "Connect staff to assigned vehicles.",
+      "construct": "Foreign keys + second join",
+      "concepts": ["join_keys"]
+    },
+    {
+      "id": "019",
+      "actId": "act03",
+      "title": "Gate, vehicle and dispatch",
+      "objective": "Combine gate, vehicle and dispatch evidence.",
+      "construct": "3-way joins",
+      "concepts": ["multi_join"]
+    },
+    {
+      "id": "020",
+      "actId": "act03",
+      "title": "Ambiguous ID",
+      "objective": "Clarify ambiguous id columns on a join.",
+      "construct": "Qualified columns, aliases",
+      "concepts": ["qualified_columns"]
+    },
+    {
+      "id": "021",
+      "actId": "act03",
+      "title": "Shared supervisor",
+      "objective": "Find two staff sharing the same supervisor.",
+      "construct": "Self-join with different logical roles",
+      "concepts": ["self_join"]
+    },
+    {
+      "id": "022",
+      "actId": "act03",
+      "title": "Retain employees without scans",
+      "objective": "Include employees even without matching scans.",
+      "construct": "LEFT JOIN",
+      "concepts": ["outer_join"]
+    },
+    {
+      "id": "023",
+      "actId": "act03",
+      "title": "Never scanned",
+      "objective": "Show staff whose badge never scanned at the gate.",
+      "construct": "LEFT JOIN ... IS NULL",
+      "concepts": ["null_absence"]
+    },
+    {
+      "id": "024",
+      "actId": "act03",
+      "title": "Three alibi statements",
+      "objective": "Compare three alibi statements with query-backed records.",
+      "construct": "Capstone / proof slots",
+      "concepts": ["join_keys", "outer_join", "null_absence"]
+    },
+    {
+      "id": "025",
+      "actId": "act04",
+      "title": "Sensor calibration",
+      "objective": "Locate sensors with and without calibration entries.",
+      "construct": "LEFT JOIN",
+      "concepts": ["outer_join"]
+    },
+    {
+      "id": "026",
+      "actId": "act04",
+      "title": "Missing readings",
+      "objective": "Identify missing readings using IS NULL rather than = NULL.",
+      "construct": "IS NULL",
+      "concepts": ["null_absence"]
+    },
+    {
+      "id": "027",
+      "actId": "act04",
+      "title": "Default alert threshold",
+      "objective": "Recover a default alert threshold.",
+      "construct": "COALESCE",
+      "concepts": ["coalesce"]
+    },
+    {
+      "id": "028",
+      "actId": "act04",
+      "title": "Two sensor networks",
+      "objective": "Compare two sensor networks without dropping unmatched IDs.",
+      "construct": "FULL OUTER JOIN",
+      "concepts": ["full_join"]
+    },
+    {
+      "id": "029",
+      "actId": "act04",
+      "title": "Required timestamps",
+      "objective": "Identify missing required timestamps with a provided scaffold.",
+      "construct": "generate_series + left anti-match",
+      "concepts": ["generate_series", "null_absence"]
+    },
+    {
+      "id": "030",
+      "actId": "act04",
+      "title": "Prove absence",
+      "objective": "Prove records are absent.",
+      "construct": "NOT EXISTS",
+      "concepts": ["exists"]
+    },
+    {
+      "id": "031",
+      "actId": "act04",
+      "title": "Nullable subqueries",
+      "objective": "Explain why NOT IN and nullable subqueries can disagree.",
+      "construct": "NULL three-valued logic",
+      "concepts": ["null_logic"]
+    },
+    {
+      "id": "032",
+      "actId": "act04",
+      "title": "Falsified monitoring gap",
+      "objective": "Synthesize the falsified monitoring gap, review and new accusation.",
+      "construct": "Review synthesis",
+      "concepts": ["null_absence", "exists"]
+    },
+    {
+      "id": "033",
+      "actId": "act05",
+      "title": "Paid amounts after joining",
+      "objective": "Aggregate paid amounts after joining invoices and contracts.",
+      "construct": "Group over join",
+      "concepts": ["aggregate_over_join"]
+    },
+    {
+      "id": "034",
+      "actId": "act05",
+      "title": "Correct grain",
+      "objective": "Avoid double-counting one-to-many line items.",
+      "construct": "Aggregate at correct grain",
+      "concepts": ["aggregation_grain"]
+    },
+    {
+      "id": "035",
+      "actId": "act05",
+      "title": "Beneficiary and agency",
+      "objective": "Group by beneficiary and agency.",
+      "construct": "Multi-column grouping",
+      "concepts": ["group_by"]
+    },
+    {
+      "id": "036",
+      "actId": "act05",
+      "title": "Paid and unpaid sums",
+      "objective": "Compute separate paid and unpaid sums.",
+      "construct": "FILTER (WHERE ...)",
+      "concepts": ["aggregate_filter"]
+    },
+    {
+      "id": "037",
+      "actId": "act05",
+      "title": "Unusually large payments",
+      "objective": "Detect firms receiving unusually large payments.",
+      "construct": "HAVING",
+      "concepts": ["having"]
+    },
+    {
+      "id": "038",
+      "actId": "act05",
+      "title": "Payment categories",
+      "objective": "Compute different categories of payments.",
+      "construct": "Conditional CASE aggregation",
+      "concepts": ["case_expression"]
+    },
+    {
+      "id": "039",
+      "actId": "act05",
+      "title": "Repair grouped beneficiary",
+      "objective": "Repair an invalid grouped beneficiary column and skewed join.",
+      "construct": "Grouping boss",
+      "concepts": ["grouped_projection", "aggregation_grain"]
+    },
+    {
+      "id": "040",
+      "actId": "act05",
+      "title": "Beneficiary chain",
+      "objective": "File the beneficiary chain and recover front-company links.",
+      "construct": "Synthesis",
+      "concepts": ["aggregate_over_join"]
+    },
+    {
+      "id": "041",
+      "actId": "act06",
+      "title": "Outside normal flood ratings",
+      "objective": "Identify properties outside normal flood-rating ranges.",
+      "construct": "Scalar subquery",
+      "concepts": ["subquery"]
+    },
+    {
+      "id": "042",
+      "actId": "act06",
+      "title": "Neighborhood average",
+      "objective": "Compare each property against its neighborhood average.",
+      "construct": "Correlated subquery",
+      "concepts": ["correlated_query"]
+    },
+    {
+      "id": "043",
+      "actId": "act06",
+      "title": "Named forensic blocks",
+      "objective": "Divide a long forensic analysis into named blocks.",
+      "construct": "WITH",
+      "concepts": ["cte"]
+    },
+    {
+      "id": "044",
+      "actId": "act06",
+      "title": "CTE scope repair",
+      "objective": "Fix a CTE referenced in projection but not FROM.",
+      "construct": "CTE scope",
+      "concepts": ["cte_scope"]
+    },
+    {
+      "id": "045",
+      "actId": "act06",
+      "title": "Two eviction lists",
+      "objective": "Combine two lists of evictions without confusing duplicate semantics.",
+      "construct": "UNION versus UNION ALL",
+      "concepts": ["set_operations"]
+    },
+    {
+      "id": "046",
+      "actId": "act06",
+      "title": "Risk without resettlement",
+      "objective": "Find addresses in risk and eviction sets but not resettlement.",
+      "construct": "INTERSECT / EXCEPT",
+      "concepts": ["set_operations"]
+    },
+    {
+      "id": "047",
+      "actId": "act06",
+      "title": "Most recent property order",
+      "objective": "Fetch the most recent order per property.",
+      "construct": "LATERAL or window variant",
+      "concepts": ["lateral"]
+    },
+    {
+      "id": "048",
+      "actId": "act06",
+      "title": "Displacement map",
+      "objective": "File the displacement map with correct denominators.",
+      "construct": "Synthesis",
+      "concepts": ["aggregation_grain", "cte"]
+    },
+    {
+      "id": "049",
+      "actId": "act07",
+      "title": "Delivery day",
+      "objective": "Extract the day from delivery timestamps.",
+      "construct": "DATE / EXTRACT",
+      "concepts": ["date_extract"]
+    },
+    {
+      "id": "050",
+      "actId": "act07",
+      "title": "Policy change instant",
+      "objective": "Identify the precise time of policy changes.",
+      "construct": "TIMESTAMPTZ",
+      "concepts": ["date_timezone"]
+    },
+    {
+      "id": "051",
+      "actId": "act07",
+      "title": "Local time and UTC",
+      "objective": "Compare local time to UTC.",
+      "construct": "AT TIME ZONE",
+      "concepts": ["date_timezone"]
+    },
+    {
+      "id": "052",
+      "actId": "act07",
+      "title": "Daily status changes",
+      "objective": "Aggregate status changes by day.",
+      "construct": "DATE_TRUNC",
+      "concepts": ["date_trunc"]
+    },
+    {
+      "id": "053",
+      "actId": "act07",
+      "title": "An excessive timer gap",
+      "objective": "Show a timer gap longer than allowed.",
+      "construct": "Interval arithmetic",
+      "concepts": ["interval_arithmetic"]
+    },
+    {
+      "id": "054",
+      "actId": "act07",
+      "title": "Tampered message prefix",
+      "objective": "Reconcile a tampered message prefix.",
+      "construct": "LOWER, REPLACE, substring",
+      "concepts": ["string_functions"]
+    },
+    {
+      "id": "055",
+      "actId": "act07",
+      "title": "Inconsistent serials",
+      "objective": "Extract device serials from inconsistent text.",
+      "construct": "substring regex",
+      "concepts": ["regex"]
+    },
+    {
+      "id": "056",
+      "actId": "act07",
+      "title": "Alert chronology",
+      "objective": "Reconstruct alert-change chronology and report forgery.",
+      "construct": "Synthesis",
+      "concepts": ["date_timezone", "string_functions"]
+    },
+    {
+      "id": "057",
+      "actId": "act08",
+      "title": "First changed version",
+      "objective": "Find the first changed version of each report.",
+      "construct": "ROW_NUMBER",
+      "concepts": ["window_partition"]
+    },
+    {
+      "id": "058",
+      "actId": "act08",
+      "title": "Preceding version",
+      "objective": "Recover a preceding version.",
+      "construct": "LAG",
+      "concepts": ["window_offset"]
+    },
+    {
+      "id": "059",
+      "actId": "act08",
+      "title": "Next and current edits",
+      "objective": "Compare next and current edits.",
+      "construct": "LEAD",
+      "concepts": ["window_offset"]
+    },
+    {
+      "id": "060",
+      "actId": "act08",
+      "title": "Unusual district errors",
+      "objective": "Rank the most unusual errors in each district.",
+      "construct": "Partitioned rank",
+      "concepts": ["window_partition"]
+    },
+    {
+      "id": "061",
+      "actId": "act08",
+      "title": "Accumulating flood warnings",
+      "objective": "Detect moving accumulation of flood warnings.",
+      "construct": "Window frame",
+      "concepts": ["window_frame"]
+    },
+    {
+      "id": "062",
+      "actId": "act08",
+      "title": "Latest valid device version",
+      "objective": "Pick the latest valid version per device.",
+      "construct": "PostgreSQL DISTINCT ON",
+      "concepts": ["distinct_on"]
+    },
+    {
+      "id": "063",
+      "actId": "act08",
+      "title": "Structured editing history",
+      "objective": "Extract structured editing history from JSONB.",
+      "construct": "->, ->>, @>",
+      "concepts": ["jsonb"]
+    },
+    {
+      "id": "064",
+      "actId": "act08",
+      "title": "Version tampering chain",
+      "objective": "File a consistent chain of version tampering.",
+      "construct": "Synthesis",
+      "concepts": ["window_partition", "jsonb"]
+    },
+    {
+      "id": "065",
+      "actId": "act09",
+      "title": "Commander hierarchy",
+      "objective": "Expand the incident commander hierarchy.",
+      "construct": "WITH RECURSIVE",
+      "concepts": ["recursive_cte"]
+    },
+    {
+      "id": "066",
+      "actId": "act09",
+      "title": "Doctored supervisor cycle",
+      "objective": "Detect a cycle in a doctored supervisor graph.",
+      "construct": "Visited-path cycle guard",
+      "concepts": ["cycle_guard"]
+    },
+    {
+      "id": "067",
+      "actId": "act09",
+      "title": "Missing minutes",
+      "objective": "Reconcile missing minutes over a timeline.",
+      "construct": "generate_series",
+      "concepts": ["generate_series"]
+    },
+    {
+      "id": "068",
+      "actId": "act09",
+      "title": "Commands and overrides",
+      "objective": "Reconcile command logs and overrides.",
+      "construct": "FULL JOIN with sourced keys",
+      "concepts": ["full_join"]
+    },
+    {
+      "id": "069",
+      "actId": "act09",
+      "title": "Regional subtotals",
+      "objective": "Compute subtotal by region and facility.",
+      "construct": "ROLLUP",
+      "concepts": ["rollup"]
+    },
+    {
+      "id": "070",
+      "actId": "act09",
+      "title": "Grouping views",
+      "objective": "Compare grouping views.",
+      "construct": "GROUPING SETS",
+      "concepts": ["grouping_sets"]
+    },
+    {
+      "id": "071",
+      "actId": "act09",
+      "title": "Authority at the incident",
+      "objective": "Prove which controller had authority at the incident time.",
+      "construct": "Temporal joins + CTE",
+      "concepts": ["temporal_join", "cte"]
+    },
+    {
+      "id": "072",
+      "actId": "act09",
+      "title": "Prevent false shutdown",
+      "objective": "Prevent a false emergency shutdown with three independent assertions.",
+      "construct": "Act capstone",
+      "concepts": ["recursive_cte", "temporal_join"]
+    },
+    {
+      "id": "073",
+      "actId": "act10",
+      "title": "A slow evidence query",
+      "objective": "Compare two versions of a slow evidence query.",
+      "construct": "EXPLAIN (FORMAT JSON)",
+      "concepts": ["query_plan"]
+    },
+    {
+      "id": "074",
+      "actId": "act10",
+      "title": "Relevant index",
+      "objective": "Identify an unwanted full scan and add a relevant index in an isolated lab.",
+      "construct": "Index design",
+      "concepts": ["index_design"]
+    },
+    {
+      "id": "075",
+      "actId": "act10",
+      "title": "Measured plans",
+      "objective": "Measure plans without treating one run's timing as universal.",
+      "construct": "EXPLAIN (ANALYZE, FORMAT JSON)",
+      "concepts": ["query_plan"]
+    },
+    {
+      "id": "076",
+      "actId": "act10",
+      "title": "Repair the forged ledger",
+      "objective": "Repair a forged ledger inside a transaction on a throwaway dataset.",
+      "construct": "UPDATE ... RETURNING, ROLLBACK",
+      "concepts": ["transactional_dml"]
+    },
+    {
+      "id": "077",
+      "actId": "act10",
+      "title": "Duplicate command",
+      "objective": "Reject a duplicate command in a disposable sandbox.",
+      "construct": "INSERT ... ON CONFLICT",
+      "concepts": ["upsert"]
+    },
+    {
+      "id": "078",
+      "actId": "act10",
+      "title": "Integrated forensic report",
+      "objective": "Reconcile all preceding acts in a multi-CTE, multi-seed forensic report.",
+      "construct": "Integrated capstone",
+      "concepts": ["cte", "multi_join"]
+    },
+    {
+      "id": "079",
+      "actId": "act10",
+      "title": "Who, how and why",
+      "objective": "File three distinct final claims: organizer, mechanism and motive, with query-backed proofs.",
+      "construct": "Three-part verdict",
+      "concepts": ["evidence_synthesis"]
+    },
+    {
+      "id": "080",
+      "actId": "act10",
+      "title": "Publication path",
+      "objective": "Choose a publication path after solving; factual proof is fixed and the ethical ending branches.",
+      "construct": "Ethical ending",
+      "concepts": ["evidence_synthesis"]
+    }
+  ]
+}

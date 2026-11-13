@@ -1,0 +1,207 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://sql.thetirtayasa.my.id/schemas/graph.v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "actId",
+    "concepts",
+    "initialTaught",
+    "publicFacts",
+    "nodes",
+    "paths",
+    "resolutions",
+    "missions",
+    "practice",
+    "goals"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "actId": { "$ref": "#/definitions/act" },
+    "concepts": { "$ref": "#/definitions/ids" },
+    "initialTaught": { "$ref": "#/definitions/ids" },
+    "publicFacts": { "$ref": "#/definitions/keys" },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 500,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "requires", "mandatory"],
+        "properties": {
+          "id": { "$ref": "#/definitions/key" },
+          "kind": {
+            "enum": ["fact", "evidence", "conclusion", "reconciliation"]
+          },
+          "requires": { "$ref": "#/definitions/keys" },
+          "mandatory": { "type": "boolean" },
+          "sourceId": { "$ref": "#/definitions/id" }
+        }
+      }
+    },
+    "paths": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "conclusionId",
+          "nodeIds",
+          "sourceIds",
+          "reasoningId",
+          "confidence"
+        ],
+        "properties": {
+          "id": { "$ref": "#/definitions/key" },
+          "conclusionId": { "$ref": "#/definitions/key" },
+          "nodeIds": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 30,
+            "uniqueItems": true,
+            "items": { "$ref": "#/definitions/key" }
+          },
+          "sourceIds": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 12,
+            "uniqueItems": true,
+            "items": { "$ref": "#/definitions/id" }
+          },
+          "reasoningId": { "$ref": "#/definitions/key" },
+          "confidence": { "enum": ["high", "supporting"] }
+        }
+      }
+    },
+    "resolutions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["conclusionId", "policy"],
+        "properties": {
+          "conclusionId": { "$ref": "#/definitions/key" },
+          "policy": { "enum": ["all_three", "two_high_reconciled"] },
+          "reconciliationNodeId": { "$ref": "#/definitions/key" }
+        }
+      }
+    },
+    "missions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "actId",
+          "type",
+          "role",
+          "difficulty",
+          "requires",
+          "teaches",
+          "reinforces",
+          "storyRequires",
+          "awards",
+          "criticalConcepts",
+          "synthesis",
+          "item"
+        ],
+        "properties": {
+          "id": { "$ref": "#/definitions/mission" },
+          "actId": { "$ref": "#/definitions/act" },
+          "type": { "enum": ["concept", "practice", "capstone"] },
+          "role": { "enum": ["teach", "drill", "spike", "rest", "mastery"] },
+          "difficulty": { "type": "integer", "minimum": 1, "maximum": 10 },
+          "requires": { "$ref": "#/definitions/ids" },
+          "teaches": { "$ref": "#/definitions/ids" },
+          "reinforces": { "$ref": "#/definitions/ids" },
+          "storyRequires": { "$ref": "#/definitions/keys" },
+          "awards": { "$ref": "#/definitions/keys" },
+          "criticalConcepts": { "$ref": "#/definitions/ids" },
+          "synthesis": { "type": "boolean" },
+          "item": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "taskId", "concepts"],
+            "properties": {
+              "id": { "$ref": "#/definitions/key" },
+              "taskId": { "$ref": "#/definitions/key" },
+              "concepts": { "$ref": "#/definitions/ids" }
+            }
+          },
+          "synthesisException": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["reason", "playtestRef"],
+            "properties": {
+              "reason": { "type": "string", "minLength": 1, "maxLength": 1000 },
+              "playtestRef": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              }
+            }
+          }
+        }
+      }
+    },
+    "practice": {
+      "type": "array",
+      "maxItems": 300,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "taskId",
+          "conceptId",
+          "requires",
+          "storyRequires",
+          "packId"
+        ],
+        "properties": {
+          "id": { "$ref": "#/definitions/key" },
+          "taskId": { "$ref": "#/definitions/key" },
+          "conceptId": { "$ref": "#/definitions/id" },
+          "requires": { "$ref": "#/definitions/ids" },
+          "storyRequires": { "$ref": "#/definitions/keys" },
+          "packId": { "$ref": "#/definitions/key" }
+        }
+      }
+    },
+    "goals": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/mission" }
+    }
+  },
+  "definitions": {
+    "act": { "type": "string", "pattern": "^act(0[1-9]|10)$" },
+    "mission": { "type": "string", "pattern": "^(00[1-9]|0[1-7][0-9]|080)$" },
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]{0,63}$" },
+    "key": { "type": "string", "pattern": "^[a-z][a-z0-9_.]{0,95}$" },
+    "ids": {
+      "type": "array",
+      "maxItems": 200,
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/id" }
+    },
+    "keys": {
+      "type": "array",
+      "maxItems": 500,
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/key" }
+    }
+  }
+}

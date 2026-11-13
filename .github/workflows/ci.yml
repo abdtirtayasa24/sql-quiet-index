@@ -29,6 +29,10 @@ jobs:
         run: npm run lint
       - name: Formatting
         run: npm run format:check
+      - name: Content outline, published manifest and graph contracts
+        run: npm run validate:content
+      - name: Investigation graph contracts
+        run: npm run validate:graphs
       - name: Vitest (fails on zero tests)
         run: npm run test:unit
 
